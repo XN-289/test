@@ -948,7 +948,7 @@ function processSiteGeneration(wikiResult) {
         return {
             entityId: entity.name,
             title: name,
-            url: `/output/pages/${makeSlug(entity.name)}.html`,
+            url: `/pages/${makeSlug(entity.name)}.html`,
             specs,
             cpc,
             hasEvidence: content.includes('Evidence') || content.includes('Clinical'),
@@ -1003,7 +1003,7 @@ function processSiteGeneration(wikiResult) {
             "description": desc,
             "manufacturer": { "@type": "Organization", "name": "ViaSurg" },
             "category": category,
-            "url": `https://viasurg.com/output/pages/${makeSlug(entity.name)}.html`
+            "url": `https://viasurg.com/pages/${makeSlug(entity.name)}.html`
         };
         const schemaPath = path.join(schemasDir, `${entity.name}.json`);
         fs.writeFileSync(schemaPath, JSON.stringify(schema, null, 2), 'utf8');
@@ -1012,8 +1012,8 @@ function processSiteGeneration(wikiResult) {
     // Generate sitemap (include homepage + all entity pages)
     const today = new Date().toISOString().split('T')[0];
     const allSitemapPages = [
-        { url: '/output/', priority: '1.0', changefreq: 'daily' },
-        ...entityPages.map(p => ({
+        { url: '/', priority: '1.0', changefreq: 'daily' },
+        ...entityPages.filter(p => !p.url.includes('competitor-competitor-disruption')).map(p => ({
             url: p.url,
             priority: p.type === 'product' ? '0.9' : p.type === 'category' ? '0.8' : '0.7',
             changefreq: 'weekly'
@@ -1045,8 +1045,8 @@ ${allSitemapPages.map(p => `  <url><loc>https://viasurg.com${p.url}</loc><lastmo
             templatesUsed: dataCache._templatesUsed,
             pages: generatedPages,
             entityPages: entityPages.slice(0, 10), // Preview first 10
-            outputUrl: '/output/index.html',
-            pagesDir: '/output/pages/'
+            outputUrl: '/index.html',
+            pagesDir: '/pages/'
         },
         logs: [
             { type: 'info', message: `Rendering ${generatedPages.length} product pages...` },
@@ -1792,12 +1792,12 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
 <body>
     <header>
         <div class="container">
-            <a href="/output/" class="logo">ViaSurg</a>
+            <a href="/" class="logo">ViaSurg</a>
             <nav>
-                <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a>
-                <a href="/output/#products" data-lang="en">Products</a><a href="/output/#products" data-lang="zh">产品中心</a>
-                <a href="/output/#competitors" data-lang="en">Competitors</a><a href="/output/#competitors" data-lang="zh">竞品分析</a>
-                <a href="/output/sitemap.xml">Sitemap</a>
+                <a href="/" data-lang="en">Home</a><a href="/" data-lang="zh">首页</a>
+                <a href="/#products" data-lang="en">Products</a><a href="/#products" data-lang="zh">产品中心</a>
+                <a href="/#competitors" data-lang="en">Competitors</a><a href="/#competitors" data-lang="zh">竞品分析</a>
+                <a href="/sitemap.xml">Sitemap</a>
                 <div class="lang-toggle">
                     <button class="lang-btn active" onclick="setLang('en')">EN</button>
                     <button class="lang-btn" onclick="setLang('zh')">中</button>
@@ -1808,7 +1808,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
 
     <div class="container">
         <div class="breadcrumb">
-            <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a> &rsaquo; <a href="/output/#products" data-lang="en">Products</a><a href="/output/#products" data-lang="zh">产品中心</a> &rsaquo; <span data-lang="en">${name}</span><span data-lang="zh">${zhData.content_title || pzh(name)}</span>
+            <a href="/" data-lang="en">Home</a><a href="/" data-lang="zh">首页</a> &rsaquo; <a href="/#products" data-lang="en">Products</a><a href="/#products" data-lang="zh">产品中心</a> &rsaquo; <span data-lang="en">${name}</span><span data-lang="zh">${zhData.content_title || pzh(name)}</span>
         </div>
 
         <div class="product-header">
@@ -1868,11 +1868,11 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
                             const isCategory = categoryEntities.some(cat => makeSlug(cat.name) === eSlug);
                             const isMaterial = materialEntities.some(mat => makeSlug(mat.name) === eSlug);
                             const isTech = technologyEntities.some(tech => makeSlug(tech.name) === eSlug);
-                            let href = `/output/pages/${eSlug}.html`;
-                            if (isCompetitor) href = `/output/pages/competitor-${eSlug}.html`;
-                            else if (isCategory) href = `/output/pages/category-${eSlug}.html`;
-                            else if (isMaterial) href = `/output/pages/material-${eSlug}.html`;
-                            else if (isTech) href = `/output/pages/tech-${eSlug}.html`;
+                            let href = `/pages/${eSlug}.html`;
+                            if (isCompetitor) href = `/pages/competitor-${eSlug}.html`;
+                            else if (isCategory) href = `/pages/category-${eSlug}.html`;
+                            else if (isMaterial) href = `/pages/material-${eSlug}.html`;
+                            else if (isTech) href = `/pages/tech-${eSlug}.html`;
                             else if (!isProduct) return ''; // skip entities without pages
                             return `<li><a href="${href}">${e}</a></li>`;
                         }).filter(Boolean).join('\n                        ')}
@@ -1880,7 +1880,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
                 </div>` : ''}
                 ${keywordSidebar}
 
-                <a href="/output/" class="cta-button"><span data-lang="en">Request Quote</span><span data-lang="zh">询价</span></a>
+                <a href="/" class="cta-button"><span data-lang="en">Request Quote</span><span data-lang="zh">询价</span></a>
             </div>
         </div>
     </div>
@@ -1888,7 +1888,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
     <footer>
         <div class="container">
             <p><span data-lang="en">${en.footer?.copy || '© 2026 ViaSurg. Powered by NomoFlow™ Technology.'}</span><span data-lang="zh">${zh.footer?.copy || '© 2026 ViaSurg. 由 NomoFlow™ 技术驱动。'}</span></p>
-            <p><a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a> | <a href="/output/sitemap.xml">Sitemap</a></p>
+            <p><a href="/" data-lang="en">Home</a><a href="/" data-lang="zh">首页</a> | <a href="/sitemap.xml">Sitemap</a></p>
         </div>
     </footer>
     <script>
@@ -1911,7 +1911,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
         generatedPages.push({
             name,
             slug,
-            url: `/output/pages/${slug}.html`,
+            url: `/pages/${slug}.html`,
             category,
             material,
             cpc
@@ -1945,7 +1945,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
         });
 
         // Find other competitors
-        const otherCompetitors = competitorEntities.filter(c => c.name !== entity.name).slice(0, 5);
+        const otherCompetitors = competitorEntities.filter(c => c.name !== entity.name && c.name !== 'Competitor_Disruption').slice(0, 5);
 
         // Find relevant keywords for this competitor
         const relevantKeywords = findRelevantKeywords(entity, allKeywords, 10);
@@ -1968,7 +1968,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
         "@type": "Organization",
         "name": "${name}",
         "description": "Competitive analysis of ${name} vs ViaSurg medical devices",
-        "url": "https://viasurg.com/output/pages/competitor-${makeSlug(entity.name)}.html"
+        "url": "https://viasurg.com/pages/competitor-${makeSlug(entity.name)}.html"
     }
     </script>
     <style>
@@ -2023,11 +2023,11 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
 <body>
     <header>
         <div class="container">
-            <a href="/output/" class="logo">ViaSurg</a>
+            <a href="/" class="logo">ViaSurg</a>
             <nav>
-                <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a>
-                <a href="/output/#products" data-lang="en">Products</a><a href="/output/#products" data-lang="zh">产品中心</a>
-                <a href="/output/#competitors" data-lang="en">Competitors</a><a href="/output/#competitors" data-lang="zh">竞品分析</a>
+                <a href="/" data-lang="en">Home</a><a href="/" data-lang="zh">首页</a>
+                <a href="/#products" data-lang="en">Products</a><a href="/#products" data-lang="zh">产品中心</a>
+                <a href="/#competitors" data-lang="en">Competitors</a><a href="/#competitors" data-lang="zh">竞品分析</a>
                 <div class="lang-toggle">
                     <button class="lang-btn active" onclick="setLang('en')">EN</button>
                     <button class="lang-btn" onclick="setLang('zh')">中</button>
@@ -2037,7 +2037,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
     </header>
     <div class="container">
         <div class="breadcrumb">
-            <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a> &rsaquo; <a href="/output/#competitors" data-lang="en">Competitors</a><a href="/output/#competitors" data-lang="zh">竞品分析</a> &rsaquo; ${name}
+            <a href="/" data-lang="en">Home</a><a href="/" data-lang="zh">首页</a> &rsaquo; <a href="/#competitors" data-lang="en">Competitors</a><a href="/#competitors" data-lang="zh">竞品分析</a> &rsaquo; ${name}
         </div>
         <div class="page-header">
             <h1><span data-lang="en">${name}</span><span data-lang="zh">${COMPETITOR_ZH[name] || name}</span></h1>
@@ -2082,7 +2082,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
                     ${productsList.map(p => {
                         const pSlug = makeSlug(p);
                         const hasPage = productEntities.some(pe => makeSlug(pe.name) === pSlug);
-                        const tag = hasPage ? `<a href="/output/pages/${pSlug}.html" class="product-tag"><span data-lang="en">${p}</span><span data-lang="zh">${PRODUCT_ZH[p] || p}</span></a>` : `<span class="product-tag" style="background:#94A3B8;"><span data-lang="en">${p}</span><span data-lang="zh">${PRODUCT_ZH[p] || p}</span></span>`;
+                        const tag = hasPage ? `<a href="/pages/${pSlug}.html" class="product-tag"><span data-lang="en">${p}</span><span data-lang="zh">${PRODUCT_ZH[p] || p}</span></a>` : `<span class="product-tag" style="background:#94A3B8;"><span data-lang="en">${p}</span><span data-lang="zh">${PRODUCT_ZH[p] || p}</span></span>`;
                         return tag;
                     }).join('')}
                 </div>` : ''}
@@ -2093,7 +2093,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
                     <ul>
                         ${relatedProducts.map(p => {
                             const pName = p.name.replace(/_/g, ' ');
-                            return `<li><a href="/output/pages/${makeSlug(p.name)}.html"><span data-lang="en">${pName}</span><span data-lang="zh">${PRODUCT_ZH[pName] || pName}</span></a></li>`;
+                            return `<li><a href="/pages/${makeSlug(p.name)}.html"><span data-lang="en">${pName}</span><span data-lang="zh">${PRODUCT_ZH[pName] || pName}</span></a></li>`;
                         }).join('')}
                     </ul>
                 </div>` : ''}
@@ -2103,13 +2103,13 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
                     <ul>
                         ${otherCompetitors.map(c => {
                             const cName = c.name.replace(/_/g, ' ');
-                            return `<li><a href="/output/pages/competitor-${makeSlug(c.name)}.html">${cName}</a></li>`;
+                            return `<li><a href="/pages/competitor-${makeSlug(c.name)}.html">${cName}</a></li>`;
                         }).join('')}
                     </ul>
                 </div>
                 ${keywordSidebar}
 
-                <a href="/output/" style="display:block;text-align:center;background:var(--primary);color:white;padding:12px;border-radius:4px;text-decoration:none;font-weight:600;font-size:14px;"><span data-lang="en">Back to Home</span><span data-lang="zh">返回首页</span></a>
+                <a href="/" style="display:block;text-align:center;background:var(--primary);color:white;padding:12px;border-radius:4px;text-decoration:none;font-weight:600;font-size:14px;"><span data-lang="en">Back to Home</span><span data-lang="zh">返回首页</span></a>
             </div>
         </div>
     </div>
@@ -2137,7 +2137,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
         generatedPages.push({
             name,
             slug,
-            url: `/output/pages/${slug}.html`,
+            url: `/pages/${slug}.html`,
             type: 'competitor'
         });
     });
@@ -2181,7 +2181,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
         "@type": "CollectionPage",
         "name": "${name} - ViaSurg Product Category",
         "description": "${desc.substring(0, 200)}",
-        "url": "https://viasurg.com/output/pages/category-${makeSlug(entity.name)}.html"
+        "url": "https://viasurg.com/pages/category-${makeSlug(entity.name)}.html"
     }
     </script>
     <style>
@@ -2236,11 +2236,11 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
 <body>
     <header>
         <div class="container">
-            <a href="/output/" class="logo">ViaSurg</a>
+            <a href="/" class="logo">ViaSurg</a>
             <nav>
-                <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a>
-                <a href="/output/#products" data-lang="en">Products</a><a href="/output/#products" data-lang="zh">产品中心</a>
-                <a href="/output/#competitors" data-lang="en">Competitors</a><a href="/output/#competitors" data-lang="zh">竞品分析</a>
+                <a href="/" data-lang="en">Home</a><a href="/" data-lang="zh">首页</a>
+                <a href="/#products" data-lang="en">Products</a><a href="/#products" data-lang="zh">产品中心</a>
+                <a href="/#competitors" data-lang="en">Competitors</a><a href="/#competitors" data-lang="zh">竞品分析</a>
                 <div class="lang-toggle">
                     <button class="lang-btn active" onclick="setLang('en')">EN</button>
                     <button class="lang-btn" onclick="setLang('zh')">中</button>
@@ -2250,7 +2250,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
     </header>
     <div class="container">
         <div class="breadcrumb">
-            <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a> &rsaquo; <a href="/output/#products" data-lang="en">Products</a><a href="/output/#products" data-lang="zh">产品中心</a> &rsaquo; ${name}
+            <a href="/" data-lang="en">Home</a><a href="/" data-lang="zh">首页</a> &rsaquo; <a href="/#products" data-lang="en">Products</a><a href="/#products" data-lang="zh">产品中心</a> &rsaquo; ${name}
         </div>
         <div class="page-header">
             <h1>${name}</h1>
@@ -2270,7 +2270,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
                     const pCpc = pCpcMatch ? pCpcMatch[1] : '';
                     const pStratMatch = pContent.match(/Strategy\*\*:\s*([^.\n]+)/);
                     const pStrategy = pStratMatch ? cleanWikiContent(pStratMatch[1].trim().substring(0, 80)) : '';
-                    return `<a class="product-card" href="/output/pages/${makeSlug(p.name)}.html">
+                    return `<a class="product-card" href="/pages/${makeSlug(p.name)}.html">
                         <div class="cat">${name}</div>
                         <h3>${pName}</h3>
                         ${pStrategy ? `<div class="desc">${pStrategy}</div>` : ''}
@@ -2287,7 +2287,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
             <div class="category-grid">
                 ${otherCategories.map(c => {
                     const cName = c.name.replace(/_/g, ' ');
-                    return `<a class="category-link" href="/output/pages/category-${makeSlug(c.name)}.html">
+                    return `<a class="category-link" href="/pages/category-${makeSlug(c.name)}.html">
                         <div class="name">${cName}</div>
                         <div class="arrow"><span data-lang="en">View Products →</span><span data-lang="zh">查看产品 →</span></div>
                     </a>`;
@@ -2301,7 +2301,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
     <footer>
         <div class="container">
             <p><span data-lang="en">© 2026 ViaSurg. Powered by NomoFlow™ Technology.</span><span data-lang="zh">© 2026 ViaSurg. 由 NomoFlow™ 技术驱动。</span></p>
-            <p><a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a> | <a href="/output/#products" data-lang="en">Products</a><a href="/output/#products" data-lang="zh">产品中心</a> | <a href="/output/sitemap.xml">Sitemap</a></p>
+            <p><a href="/" data-lang="en">Home</a><a href="/" data-lang="zh">首页</a> | <a href="/#products" data-lang="en">Products</a><a href="/#products" data-lang="zh">产品中心</a> | <a href="/sitemap.xml">Sitemap</a></p>
         </div>
     </footer>
     <script>
@@ -2320,7 +2320,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
 
         const pagePath = path.join(pagesDir, `${slug}.html`);
         fs.writeFileSync(pagePath, pageHTML, 'utf8');
-        generatedPages.push({ name, slug, url: `/output/pages/${slug}.html`, type: 'category' });
+        generatedPages.push({ name, slug, url: `/pages/${slug}.html`, type: 'category' });
     });
 
     // Generate pages for material entities
@@ -2398,11 +2398,11 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
 <body>
     <header>
         <div class="container">
-            <a href="/output/" class="logo">ViaSurg</a>
+            <a href="/" class="logo">ViaSurg</a>
             <nav>
-                <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a>
-                <a href="/output/#products" data-lang="en">Products</a><a href="/output/#products" data-lang="zh">产品中心</a>
-                <a href="/output/#competitors" data-lang="en">Competitors</a><a href="/output/#competitors" data-lang="zh">竞品分析</a>
+                <a href="/" data-lang="en">Home</a><a href="/" data-lang="zh">首页</a>
+                <a href="/#products" data-lang="en">Products</a><a href="/#products" data-lang="zh">产品中心</a>
+                <a href="/#competitors" data-lang="en">Competitors</a><a href="/#competitors" data-lang="zh">竞品分析</a>
                 <div class="lang-toggle">
                     <button class="lang-btn active" onclick="setLang('en')">EN</button>
                     <button class="lang-btn" onclick="setLang('zh')">中</button>
@@ -2412,7 +2412,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
     </header>
     <div class="container">
         <div class="breadcrumb">
-            <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a> &rsaquo; <a href="/output/#products" data-lang="en">Products</a><a href="/output/#products" data-lang="zh">产品中心</a> &rsaquo; <span data-lang="en">${name}</span><span data-lang="zh">${matDescZh(name) ? name.replace(' Material', '材料') : name}</span>
+            <a href="/" data-lang="en">Home</a><a href="/" data-lang="zh">首页</a> &rsaquo; <a href="/#products" data-lang="en">Products</a><a href="/#products" data-lang="zh">产品中心</a> &rsaquo; <span data-lang="en">${name}</span><span data-lang="zh">${matDescZh(name) ? name.replace(' Material', '材料') : name}</span>
         </div>
         <div class="page-header">
             <h1><span data-lang="en">${name}</span><span data-lang="zh">${name.replace(' Material', '材料')}</span></h1>
@@ -2434,7 +2434,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
             <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:16px;">
                 ${materialProducts.map(p => {
                     const pName = p.name.replace(/_/g, ' ');
-                    return `<a href="/output/pages/${makeSlug(p.name)}.html" style="display:block;padding:16px;border:1px solid #E2E8F0;border-radius:4px;text-decoration:none;color:#0F172A;transition:border-color 0.15s;">
+                    return `<a href="/pages/${makeSlug(p.name)}.html" style="display:block;padding:16px;border:1px solid #E2E8F0;border-radius:4px;text-decoration:none;color:#0F172A;transition:border-color 0.15s;">
                         <div style="font-weight:600;font-size:14px;">${pName}</div>
                     </a>`;
                 }).join('')}
@@ -2465,7 +2465,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
 
         const pagePath = path.join(pagesDir, `${slug}.html`);
         fs.writeFileSync(pagePath, pageHTML, 'utf8');
-        generatedPages.push({ name, slug, url: `/output/pages/${slug}.html`, type: 'material' });
+        generatedPages.push({ name, slug, url: `/pages/${slug}.html`, type: 'material' });
     });
 
     // Generate pages for technology entities
@@ -2549,11 +2549,11 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
 <body>
     <header>
         <div class="container">
-            <a href="/output/" class="logo">ViaSurg</a>
+            <a href="/" class="logo">ViaSurg</a>
             <nav>
-                <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a>
-                <a href="/output/#products" data-lang="en">Products</a><a href="/output/#products" data-lang="zh">产品中心</a>
-                <a href="/output/#competitors" data-lang="en">Competitors</a><a href="/output/#competitors" data-lang="zh">竞品分析</a>
+                <a href="/" data-lang="en">Home</a><a href="/" data-lang="zh">首页</a>
+                <a href="/#products" data-lang="en">Products</a><a href="/#products" data-lang="zh">产品中心</a>
+                <a href="/#competitors" data-lang="en">Competitors</a><a href="/#competitors" data-lang="zh">竞品分析</a>
                 <div class="lang-toggle">
                     <button class="lang-btn active" onclick="setLang('en')">EN</button>
                     <button class="lang-btn" onclick="setLang('zh')">中</button>
@@ -2563,7 +2563,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
     </header>
     <div class="container">
         <div class="breadcrumb">
-            <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a> &rsaquo; <a href="/output/#products" data-lang="en">Products</a><a href="/output/#products" data-lang="zh">产品中心</a> &rsaquo; <span data-lang="en">${name}</span><span data-lang="zh">${name.replace('Technology', '技术')}</span>
+            <a href="/" data-lang="en">Home</a><a href="/" data-lang="zh">首页</a> &rsaquo; <a href="/#products" data-lang="en">Products</a><a href="/#products" data-lang="zh">产品中心</a> &rsaquo; <span data-lang="en">${name}</span><span data-lang="zh">${name.replace('Technology', '技术')}</span>
         </div>
         <div class="page-header">
             <h1><span data-lang="en">${name}</span><span data-lang="zh">${name.replace('Technology', '技术')}</span></h1>
@@ -2573,8 +2573,8 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
         <div class="content">
             <h2><span data-lang="en">Technology Overview</span><span data-lang="zh">技术概述</span></h2>
             <p><span data-lang="en">${desc}</span><span data-lang="zh">${techDescZh(name) || desc}</span></p>
-            ${relatedCats.length ? `<h2><span data-lang="en">Related Categories</span><span data-lang="zh">相关分类</span></h2><ul>${relatedCats.map(c => `<li><a href="/output/pages/cat-${makeSlug(c.name)}.html">${c.name.replace(/_/g, ' ')}</a></li>`).join('')}</ul>` : ''}
-            ${relatedProds.length ? `<h2><span data-lang="en">Products Using This Technology</span><span data-lang="zh">使用此技术的产品</span></h2><ul>${relatedProds.map(p => `<li><a href="/output/pages/product-${makeSlug(p.name)}.html">${p.name.replace(/_/g, ' ')}</a></li>`).join('')}</ul>` : ''}
+            ${relatedCats.length ? `<h2><span data-lang="en">Related Categories</span><span data-lang="zh">相关分类</span></h2><ul>${relatedCats.map(c => `<li><a href="/pages/cat-${makeSlug(c.name)}.html">${c.name.replace(/_/g, ' ')}</a></li>`).join('')}</ul>` : ''}
+            ${relatedProds.length ? `<h2><span data-lang="en">Products Using This Technology</span><span data-lang="zh">使用此技术的产品</span></h2><ul>${relatedProds.map(p => `<li><a href="/pages/product-${makeSlug(p.name)}.html">${p.name.replace(/_/g, ' ')}</a></li>`).join('')}</ul>` : ''}
             ${keywordFAQ}
         </div>
         </div>
@@ -2607,7 +2607,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
 
         const pagePath = path.join(pagesDir, `${slug}.html`);
         fs.writeFileSync(pagePath, pageHTML, 'utf8');
-        generatedPages.push({ name, slug, url: `/output/pages/${slug}.html`, type: 'technology' });
+        generatedPages.push({ name, slug, url: `/pages/${slug}.html`, type: 'technology' });
     });
 
     // Generate pages for other entity types (Procedure, Portal, Strategy, Compliance, Other)
@@ -2694,11 +2694,11 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
 <body>
     <header>
         <div class="container">
-            <a href="/output/" class="logo">ViaSurg</a>
+            <a href="/" class="logo">ViaSurg</a>
             <nav>
-                <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a>
-                <a href="/output/#products" data-lang="en">Products</a><a href="/output/#products" data-lang="zh">产品中心</a>
-                <a href="/output/#competitors" data-lang="en">Competitors</a><a href="/output/#competitors" data-lang="zh">竞品分析</a>
+                <a href="/" data-lang="en">Home</a><a href="/" data-lang="zh">首页</a>
+                <a href="/#products" data-lang="en">Products</a><a href="/#products" data-lang="zh">产品中心</a>
+                <a href="/#competitors" data-lang="en">Competitors</a><a href="/#competitors" data-lang="zh">竞品分析</a>
                 <div class="lang-toggle">
                     <button class="lang-btn active" onclick="setLang('en')">EN</button>
                     <button class="lang-btn" onclick="setLang('zh')">中</button>
@@ -2708,7 +2708,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
     </header>
     <div class="container">
         <div class="breadcrumb">
-            <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a> &rsaquo; ${name}
+            <a href="/" data-lang="en">Home</a><a href="/" data-lang="zh">首页</a> &rsaquo; ${name}
         </div>
         <div class="page-header">
             <h1>${name}</h1>
@@ -2750,7 +2750,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
 
         const pagePath = path.join(pagesDir, `${slug}.html`);
         fs.writeFileSync(pagePath, pageHTML, 'utf8');
-        generatedPages.push({ name, slug, url: `/output/pages/${slug}.html`, type: entityType.toLowerCase() });
+        generatedPages.push({ name, slug, url: `/pages/${slug}.html`, type: entityType.toLowerCase() });
     });
 
     console.log(`[MULTI-PAGE] Generated ${generatedPages.length} individual pages`);
@@ -3761,7 +3761,7 @@ function generateOutputPage(entities, i18n, templates, allKeywords) {
             </div>
             <div class="products-grid">
                 ${productCards.map(p => `
-                <a class="product-card" href="/output/pages/${p.slug}.html">
+                <a class="product-card" href="/pages/${p.slug}.html">
                     <div class="product-card-header">
                         <span class="product-category"><span data-lang="en">${p.category}</span><span data-lang="zh">${catZh(p.category)}</span></span>
                         <span class="product-badge"><span data-lang="en">Verified</span><span data-lang="zh">${zhContent.index.badge_verified}</span></span>
@@ -3921,7 +3921,7 @@ function generateOutputPage(entities, i18n, templates, allKeywords) {
                         const painZh = pain === 'Market inefficiency' ? '市场低效' : pain;
                         const disruptionZh = disruption === 'Transparent manufacturing' ? '透明制造' : disruption === 'Verified' ? '已验证' : disruption;
                         return `<tr>
-                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:white;font-weight:600;"><a href="/output/pages/competitor-${slug}.html" style="color:white;text-decoration:underline;text-underline-offset:3px;"><span data-lang="en">${name}</span><span data-lang="zh">${COMPETITOR_ZH[name] || name}</span></a></td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:white;font-weight:600;"><a href="/pages/competitor-${slug}.html" style="color:white;text-decoration:underline;text-underline-offset:3px;"><span data-lang="en">${name}</span><span data-lang="zh">${COMPETITOR_ZH[name] || name}</span></a></td>
                             <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);"><span data-lang="en">${products}</span><span data-lang="zh">${COMPETITOR_MARKET_ZH[name] ? COMPETITOR_MARKET_ZH[name].substring(0, 80) : products}</span></td>
                             <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);"><span data-lang="en">${pain}</span><span data-lang="zh">${painZh}</span></td>
                             <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:var(--rot-terminal-green);font-family:var(--rot-font-mono);font-size:13px;"><span data-lang="en">${disruption}</span><span data-lang="zh">${disruptionZh}</span></td>
@@ -3972,7 +3972,7 @@ function generateOutputPage(entities, i18n, templates, allKeywords) {
                 ${(dataCache._categoryEntities || []).map(cat => {
                     const name = cat.name.replace(/_/g, ' ');
                     const slug = makeSlug(cat.name);
-                    return `<a href="/output/pages/category-${slug}.html" style="background:var(--rot-bg-secondary);border:1px solid var(--rot-border-subtle);border-radius:4px;padding:20px;text-decoration:none;color:inherit;display:block;">
+                    return `<a href="/pages/category-${slug}.html" style="background:var(--rot-bg-secondary);border:1px solid var(--rot-border-subtle);border-radius:4px;padding:20px;text-decoration:none;color:inherit;display:block;">
                         <div style="font-family:var(--rot-font-display);font-size:15px;font-weight:600;color:var(--rot-slate-heavy);"><span data-lang="en">${name}</span><span data-lang="zh">${catZh(name)}</span></div>
                         <div style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-slate-light);margin-top:4px;"><span data-lang="en">View Products →</span><span data-lang="zh">${zhContent.index.categories_view}</span></div>
                     </a>`;
@@ -3995,7 +3995,7 @@ function generateOutputPage(entities, i18n, templates, allKeywords) {
                     const descZh = matDescZh(name) || desc;
                     const props = extractProperties(content, 3);
                     const propsZh = MATERIAL_PROPS_ZH[name] || {};
-                    return `<a href="/output/pages/material-${slug}.html" style="background:white;border:1px solid var(--rot-border-subtle);border-radius:4px;padding:24px;text-decoration:none;color:inherit;display:block;">
+                    return `<a href="/pages/material-${slug}.html" style="background:white;border:1px solid var(--rot-border-subtle);border-radius:4px;padding:24px;text-decoration:none;color:inherit;display:block;">
                         <div style="font-family:var(--rot-font-display);font-size:16px;font-weight:600;color:var(--rot-slate-heavy);margin-bottom:8px;">${name}</div>
                         <p style="font-size:14px;color:var(--rot-slate-core);margin-bottom:12px;"><span data-lang="en">${desc}</span><span data-lang="zh">${descZh}</span></p>
                         ${props.map(p => `<div style="font-family:var(--rot-font-mono);font-size:12px;color:var(--rot-slate-light);padding:4px 0;border-top:1px solid var(--rot-border-light);"><span data-lang="en">${p.key}: ${p.value}</span><span data-lang="zh">${propsZh[p.key] ? p.key + '：' + propsZh[p.key] : p.key + ': ' + p.value}</span></div>`).join('')}
@@ -4008,7 +4008,7 @@ function generateOutputPage(entities, i18n, templates, allKeywords) {
                     const content = tech.content || '';
                     const desc = extractDescription(content) || 'Proprietary technology platform for medical device intelligence.';
                     const descZh = techDescZh(name) || desc;
-                    return `<a href="/output/pages/tech-${slug}.html" style="background:white;border:1px solid var(--rot-border-subtle);border-radius:4px;padding:24px;border-left:3px solid var(--rot-terminal-green);text-decoration:none;color:inherit;display:block;">
+                    return `<a href="/pages/tech-${slug}.html" style="background:white;border:1px solid var(--rot-border-subtle);border-radius:4px;padding:24px;border-left:3px solid var(--rot-terminal-green);text-decoration:none;color:inherit;display:block;">
                         <div style="font-family:var(--rot-font-display);font-size:16px;font-weight:600;color:var(--rot-slate-heavy);margin-bottom:8px;">${name} <span style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-terminal-green);background:rgba(74,222,128,0.1);padding:2px 6px;border-radius:2px;">TECHNOLOGY</span></div>
                         <p style="font-size:14px;color:var(--rot-slate-core);"><span data-lang="en">${desc}</span><span data-lang="zh">${descZh}</span></p>
                         <div style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-slate-light);margin-top:12px;"><span data-lang="en">View Details →</span><span data-lang="zh">${zhContent.index.materials_view}</span></div>
@@ -4028,24 +4028,24 @@ function generateOutputPage(entities, i18n, templates, allKeywords) {
                 </div>
                 <div>
                     <div class="footer-col-title"><span data-lang="en">${en.nav?.products || 'Products'}</span><span data-lang="zh">${zhContent.index.footer_products}</span></div>
-                    <a href="/output/pages/cat-wound-closure.html" class="footer-link"><span data-lang="en">Wound Closure</span><span data-lang="zh">${zhContent.index.footer_wound}</span></a>
-                    <a href="/output/pages/cat-minimally-invasive-surgery.html" class="footer-link"><span data-lang="en">Minimally Invasive</span><span data-lang="zh">${zhContent.index.footer_minimally}</span></a>
-                    <a href="/output/pages/cat-endoscopy-instruments.html" class="footer-link"><span data-lang="en">Endoscopy</span><span data-lang="zh">${zhContent.index.footer_endoscopy}</span></a>
-                    <a href="/output/pages/cat-nomoflow-solutions.html" class="footer-link">NomoFlow™</a>
+                    <a href="/pages/category-wound-closure.html" class="footer-link"><span data-lang="en">Wound Closure</span><span data-lang="zh">${zhContent.index.footer_wound}</span></a>
+                    <a href="/pages/category-minimally-invasive-surgery.html" class="footer-link"><span data-lang="en">Minimally Invasive</span><span data-lang="zh">${zhContent.index.footer_minimally}</span></a>
+                    <a href="/pages/category-instrumentation.html" class="footer-link"><span data-lang="en">Endoscopy</span><span data-lang="zh">${zhContent.index.footer_endoscopy}</span></a>
+                    <a href="/pages/category-nomoflow-solutions.html" class="footer-link">NomoFlow™</a>
                 </div>
                 <div>
                     <div class="footer-col-title"><span data-lang="en">${en.labels?.evidence || 'Evidence'}</span><span data-lang="zh">${zhContent.index.footer_evidence}</span></div>
-                    <a href="/output/#evidence" class="footer-link"><span data-lang="en">FDA Clearances</span><span data-lang="zh">${zhContent.index.footer_fda}</span></a>
-                    <a href="/output/#evidence" class="footer-link"><span data-lang="en">CE Certificates</span><span data-lang="zh">${zhContent.index.footer_ce}</span></a>
-                    <a href="/output/#evidence" class="footer-link"><span data-lang="en">Clinical Data</span><span data-lang="zh">${zhContent.index.footer_clinical}</span></a>
-                    <a href="/output/#evidence" class="footer-link"><span data-lang="en">Quality Reports</span><span data-lang="zh">${zhContent.index.footer_quality}</span></a>
+                    <a href="/#evidence" class="footer-link"><span data-lang="en">FDA Clearances</span><span data-lang="zh">${zhContent.index.footer_fda}</span></a>
+                    <a href="/#evidence" class="footer-link"><span data-lang="en">CE Certificates</span><span data-lang="zh">${zhContent.index.footer_ce}</span></a>
+                    <a href="/#evidence" class="footer-link"><span data-lang="en">Clinical Data</span><span data-lang="zh">${zhContent.index.footer_clinical}</span></a>
+                    <a href="/#evidence" class="footer-link"><span data-lang="en">Quality Reports</span><span data-lang="zh">${zhContent.index.footer_quality}</span></a>
                 </div>
                 <div>
                     <div class="footer-col-title"><span data-lang="en">Company</span><span data-lang="zh">${zhContent.index.footer_company}</span></div>
-                    <a href="/output/#about" class="footer-link"><span data-lang="en">About ViaSurg</span><span data-lang="zh">${zhContent.index.footer_about}</span></a>
-                    <a href="/output/#contact" class="footer-link"><span data-lang="en">Contact</span><span data-lang="zh">${zhContent.index.footer_contact}</span></a>
-                    <a href="/output/#compliance" class="footer-link"><span data-lang="en">${en.footer?.compliance || 'Compliance'}</span><span data-lang="zh">${zh.footer?.compliance || '合规声明'}</span></a>
-                    <a href="/output/#privacy" class="footer-link"><span data-lang="en">${en.footer?.privacy || 'Privacy Policy'}</span><span data-lang="zh">${zh.footer?.privacy || '隐私政策'}</span></a>
+                    <a href="/#about" class="footer-link"><span data-lang="en">About ViaSurg</span><span data-lang="zh">${zhContent.index.footer_about}</span></a>
+                    <a href="/#contact" class="footer-link"><span data-lang="en">Contact</span><span data-lang="zh">${zhContent.index.footer_contact}</span></a>
+                    <a href="/#compliance" class="footer-link"><span data-lang="en">${en.footer?.compliance || 'Compliance'}</span><span data-lang="zh">${zh.footer?.compliance || '合规声明'}</span></a>
+                    <a href="/#privacy" class="footer-link"><span data-lang="en">${en.footer?.privacy || 'Privacy Policy'}</span><span data-lang="zh">${zh.footer?.privacy || '隐私政策'}</span></a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -4299,7 +4299,7 @@ const server = http.createServer((req, res) => {
                     summary: {
                         score: s5.results.score,
                         pagesGenerated: s4.results.entityPagesGenerated || s4.results.pagesGenerated,
-                        outputUrl: '/output/index.html'
+                        outputUrl: '/index.html'
                     }
                 });
 
@@ -4326,7 +4326,7 @@ const server = http.createServer((req, res) => {
                     stages: [s1, s2, s3, s4, s5],
                     score: s5.results.score,
                     pagesGenerated: s4.results.entityPagesGenerated || s4.results.pagesGenerated,
-                    outputUrl: '/output/index.html'
+                    outputUrl: '/index.html'
                 }));
             } catch (err) {
                 res.writeHead(500, { 'Content-Type': 'application/json' });
@@ -4502,7 +4502,7 @@ const server = http.createServer((req, res) => {
             categories,
             checks,
             outputSize: html.length,
-            outputUrl: '/output/index.html'
+            outputUrl: '/index.html'
         }));
         return;
     }
@@ -4540,7 +4540,7 @@ const server = http.createServer((req, res) => {
             const files = fs.readdirSync(pagesDir).filter(f => f.endsWith('.html'));
             pages = files.map(f => ({
                 filename: f,
-                url: `/output/pages/${f}`,
+                url: `/pages/${f}`,
                 name: f.replace('.html', '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
             }));
         }
@@ -4796,11 +4796,12 @@ const server = http.createServer((req, res) => {
         return;
     }
 
-    // ---- Output Pages ----
-    if (pathname.startsWith('/output/')) {
-        const filePath = pathname === '/output/' || pathname === '/output/index.html'
-            ? path.join(OUTPUT_DIR, 'index.html')
-            : path.join(OUTPUT_DIR, pathname.replace('/output/', ''));
+    // ---- Output Pages (serves from OUTPUT_DIR) ----
+    if (pathname.startsWith('/output/') || pathname.startsWith('/pages/') || pathname === '/' || pathname === '/index.html') {
+        let relPath = pathname;
+        if (pathname.startsWith('/output/')) relPath = pathname.replace('/output/', '');
+        else if (pathname === '/') relPath = 'index.html';
+        const filePath = path.join(OUTPUT_DIR, relPath);
 
         if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
             const ext = path.extname(filePath);
