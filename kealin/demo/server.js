@@ -98,7 +98,7 @@ const COMPETITOR_MARKET_ZH = {
     'ViaSurg Academy': 'ViaSurg 临床教育平台，提供产品培训和临床证据支持。',
 };
 
-function zh(name) { return PRODUCT_ZH[name] || name; }
+function pzh(name) { return PRODUCT_ZH[name] || name; }
 function catZh(cat) { return CATEGORY_ZH[cat] || cat; }
 if (!fs.existsSync(PERSIST_DIR)) {
     fs.mkdirSync(PERSIST_DIR, { recursive: true });
@@ -1785,11 +1785,11 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
 
     <div class="container">
         <div class="breadcrumb">
-            <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a> &rsaquo; <a href="/output/#products" data-lang="en">Products</a><a href="/output/#products" data-lang="zh">产品中心</a> &rsaquo; <span data-lang="en">${name}</span><span data-lang="zh">${zhData.content_title || zh(name)}</span>
+            <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a> &rsaquo; <a href="/output/#products" data-lang="en">Products</a><a href="/output/#products" data-lang="zh">产品中心</a> &rsaquo; <span data-lang="en">${name}</span><span data-lang="zh">${zhData.content_title || pzh(name)}</span>
         </div>
 
         <div class="product-header">
-            <h1><span data-lang="en">${name}</span><span data-lang="zh">${zhData.content_title || zh(name)}</span></h1>
+            <h1><span data-lang="en">${name}</span><span data-lang="zh">${zhData.content_title || pzh(name)}</span></h1>
             <div class="badges">
                 <span class="badge badge-category"><span data-lang="en">${category}</span><span data-lang="zh">${zhData.content_category || category}</span></span>
                 ${material ? `<span class="badge badge-material"><span data-lang="en">${material}</span><span data-lang="zh">${zhData.content_material || material}</span></span>` : ''}
@@ -3740,7 +3740,7 @@ function generateOutputPage(entities, i18n, templates, allKeywords) {
                         <span class="product-category"><span data-lang="en">${p.category}</span><span data-lang="zh">${catZh(p.category)}</span></span>
                         <span class="product-badge"><span data-lang="en">Verified</span><span data-lang="zh">${zhContent.index.badge_verified}</span></span>
                     </div>
-                    <h3 class="product-name"><span data-lang="en">${p.name}</span><span data-lang="zh">${zh(p.name)}</span></h3>
+                    <h3 class="product-name"><span data-lang="en">${p.name}</span><span data-lang="zh">${pzh(p.name)}</span></h3>
                     <p class="product-desc"><span data-lang="en">${p.strategy || 'Clinically validated medical device with transparent manufacturing and evidence-backed performance.'}</span><span data-lang="zh">${PRODUCT_DESC_ZH[p.name] || p.zhBody || p.strategy || '经临床验证的医疗器械，制造透明、性能有循证支持。'}</span></p>
                     <div class="product-meta">
                         <div class="meta-item">
@@ -3849,7 +3849,7 @@ function generateOutputPage(entities, i18n, templates, allKeywords) {
                 <tbody>
                     ${productCards.map(p => `
                     <tr>
-                        <td class="data-cell"><span data-lang="en">${p.name}</span><span data-lang="zh">${zh(p.name)}</span></td>
+                        <td class="data-cell"><span data-lang="en">${p.name}</span><span data-lang="zh">${pzh(p.name)}</span></td>
                         <td><span data-lang="en">${p.category}</span><span data-lang="zh">${catZh(p.category)}</span></td>
                         <td><span data-lang="en">${p.targetBrands || 'OEM Equivalent'}</span><span data-lang="zh">${p.targetBrands || zhContent.index.specs_oem || 'OEM 等效'}</span></td>
                         <td class="data-cell">${p.cpc ? '$' + p.cpc : '—'}</td>
