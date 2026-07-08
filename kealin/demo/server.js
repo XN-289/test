@@ -23,6 +23,83 @@ if (!fs.existsSync(OUTPUT_DIR)) {
 function makeSlug(name) {
     return name.toLowerCase().replace(/[_ ]+/g, '-');
 }
+
+// ============================================
+// i18n TRANSLATION MAPS
+// ============================================
+
+const CATEGORY_ZH = {
+    'Access': '通路',
+    'Clips': '夹子',
+    'Instrumentation': '器械',
+    'Intelligence': '智能',
+    'Medical Device': '医疗器械',
+    'Minimally Invasive Surgery': '微创手术',
+    'NomoFlow Solutions': 'NomoFlow 解决方案',
+    'Sutures': '缝合线',
+    'Wound Closure': '伤口闭合',
+    'Endoscopy': '内窥镜',
+    'Endoscopy Instruments': '内窥镜器械',
+};
+
+const PRODUCT_ZH = {
+    'Absorbable Sutures': '可吸收缝合线',
+    'Biopsy Forceps': '活检钳',
+    'Guidewires': '导丝',
+    'Hemoclips': '止血夹',
+    'Hernia Meshes': '疝修补片',
+    'Non Absorbable Sutures': '非可吸收缝合线',
+    'Polymer Clips': '高分子结扎夹',
+    'Snares': '圈套器',
+    'Staplers': '吻合器',
+    'Trocars': '穿刺器',
+    'Ultrasonic Shears': '超声刀',
+    'Veress Needles': '气腹针',
+};
+
+const PRODUCT_DESC_ZH = {
+    'Absorbable Sutures': '采用 PGA/PGLA 合成材料，关键愈合期提供可靠伤口支撑，随后通过水解完全吸收。',
+    'Biopsy Forceps': '精密活检器械，适用于内窥镜下组织取样，操作精准、创伤小。',
+    'Guidewires': '高精度介入导丝，适用于内窥镜及微创手术中的器械引导。',
+    'Hemoclips': '内窥镜止血夹，用于消化道出血的快速机械止血。',
+    'Hernia Meshes': '疝修补片，用于腹壁缺损修补，提供长期组织支撑。',
+    'Non Absorbable Sutures': '不可吸收合成缝合线（聚丙烯/尼龙），适用于需要长期张力支撑的缝合场景。',
+    'Polymer Clips': '高分子结扎夹，用于腹腔镜及开放手术中的血管和组织结扎。',
+    'Snares': '内窥镜圈套器，用于息肉切除及异物取出。',
+    'Staplers': '外科吻合器，适用于消化道、肺等组织的切割吻合。',
+    'Trocars': '腹腔镜穿刺器，建立气腹通道，支持微创手术器械进出。',
+    'Ultrasonic Shears': '超声切割止血刀，同时实现切割与凝血，热损伤范围小。',
+    'Veress Needles': '气腹针，用于建立气腹，是腹腔镜手术的首要步骤。',
+};
+
+const COMPETITOR_ZH = {
+    'Bard': 'Bard',
+    'Boston Scientific': '波士顿科学',
+    'Competitor Disruption': '竞品颠覆分析',
+    'Cook Medical': '库克医疗',
+    'Ethicon': 'Ethicon（强生）',
+    'Medtronic': '美敦力',
+    'Olympus': '奥林巴斯',
+    'Teleflex': '泰利福',
+    'Terumo': '泰尔茂',
+    'ViaSurg Academy': 'ViaSurg 学院',
+};
+
+const COMPETITOR_MARKET_ZH = {
+    'Bard': '全球领先的疝修补片和导管制造商，产品线包括 Ventralight 疝修补片和 PowerPICC 导管。',
+    'Boston Scientific': '全球介入医疗器械领导者，核心产品包括 Jagwire 导丝、Resolution 止血夹和 SpyGlass 内窥镜系统。',
+    'Competitor Disruption': '分析现有竞品的市场弱点和颠覆机会，制定针对性的竞争策略。',
+    'Cook Medical': '专注于介入和外科医疗器械，核心产品包括 Amplatz 导丝、Bakri 球囊和圈套器。',
+    'Ethicon': '强生旗下外科器械品牌，主导产品包括 Vicryl 缝合线、Harmonic 超声刀和 Echelon 吻合器。',
+    'Medtronic': '全球最大的医疗器械公司之一，核心产品包括 Endo GIA 吻合器、Sonicision 超声刀和 Ligasure 血管闭合系统。',
+    'Olympus': '内窥镜领域的全球领导者，核心产品包括 QuickClip 止血夹、一次性活检钳和冷圈套器。',
+    'Teleflex': '专注于血管通路和手术器械，核心产品包括 Hem-o-lok 高分子结扎夹、Weck 外科夹和 LMA 气道管理。',
+    'Terumo': '日本领先的医疗器械制造商，核心产品包括 Pinnacle 通路鞘、Zebra 导丝和 Radifocus 导丝。',
+    'ViaSurg Academy': 'ViaSurg 临床教育平台，提供产品培训和临床证据支持。',
+};
+
+function zh(name) { return PRODUCT_ZH[name] || name; }
+function catZh(cat) { return CATEGORY_ZH[cat] || cat; }
 if (!fs.existsSync(PERSIST_DIR)) {
     fs.mkdirSync(PERSIST_DIR, { recursive: true });
 }
@@ -1595,7 +1672,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${name} | ViaSurg Medical Devices</title>
+    <title>${name} | ViaSurg 医疗器械</title>
     <meta name="description" content="${metaDesc}">
     <meta name="keywords" content="${keywordList}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1708,11 +1785,11 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
 
     <div class="container">
         <div class="breadcrumb">
-            <a href="/output/">Home</a> &rsaquo; <a href="/output/#products">Products</a> &rsaquo; ${name}
+            <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a> &rsaquo; <a href="/output/#products" data-lang="en">Products</a><a href="/output/#products" data-lang="zh">产品中心</a> &rsaquo; <span data-lang="en">${name}</span><span data-lang="zh">${zhData.content_title || zh(name)}</span>
         </div>
 
         <div class="product-header">
-            <h1><span data-lang="en">${name}</span><span data-lang="zh">${zhData.content_title || name}</span></h1>
+            <h1><span data-lang="en">${name}</span><span data-lang="zh">${zhData.content_title || zh(name)}</span></h1>
             <div class="badges">
                 <span class="badge badge-category"><span data-lang="en">${category}</span><span data-lang="zh">${zhData.content_category || category}</span></span>
                 ${material ? `<span class="badge badge-material"><span data-lang="en">${material}</span><span data-lang="zh">${zhData.content_material || material}</span></span>` : ''}
@@ -1725,8 +1802,8 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
                 <h2><span data-lang="en">Overview</span><span data-lang="zh">产品概述</span></h2>
                 <p><span data-lang="en">${cleanWikiContent(content.split('## Overview')[1]?.split('##')[0]?.trim()) || `${name} is a medical device product from ViaSurg.`}</span><span data-lang="zh">${zhData.content_body || cleanWikiContent(content.split('## Overview')[1]?.split('##')[0]?.trim()) || `${name} 是 ViaSurg 的医疗器械产品。`}</span></p>
 
-                ${strategy ? `<h2><span data-lang="en">Market Strategy</span><span data-lang="zh">市场策略</span></h2><p>${strategy}</p>` : ''}
-                ${targetBrands ? `<h2><span data-lang="en">Target Brands</span><span data-lang="zh">目标品牌</span></h2><p>${targetBrands}</p>` : ''}
+                ${strategy ? `<h2><span data-lang="en">Market Strategy</span><span data-lang="zh">市场策略</span></h2><p><span data-lang="en">${strategy}</span><span data-lang="zh">${strategy}</span></p>` : ''}
+                ${targetBrands ? `<h2><span data-lang="en">Target Brands</span><span data-lang="zh">目标品牌</span></h2><p><span data-lang="en">${targetBrands}</span><span data-lang="zh">${targetBrands}</span></p>` : ''}
 
                 ${Object.keys(specs).length > 0 ? `
                 <h2><span data-lang="en">Technical Specifications</span><span data-lang="zh">技术规格</span></h2>
@@ -1741,11 +1818,11 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
                     <h3><span data-lang="en">Product Details</span><span data-lang="zh">产品详情</span></h3>
                     <div class="spec-row">
                         <span class="spec-label"><span data-lang="en">Category</span><span data-lang="zh">类别</span></span>
-                        <span class="spec-value">${category}</span>
+                        <span class="spec-value"><span data-lang="en">${category}</span><span data-lang="zh">${zhData.content_category || catZh(category)}</span></span>
                     </div>
                     ${material ? `<div class="spec-row">
                         <span class="spec-label"><span data-lang="en">Material</span><span data-lang="zh">材质</span></span>
-                        <span class="spec-value">${material}</span>
+                        <span class="spec-value"><span data-lang="en">${material}</span><span data-lang="zh">${zhData.content_material || material}</span></span>
                     </div>` : ''}
                     ${cpc ? `<div class="spec-row">
                         <span class="spec-label"><span data-lang="en">Avg CPC</span><span data-lang="zh">平均点击成本</span></span>
@@ -1780,7 +1857,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
                 </div>` : ''}
                 ${keywordSidebar}
 
-                <a href="/output/" class="cta-button">Request Quote</a>
+                <a href="/output/" class="cta-button"><span data-lang="en">Request Quote</span><span data-lang="zh">询价</span></a>
             </div>
         </div>
     </div>
@@ -1940,13 +2017,13 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
             <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a> &rsaquo; <a href="/output/#competitors" data-lang="en">Competitors</a><a href="/output/#competitors" data-lang="zh">竞品分析</a> &rsaquo; ${name}
         </div>
         <div class="page-header">
-            <h1>${name}</h1>
+            <h1><span data-lang="en">${name}</span><span data-lang="zh">${COMPETITOR_ZH[name] || name}</span></h1>
             <div class="subtitle"><span data-lang="en">Competitive Analysis vs ViaSurg</span><span data-lang="zh">与 ViaSurg 竞争分析</span></div>
         </div>
         <div class="content-grid">
             <div class="content-main">
                 <h2><span data-lang="en">Market Position</span><span data-lang="zh">市场定位</span></h2>
-                <p>${marketPosition || (products ? `Dominant products include ${products}.` : 'Leading medical device competitor in the global market.')}</p>
+                <p><span data-lang="en">${marketPosition || (products ? `Dominant products include ${products}.` : 'Leading medical device competitor in the global market.')}</span><span data-lang="zh">${COMPETITOR_MARKET_ZH[name] || marketPosition || (products ? `主导产品包括 ${products}。` : '全球领先的医疗器械竞争对手。')}</span></p>
 
                 ${painPoint ? `<h2><span data-lang="en">Market Pain Point</span><span data-lang="zh">市场痛点</span></h2><p>${painPoint}</p>` : ''}
 
@@ -1958,7 +2035,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
                     <tbody>
                         <tr><td><span data-lang="en">Pricing</span><span data-lang="zh">定价</span></td><td><span data-lang="en">Opaque, multi-layer distribution</span><span data-lang="zh">不透明，多层分销</span></td><td class="via"><span data-lang="en">Direct B2B, transparent</span><span data-lang="zh">B2B 直销，透明定价</span></td></tr>
                         <tr><td><span data-lang="en">Manufacturing</span><span data-lang="zh">制造</span></td><td><span data-lang="en">Third-party, limited visibility</span><span data-lang="zh">第三方代工，可见度低</span></td><td class="via"><span data-lang="en">In-house, NomoFlow™ monitored</span><span data-lang="zh">自有工厂，NomoFlow™ 监控</span></td></tr>
-                        <tr><td><span data-lang="en">Certification</span><span data-lang="zh">认证</span></td><td>FDA / CE (varies)</td><td class="via">FDA 510(k) + CE MDR</td></tr>
+                        <tr><td><span data-lang="en">Certification</span><span data-lang="zh">认证</span></td><td><span data-lang="en">FDA / CE (varies)</span><span data-lang="zh">FDA / CE（因产品而异）</span></td><td class="via">FDA 510(k) + CE MDR</td></tr>
                         <tr><td><span data-lang="en">Lead Time</span><span data-lang="zh">交期</span></td><td><span data-lang="en">Standard (weeks)</span><span data-lang="zh">标准（数周）</span></td><td class="via"><span data-lang="en">24h response, fast delivery</span><span data-lang="zh">24h 响应，快速交付</span></td></tr>
                         <tr><td><span data-lang="en">Compatibility</span><span data-lang="zh">兼容性</span></td><td><span data-lang="en">Proprietary lock-in</span><span data-lang="zh">专有锁定</span></td><td class="via"><span data-lang="en">Open compatibility</span><span data-lang="zh">开放兼容</span></td></tr>
                     </tbody>
@@ -1982,7 +2059,8 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
                     ${productsList.map(p => {
                         const pSlug = makeSlug(p);
                         const hasPage = productEntities.some(pe => makeSlug(pe.name) === pSlug);
-                        return hasPage ? `<a href="/output/pages/${pSlug}.html" class="product-tag">${p}</a>` : `<span class="product-tag" style="background:#94A3B8;">${p}</span>`;
+                        const tag = hasPage ? `<a href="/output/pages/${pSlug}.html" class="product-tag"><span data-lang="en">${p}</span><span data-lang="zh">${PRODUCT_ZH[p] || p}</span></a>` : `<span class="product-tag" style="background:#94A3B8;"><span data-lang="en">${p}</span><span data-lang="zh">${PRODUCT_ZH[p] || p}</span></span>`;
+                        return tag;
                     }).join('')}
                 </div>` : ''}
 
@@ -1992,7 +2070,7 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
                     <ul>
                         ${relatedProducts.map(p => {
                             const pName = p.name.replace(/_/g, ' ');
-                            return `<li><a href="/output/pages/${makeSlug(p.name)}.html">${pName}</a></li>`;
+                            return `<li><a href="/output/pages/${makeSlug(p.name)}.html"><span data-lang="en">${pName}</span><span data-lang="zh">${PRODUCT_ZH[pName] || pName}</span></a></li>`;
                         }).join('')}
                     </ul>
                 </div>` : ''}
@@ -3659,12 +3737,11 @@ function generateOutputPage(entities, i18n, templates, allKeywords) {
                 ${productCards.map(p => `
                 <a class="product-card" href="/output/pages/${p.slug}.html">
                     <div class="product-card-header">
-                        <span class="product-category">${p.category}</span>
+                        <span class="product-category"><span data-lang="en">${p.category}</span><span data-lang="zh">${catZh(p.category)}</span></span>
                         <span class="product-badge"><span data-lang="en">Verified</span><span data-lang="zh">${zhContent.index.badge_verified}</span></span>
                     </div>
-                    <h3 class="product-name">${p.name}</h3>
-                    <p class="product-desc">${p.strategy || 'Clinically validated medical device with transparent manufacturing and evidence-backed performance.'}</p>
-                    ${p.zhTitle ? `<p class="product-desc" style="font-size:12px;color:var(--rot-slate-light);margin-top:4px;border-top:1px solid var(--rot-border-light);padding-top:8px;">${p.zhTitle}${p.zhCategory ? ' · ' + p.zhCategory : ''}</p>` : ''}
+                    <h3 class="product-name"><span data-lang="en">${p.name}</span><span data-lang="zh">${zh(p.name)}</span></h3>
+                    <p class="product-desc"><span data-lang="en">${p.strategy || 'Clinically validated medical device with transparent manufacturing and evidence-backed performance.'}</span><span data-lang="zh">${PRODUCT_DESC_ZH[p.name] || p.zhBody || p.strategy || '经临床验证的医疗器械，制造透明、性能有循证支持。'}</span></p>
                     <div class="product-meta">
                         <div class="meta-item">
                             <div class="meta-label"><span data-lang="en">CPC VALUE</span><span data-lang="zh">${zhContent.index.meta_cpc}</span></div>
@@ -3772,9 +3849,9 @@ function generateOutputPage(entities, i18n, templates, allKeywords) {
                 <tbody>
                     ${productCards.map(p => `
                     <tr>
-                        <td class="data-cell">${p.name}</td>
-                        <td>${p.category}</td>
-                        <td>${p.targetBrands || 'OEM Equivalent'}</td>
+                        <td class="data-cell"><span data-lang="en">${p.name}</span><span data-lang="zh">${zh(p.name)}</span></td>
+                        <td><span data-lang="en">${p.category}</span><span data-lang="zh">${catZh(p.category)}</span></td>
+                        <td><span data-lang="en">${p.targetBrands || 'OEM Equivalent'}</span><span data-lang="zh">${p.targetBrands || zhContent.index.specs_oem || 'OEM 等效'}</span></td>
                         <td class="data-cell">${p.cpc ? '$' + p.cpc : '—'}</td>
                         <td><span style="color: var(--rot-valid); font-family: var(--rot-font-mono); font-size: 12px;"><span data-lang="en">✓ Active</span><span data-lang="zh">${zhContent.index.specs_active}</span></span></td>
                     </tr>
@@ -3815,11 +3892,13 @@ function generateOutputPage(entities, i18n, templates, allKeywords) {
                         const products = cleanWikiContent(productsRaw).substring(0, 80);
                         const pain = (content.match(/High premium|Fragmented|Proprietary|Opaque|cost-inflation|locking|Complex|Expensive|Limited/gi) || ['Market inefficiency'])[0];
                         const disruption = (content.match(/Verified|Vertical integration|Open-compatibility|Direct B2B|Transparent/gi) || ['Transparent manufacturing'])[0];
+                        const painZh = pain === 'Market inefficiency' ? '市场低效' : pain;
+                        const disruptionZh = disruption === 'Transparent manufacturing' ? '透明制造' : disruption === 'Verified' ? '已验证' : disruption;
                         return `<tr>
-                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:white;font-weight:600;"><a href="/output/pages/competitor-${slug}.html" style="color:white;text-decoration:underline;text-underline-offset:3px;">${name}</a></td>
-                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">${products}</td>
-                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">${pain}</td>
-                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:var(--rot-terminal-green);font-family:var(--rot-font-mono);font-size:13px;">${disruption}</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:white;font-weight:600;"><a href="/output/pages/competitor-${slug}.html" style="color:white;text-decoration:underline;text-underline-offset:3px;"><span data-lang="en">${name}</span><span data-lang="zh">${COMPETITOR_ZH[name] || name}</span></a></td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);"><span data-lang="en">${products}</span><span data-lang="zh">${COMPETITOR_MARKET_ZH[name] ? COMPETITOR_MARKET_ZH[name].substring(0, 80) : products}</span></td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);"><span data-lang="en">${pain}</span><span data-lang="zh">${painZh}</span></td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:var(--rot-terminal-green);font-family:var(--rot-font-mono);font-size:13px;"><span data-lang="en">${disruption}</span><span data-lang="zh">${disruptionZh}</span></td>
                         </tr>`;
                     }).join('')}
                 </tbody>
@@ -3837,7 +3916,7 @@ function generateOutputPage(entities, i18n, templates, allKeywords) {
                     const name = cat.name.replace(/_/g, ' ');
                     const slug = makeSlug(cat.name);
                     return `<a href="/output/pages/category-${slug}.html" style="background:var(--rot-bg-secondary);border:1px solid var(--rot-border-subtle);border-radius:4px;padding:20px;text-decoration:none;color:inherit;display:block;">
-                        <div style="font-family:var(--rot-font-display);font-size:15px;font-weight:600;color:var(--rot-slate-heavy);">${name}</div>
+                        <div style="font-family:var(--rot-font-display);font-size:15px;font-weight:600;color:var(--rot-slate-heavy);"><span data-lang="en">${name}</span><span data-lang="zh">${catZh(name)}</span></div>
                         <div style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-slate-light);margin-top:4px;"><span data-lang="en">View Products →</span><span data-lang="zh">${zhContent.index.categories_view}</span></div>
                     </a>`;
                 }).join('')}
@@ -3859,7 +3938,7 @@ function generateOutputPage(entities, i18n, templates, allKeywords) {
                     const props = extractProperties(content, 3);
                     return `<a href="/output/pages/material-${slug}.html" style="background:white;border:1px solid var(--rot-border-subtle);border-radius:4px;padding:24px;text-decoration:none;color:inherit;display:block;">
                         <div style="font-family:var(--rot-font-display);font-size:16px;font-weight:600;color:var(--rot-slate-heavy);margin-bottom:8px;">${name}</div>
-                        <p style="font-size:14px;color:var(--rot-slate-core);margin-bottom:12px;">${desc}</p>
+                        <p style="font-size:14px;color:var(--rot-slate-core);margin-bottom:12px;"><span data-lang="en">${desc}</span><span data-lang="zh">${desc}</span></p>
                         ${props.map(p => `<div style="font-family:var(--rot-font-mono);font-size:12px;color:var(--rot-slate-light);padding:4px 0;border-top:1px solid var(--rot-border-light);">${p.key}: ${p.value}</div>`).join('')}
                         <div style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-slate-light);margin-top:12px;"><span data-lang="en">View Details →</span><span data-lang="zh">${zhContent.index.materials_view}</span></div>
                     </a>`;
@@ -3871,7 +3950,7 @@ function generateOutputPage(entities, i18n, templates, allKeywords) {
                     const desc = extractDescription(content) || 'Proprietary technology platform for medical device intelligence.';
                     return `<a href="/output/pages/tech-${slug}.html" style="background:white;border:1px solid var(--rot-border-subtle);border-radius:4px;padding:24px;border-left:3px solid var(--rot-terminal-green);text-decoration:none;color:inherit;display:block;">
                         <div style="font-family:var(--rot-font-display);font-size:16px;font-weight:600;color:var(--rot-slate-heavy);margin-bottom:8px;">${name} <span style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-terminal-green);background:rgba(74,222,128,0.1);padding:2px 6px;border-radius:2px;">TECHNOLOGY</span></div>
-                        <p style="font-size:14px;color:var(--rot-slate-core);">${desc}</p>
+                        <p style="font-size:14px;color:var(--rot-slate-core);"><span data-lang="en">${desc}</span><span data-lang="zh">${desc}</span></p>
                         <div style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-slate-light);margin-top:12px;"><span data-lang="en">View Details →</span><span data-lang="zh">${zhContent.index.materials_view}</span></div>
                     </a>`;
                 }).join('')}

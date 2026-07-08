@@ -151,11 +151,66 @@
       },
       "absorbable-sutures": {
         "page_title": "可吸收手术缝合线 (PGA/PGLA)",
-        "content_title": "可吸收缝合线 (Absorbable Sutures)",
+        "content_title": "可吸收缝合线",
         "content_category": "伤口闭合 > 缝合线",
-        "content_material": "材质: PGA (聚乙交酯)",
+        "content_material": "PGA (聚乙交酯)",
         "content_body": "<p>ViaSurg 可吸收手术缝合线采用合成高分子材料（如 PGA、PGLA），旨在关键愈合期提供可靠的伤口支撑，随后通过水解完全吸收。</p><ul><li>吸收时间：60-90 天</li><li>适用场景：微创外科、腹腔镜手术</li></ul>",
         "evidence_links": "<ul><li><a href='/zh/ref/clinical-sutures-001'>临床评价报告 #001</a></li></ul>"
+      },
+      "biopsy-forceps": {
+        "content_title": "活检钳",
+        "content_category": "器械",
+        "content_body": "<p>精密活检器械，适用于内窥镜下组织取样，操作精准、创伤小。</p>"
+      },
+      "guidewires": {
+        "content_title": "导丝",
+        "content_category": "医疗器械",
+        "content_body": "<p>高精度介入导丝，适用于内窥镜及微创手术中的器械引导。</p>"
+      },
+      "hemoclips": {
+        "content_title": "止血夹",
+        "content_category": "夹子",
+        "content_body": "<p>内窥镜止血夹，用于消化道出血的快速机械止血。</p>"
+      },
+      "hernia-meshes": {
+        "content_title": "疝修补片",
+        "content_category": "医疗器械",
+        "content_body": "<p>疝修补片，用于腹壁缺损修补，提供长期组织支撑。</p>"
+      },
+      "non-absorbable-sutures": {
+        "content_title": "非可吸收缝合线",
+        "content_category": "缝合线",
+        "content_body": "<p>不可吸收合成缝合线（聚丙烯/尼龙），适用于需要长期张力支撑的缝合场景。</p>"
+      },
+      "polymer-clips": {
+        "content_title": "高分子结扎夹",
+        "content_category": "夹子",
+        "content_body": "<p>高分子结扎夹，用于腹腔镜及开放手术中的血管和组织结扎。</p>"
+      },
+      "snares": {
+        "content_title": "圈套器",
+        "content_category": "内窥镜器械",
+        "content_body": "<p>内窥镜圈套器，用于息肉切除及异物取出。</p>"
+      },
+      "staplers": {
+        "content_title": "吻合器",
+        "content_category": "微创手术",
+        "content_body": "<p>外科吻合器，适用于消化道、肺等组织的切割吻合。</p>"
+      },
+      "trocars": {
+        "content_title": "穿刺器",
+        "content_category": "通路",
+        "content_body": "<p>腹腔镜穿刺器，建立气腹通道，支持微创手术器械进出。</p>"
+      },
+      "ultrasonic-shears": {
+        "content_title": "超声刀",
+        "content_category": "器械",
+        "content_body": "<p>超声切割止血刀，同时实现切割与凝血，热损伤范围小。</p>"
+      },
+      "veress-needles": {
+        "content_title": "气腹针",
+        "content_category": "通路",
+        "content_body": "<p>气腹针，用于建立气腹，是腹腔镜手术的首要步骤。</p>"
       }
     }
   }
