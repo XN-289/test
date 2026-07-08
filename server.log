@@ -1,0 +1,22 @@
+[INIT] Loaded persisted state
+[INIT] Agent SDK: Available
+[INIT] Loading all parsed data...
+[INIT] Loaded google_keywords_parsed.json
+[INIT] Loaded high_value_keywords.json
+[INIT] Loaded high_volume_keywords.json
+[INIT] Loaded strategy_wiki_data.json
+[INIT] Loaded i18n_data.json
+[INIT] Loaded templates_data.json
+[INIT] Loaded llm_wiki_data.json
+[INIT] Expanded 1271 seed keywords → 3797 total
+[INIT] All data loaded.
+
+============================================================
+  ViaSurg AI CMO Platform - Server Running
+============================================================
+  Main App:     http://localhost:3001
+  Output Page:  http://localhost:3001/output/index.html
+  SSE Events:   http://localhost:3001/api/events
+  Pipeline API: POST http://localhost:3001/api/pipeline/run
+============================================================
+

@@ -98,8 +98,31 @@ const COMPETITOR_MARKET_ZH = {
     'ViaSurg Academy': 'ViaSurg 临床教育平台，提供产品培训和临床证据支持。',
 };
 
+const MATERIAL_DESC_ZH = {
+    'PGA Material': '一种可生物降解的热塑性聚合物，也是最简单的线性脂肪族聚酯。广泛用于合成可吸收缝合线。',
+    'Polypropylene Material': '一种坚固且耐腐蚀的热塑性聚合物。在外科领域，用于不可吸收单丝缝合线和疝修补片。',
+    'PGLA Material': '聚乙交酯-丙交酯共聚物，可吸收缝合线的核心材料，具有优异的张力保持和吸收特性。',
+};
+
+const MATERIAL_PROPS_ZH = {
+    'PGA Material': {
+        'Absorption Method': '水解吸收',
+        'Tensile Strength Retention': '前 14-21 天保持高张力',
+    },
+    'Polypropylene Material': {
+        'Durability': '永久伤口支撑',
+        'Reactivity': '极低组织反应',
+    },
+};
+
+const TECH_DESC_ZH = {
+    'NomoFlow Technology': 'NomoFlow™ 是一个闭环控制平台，通过高频参数补偿来降低批次差异。1. 传感：150 个节点以 1000Hz 采样温度、压力、流量变量。2. 分析：AI 模型实时检测偏差。3. 补偿：自动调整工艺参数。4. 验证：批次级质量报告。',
+};
+
 function pzh(name) { return PRODUCT_ZH[name] || name; }
 function catZh(cat) { return CATEGORY_ZH[cat] || cat; }
+function matDescZh(name) { return MATERIAL_DESC_ZH[name] || null; }
+function techDescZh(name) { return TECH_DESC_ZH[name] || null; }
 if (!fs.existsSync(PERSIST_DIR)) {
     fs.mkdirSync(PERSIST_DIR, { recursive: true });
 }
