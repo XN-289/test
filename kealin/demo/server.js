@@ -3910,7 +3910,7 @@ function generateOutputPage(entities, i18n, templates, allKeywords) {
                     </tr>
                 </thead>
                 <tbody>
-                    ${(dataCache._competitorEntities || []).map(comp => {
+                    ${(dataCache._competitorEntities || []).filter(comp => comp.name !== 'Competitor_Disruption').map(comp => {
                         const name = comp.name.replace(/_/g, ' ');
                         const slug = makeSlug(comp.name);
                         const content = comp.content || '';
@@ -3929,6 +3929,37 @@ function generateOutputPage(entities, i18n, templates, allKeywords) {
                     }).join('')}
                 </tbody>
             </table>
+
+            <!-- DISRUPTION OVERVIEW CARD -->
+            <div style="margin-top:48px;border:1px solid rgba(74,222,128,0.3);border-radius:6px;padding:40px;background:rgba(74,222,128,0.04);">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+                    <span style="font-family:var(--rot-font-mono);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--rot-terminal-green);background:rgba(74,222,128,0.12);padding:4px 10px;border-radius:2px;"><span data-lang="en">DISRUPTION OVERVIEW</span><span data-lang="zh">颠覆性总览</span></span>
+                </div>
+                <h3 style="font-family:var(--rot-font-display);font-size:24px;font-weight:700;color:white;margin-bottom:8px;"><span data-lang="en">How ViaSurg Disrupts the Market</span><span data-lang="zh">ViaSurg 如何颠覆市场</span></h3>
+                <p style="font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:32px;max-width:700px;"><span data-lang="en">ViaSurg replaces opaque supply chains with transparent, evidence-backed medical devices across all product lines.</span><span data-lang="zh">ViaSurg 以透明、循证的医疗设备取代不透明的供应链，覆盖所有产品线。</span></p>
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+                    <div style="background:var(--rot-dark-surface);border:1px solid var(--rot-dark-divider);border-radius:4px;padding:24px;">
+                        <div style="font-family:var(--rot-font-mono);font-size:28px;font-weight:700;color:var(--rot-terminal-green);margin-bottom:8px;">100%</div>
+                        <div style="font-family:var(--rot-font-display);font-size:13px;font-weight:600;color:white;margin-bottom:8px;"><span data-lang="en">Glass Factory</span><span data-lang="zh">玻璃工厂</span></div>
+                        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;"><span data-lang="en">Deterministic engineering proof with direct batch log access, eliminating black-box risk.</span><span data-lang="zh">确定性工程证明，直接访问批次日志，消除黑箱风险。</span></div>
+                    </div>
+                    <div style="background:var(--rot-dark-surface);border:1px solid var(--rot-dark-divider);border-radius:4px;padding:24px;">
+                        <div style="font-family:var(--rot-font-mono);font-size:28px;font-weight:700;color:var(--rot-terminal-green);margin-bottom:8px;">40%</div>
+                        <div style="font-family:var(--rot-font-display);font-size:13px;font-weight:600;color:white;margin-bottom:8px;"><span data-lang="en">Cost Arbitrage</span><span data-lang="zh">成本套利</span></div>
+                        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;"><span data-lang="en">Direct B2B pricing eliminates 3-4 layer distribution markup across all product lines.</span><span data-lang="zh">B2B 直销定价消除 3-4 层分销加价，覆盖所有产品线。</span></div>
+                    </div>
+                    <div style="background:var(--rot-dark-surface);border:1px solid var(--rot-dark-divider);border-radius:4px;padding:24px;">
+                        <div style="font-family:var(--rot-font-mono);font-size:28px;font-weight:700;color:var(--rot-terminal-green);margin-bottom:8px;">1:1</div>
+                        <div style="font-family:var(--rot-font-display);font-size:13px;font-weight:600;color:white;margin-bottom:8px;"><span data-lang="en">SKU Cross-Reference</span><span data-lang="zh">SKU 互译</span></div>
+                        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;"><span data-lang="en">Verified equivalents to Ethicon, Medtronic, Olympus, Teleflex and more.</span><span data-lang="zh">经验证的 Ethicon、美敦力、奥林巴斯、泰利福等品牌等效替代。</span></div>
+                    </div>
+                    <div style="background:var(--rot-dark-surface);border:1px solid var(--rot-dark-divider);border-radius:4px;padding:24px;">
+                        <div style="font-family:var(--rot-font-mono);font-size:28px;font-weight:700;color:var(--rot-terminal-green);margin-bottom:8px;">24h</div>
+                        <div style="font-family:var(--rot-font-display);font-size:13px;font-weight:600;color:white;margin-bottom:8px;"><span data-lang="en">NomoFlow™ Verified</span><span data-lang="zh">NomoFlow™ 验证</span></div>
+                        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;"><span data-lang="en">Real-time QA monitoring with batch-level traceability on every shipment.</span><span data-lang="zh">实时质量监控，每批货物均可追溯。</span></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
