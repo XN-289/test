@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Snares",
+  "description": "Cold and Hot Snares for endoscopic polypectomy. Following the global shift towards \"Cold Snare Polypectomy\" (CSP) for safety and efficiency in outpatient settings. - Biopsy Forceps - Hemoclips",
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "ViaSurg"
+  },
+  "category": "Instrumentation",
+  "url": "https://viasurg.com/output/pages/snares.html"
+}

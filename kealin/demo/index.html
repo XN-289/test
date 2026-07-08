@@ -1,0 +1,2371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViaSurg AI CMO - Clinical Intelligence Platform</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Lato:wght@300;400;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           DESIGN SYSTEM: reOpenTest
+           Clinical Minimalism / Analytical Dark Mode
+           ============================================ */
+
+        :root {
+            --rot-foundational-blue: #00539F;
+            --rot-action-primary: #0066CC;
+            --rot-action-hover: #004C99;
+            --rot-action-active: #003D7A;
+            --rot-clinical-white: #FFFFFF;
+            --rot-bg-secondary: #F8FAFC;
+            --rot-border-subtle: #E2E8F0;
+            --rot-border-light: #F1F5F9;
+            --rot-blueprint-dark: #0A1128;
+            --rot-dark-surface: #131B33;
+            --rot-terminal-green: #4ADE80;
+            --rot-dark-divider: rgba(255, 255, 255, 0.1);
+            --rot-slate-heavy: #0F172A;
+            --rot-slate-core: #475569;
+            --rot-slate-light: #94A3B8;
+            --rot-valid: #10B981;
+            --rot-valid-bg: #ECFDF5;
+            --rot-warning: #F59E0B;
+            --rot-warning-bg: #FFFBEB;
+            --rot-invalid: #EF4444;
+            --rot-invalid-bg: #FEF2F2;
+            --rot-space-1: 4px;
+            --rot-space-2: 8px;
+            --rot-space-3: 16px;
+            --rot-space-4: 24px;
+            --rot-space-5: 32px;
+            --rot-space-6: 48px;
+            --rot-space-7: 64px;
+            --rot-space-8: 96px;
+            --rot-font-display: 'Montserrat', 'Helvetica Neue', sans-serif;
+            --rot-font-body: 'Lato', 'Helvetica', 'Arial', sans-serif;
+            --rot-font-mono: 'JetBrains Mono', 'Roboto Mono', monospace;
+            --rot-radius-sm: 2px;
+            --rot-radius-md: 4px;
+            --rot-radius-lg: 6px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: var(--rot-font-body);
+            color: var(--rot-slate-core);
+            background-color: var(--rot-bg-secondary);
+            line-height: 1.5;
+        }
+
+        /* LAYOUT */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 280px;
+            background: var(--rot-blueprint-dark);
+            border-right: 1px solid var(--rot-dark-divider);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: var(--rot-space-4);
+            border-bottom: 1px solid var(--rot-dark-divider);
+        }
+
+        .sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: var(--rot-space-3);
+        }
+
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            background: var(--rot-action-primary);
+            border-radius: var(--rot-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--rot-font-display);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .brand-text {}
+
+        .brand-name {
+            font-family: var(--rot-font-display);
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: white;
+        }
+
+        .brand-subtitle {
+            font-family: var(--rot-font-mono);
+            font-size: 10px;
+            color: var(--rot-terminal-green);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            padding: var(--rot-space-3) 0;
+            overflow-y: auto;
+        }
+
+        .nav-section {
+            margin-bottom: var(--rot-space-4);
+        }
+
+        .nav-section-title {
+            font-family: var(--rot-font-display);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--rot-slate-light);
+            padding: 0 var(--rot-space-4) var(--rot-space-2);
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: var(--rot-space-3);
+            padding: var(--rot-space-3) var(--rot-space-4);
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-family: var(--rot-font-body);
+            font-size: 14px;
+            transition: all 0ms;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+
+        .nav-item.active {
+            background: rgba(0, 102, 204, 0.2);
+            color: white;
+            border-left-color: var(--rot-action-primary);
+        }
+
+        .nav-item-icon {
+            width: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .nav-item-badge {
+            margin-left: auto;
+            background: var(--rot-action-primary);
+            color: white;
+            font-family: var(--rot-font-mono);
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: var(--rot-radius-sm);
+        }
+
+        .sidebar-footer {
+            padding: var(--rot-space-4);
+            border-top: 1px solid var(--rot-dark-divider);
+        }
+
+        .system-status {
+            display: flex;
+            align-items: center;
+            gap: var(--rot-space-2);
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--rot-terminal-green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .status-text {
+            font-family: var(--rot-font-mono);
+            font-size: 11px;
+            color: var(--rot-slate-light);
+            letter-spacing: 0.05em;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            background: var(--rot-bg-secondary);
+        }
+
+        /* TOP BAR */
+        .top-bar {
+            background: var(--rot-clinical-white);
+            border-bottom: 1px solid var(--rot-border-subtle);
+            padding: var(--rot-space-3) var(--rot-space-4);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: var(--rot-space-2);
+            font-family: var(--rot-font-mono);
+            font-size: 12px;
+            color: var(--rot-slate-light);
+        }
+
+        .breadcrumb-sep { color: var(--rot-border-subtle); }
+        .breadcrumb-current { color: var(--rot-slate-heavy); font-weight: 500; }
+
+        .top-bar-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--rot-space-3);
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--rot-space-2);
+            padding: 10px 24px;
+            font-family: var(--rot-font-body);
+            font-size: 14px;
+            font-weight: 700;
+            border: none;
+            border-radius: var(--rot-radius-sm);
+            cursor: pointer;
+            transition: background-color 0ms, transform 0ms;
+            text-decoration: none;
+        }
+
+        .btn:active { transform: translateY(1px); }
+
+        .btn-primary {
+            background: var(--rot-action-primary);
+            color: white;
+        }
+
+        .btn-primary:hover { background: var(--rot-action-hover); }
+
+        .btn-secondary {
+            background: var(--rot-clinical-white);
+            color: var(--rot-foundational-blue);
+            border: 1px solid var(--rot-border-subtle);
+        }
+
+        .btn-secondary:hover { background: var(--rot-bg-secondary); }
+
+        .btn-sm { padding: 6px 12px; font-size: 12px; }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* DATA SLIDES */
+        .data-slide {
+            background: var(--rot-clinical-white);
+            border: 1px solid var(--rot-border-subtle);
+            border-radius: var(--rot-radius-md);
+            padding: var(--rot-space-4);
+            margin-bottom: var(--rot-space-4);
+        }
+
+        .data-slide-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: var(--rot-space-3);
+            padding-bottom: var(--rot-space-3);
+            border-bottom: 1px solid var(--rot-border-light);
+        }
+
+        .data-slide-title {
+            font-family: var(--rot-font-display);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--rot-slate-heavy);
+        }
+
+        .data-slide-label {
+            font-family: var(--rot-font-display);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--rot-slate-light);
+        }
+
+        /* METRICS */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--rot-space-4);
+            margin-bottom: var(--rot-space-6);
+        }
+
+        .metric-card {
+            background: var(--rot-clinical-white);
+            border: 1px solid var(--rot-border-subtle);
+            border-radius: var(--rot-radius-md);
+            padding: var(--rot-space-4);
+        }
+
+        .metric-label {
+            font-family: var(--rot-font-display);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--rot-slate-light);
+            margin-bottom: var(--rot-space-2);
+        }
+
+        .metric-value {
+            font-family: var(--rot-font-mono);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--rot-slate-heavy);
+            line-height: 1;
+        }
+
+        .metric-sub {
+            font-family: var(--rot-font-mono);
+            font-size: 12px;
+            margin-top: var(--rot-space-2);
+            color: var(--rot-slate-light);
+        }
+
+        .metric-sub.positive { color: var(--rot-valid); }
+        .metric-sub.warning { color: var(--rot-warning); }
+
+        /* VIEW PANELS */
+        .view-panel {
+            display: none;
+            padding: var(--rot-space-6);
+        }
+
+        .view-panel.active { display: block; }
+
+        /* CONSOLE */
+        .console-container {
+            background: var(--rot-blueprint-dark);
+            border-radius: var(--rot-radius-md);
+            overflow: hidden;
+        }
+
+        .console-header {
+            background: var(--rot-dark-surface);
+            padding: var(--rot-space-2) var(--rot-space-3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--rot-dark-divider);
+        }
+
+        .console-title {
+            font-family: var(--rot-font-mono);
+            font-size: 12px;
+            color: var(--rot-slate-light);
+            letter-spacing: 0.05em;
+        }
+
+        .console-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .console-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .console-dot.red { background: #EF4444; }
+        .console-dot.yellow { background: #F59E0B; }
+        .console-dot.green { background: #10B981; }
+
+        .console-body {
+            padding: var(--rot-space-3);
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: var(--rot-font-mono);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .log-entry {
+            display: flex;
+            gap: var(--rot-space-3);
+            margin-bottom: 2px;
+        }
+
+        .log-time {
+            color: var(--rot-slate-light);
+            min-width: 80px;
+        }
+
+        .log-type {
+            min-width: 70px;
+            padding: 1px 6px;
+            border-radius: var(--rot-radius-sm);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .log-type.info { background: rgba(0, 102, 204, 0.2); color: #60A5FA; }
+        .log-type.success { background: rgba(16, 185, 129, 0.2); color: var(--rot-terminal-green); }
+        .log-type.warning { background: rgba(245, 158, 11, 0.2); color: #FCD34D; }
+        .log-type.error { background: rgba(239, 68, 68, 0.2); color: #FCA5A5; }
+        .log-type.signal { background: rgba(139, 92, 246, 0.2); color: #A78BFA; }
+        .log-type.stage { background: rgba(6, 182, 212, 0.2); color: #22D3EE; }
+
+        .log-message { color: rgba(255, 255, 255, 0.9); }
+
+        /* PIPELINE */
+        .pipeline-steps {
+            display: flex;
+            align-items: center;
+            gap: var(--rot-space-2);
+            margin-bottom: var(--rot-space-6);
+        }
+
+        .pipeline-step {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .pipeline-step::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            width: 100%;
+            height: 2px;
+            background: var(--rot-border-subtle);
+            z-index: 0;
+        }
+
+        .pipeline-step:last-child::after { display: none; }
+
+        .step-indicator {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--rot-radius-sm);
+            background: var(--rot-bg-secondary);
+            border: 2px solid var(--rot-border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--rot-font-mono);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--rot-slate-light);
+            position: relative;
+            z-index: 1;
+            transition: all 0ms;
+        }
+
+        .pipeline-step.active .step-indicator {
+            background: var(--rot-action-primary);
+            border-color: var(--rot-action-primary);
+            color: white;
+        }
+
+        .pipeline-step.completed .step-indicator {
+            background: var(--rot-valid);
+            border-color: var(--rot-valid);
+            color: white;
+        }
+
+        .step-label {
+            margin-top: var(--rot-space-2);
+            font-family: var(--rot-font-display);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--rot-slate-light);
+            text-align: center;
+        }
+
+        .pipeline-step.active .step-label { color: var(--rot-action-primary); }
+        .pipeline-step.completed .step-label { color: var(--rot-valid); }
+
+        /* STATUS BADGES */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--rot-space-1);
+            padding: 2px 8px;
+            border-radius: var(--rot-radius-sm);
+            font-family: var(--rot-font-mono);
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .status-badge.valid { background: var(--rot-valid-bg); color: #065F46; }
+        .status-badge.warning { background: var(--rot-warning-bg); color: #92400E; }
+
+        /* SPECS TABLE */
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .specs-table thead th {
+            background: var(--rot-bg-secondary);
+            font-family: var(--rot-font-display);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--rot-slate-light);
+            padding: var(--rot-space-3);
+            text-align: left;
+            border-bottom: 1px solid var(--rot-border-subtle);
+        }
+
+        .specs-table tbody td {
+            padding: var(--rot-space-3);
+            border-bottom: 1px solid var(--rot-border-light);
+            font-size: 14px;
+            color: var(--rot-slate-core);
+        }
+
+        .specs-table tbody tr:hover { background: var(--rot-bg-secondary); }
+
+        .specs-table .data-cell {
+            font-family: var(--rot-font-mono);
+            font-weight: 500;
+            color: var(--rot-slate-heavy);
+        }
+
+        /* RESULT CARDS */
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--rot-space-4);
+        }
+
+        .result-card {
+            background: var(--rot-clinical-white);
+            border: 1px solid var(--rot-border-subtle);
+            border-radius: var(--rot-radius-md);
+            padding: var(--rot-space-4);
+        }
+
+        .result-card-title {
+            font-family: var(--rot-font-display);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--rot-slate-heavy);
+            margin-bottom: var(--rot-space-3);
+        }
+
+        .result-card .data-row {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--rot-space-2) 0;
+            border-bottom: 1px solid var(--rot-border-light);
+        }
+
+        .result-card .data-row:last-child { border-bottom: none; }
+
+        .result-card .data-key {
+            font-family: var(--rot-font-display);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--rot-slate-light);
+        }
+
+        .result-card .data-val {
+            font-family: var(--rot-font-mono);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--rot-slate-heavy);
+        }
+
+        /* OODA DIAGRAM */
+        .ooda-diagram {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--rot-space-3);
+            margin-bottom: var(--rot-space-4);
+        }
+
+        .ooda-phase {
+            background: var(--rot-bg-secondary);
+            border: 1px solid var(--rot-border-subtle);
+            border-radius: var(--rot-radius-md);
+            padding: var(--rot-space-3);
+            text-align: center;
+        }
+
+        .ooda-phase.active {
+            border-color: var(--rot-action-primary);
+            background: rgba(0, 102, 204, 0.05);
+        }
+
+        .ooda-phase.completed {
+            border-color: var(--rot-valid);
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .ooda-letter {
+            font-family: var(--rot-font-mono);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--rot-slate-light);
+            margin-bottom: 4px;
+        }
+
+        .ooda-phase.active .ooda-letter { color: var(--rot-action-primary); }
+        .ooda-phase.completed .ooda-letter { color: var(--rot-valid); }
+
+        .ooda-count {
+            font-family: var(--rot-font-mono);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--rot-text-primary);
+            margin-top: 4px;
+        }
+
+        .ooda-name {
+            font-family: var(--rot-font-display);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--rot-slate-core);
+        }
+
+        /* QUALITY CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: var(--rot-space-3);
+            padding: var(--rot-space-3);
+            border-bottom: 1px solid var(--rot-border-light);
+        }
+
+        .checklist-item:last-child { border-bottom: none; }
+
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: var(--rot-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .check-icon.pass { background: var(--rot-valid-bg); color: var(--rot-valid); }
+        .check-icon.fail { background: var(--rot-invalid-bg); color: var(--rot-invalid); }
+
+        .check-name {
+            font-family: var(--rot-font-body);
+            font-size: 14px;
+            color: var(--rot-slate-heavy);
+        }
+
+        .check-value {
+            margin-left: auto;
+            font-family: var(--rot-font-mono);
+            font-size: 13px;
+            color: var(--rot-slate-core);
+        }
+
+        /* SCORE DISPLAY */
+        .score-display {
+            text-align: center;
+            padding: var(--rot-space-6);
+        }
+
+        .score-number {
+            font-family: var(--rot-font-mono);
+            font-size: 72px;
+            font-weight: 700;
+            color: var(--rot-valid);
+            line-height: 1;
+        }
+
+        .score-label {
+            font-family: var(--rot-font-display);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--rot-slate-core);
+            margin-top: var(--rot-space-2);
+        }
+
+        /* OUTPUT PREVIEW */
+        .output-preview {
+            background: var(--rot-bg-secondary);
+            border: 1px solid var(--rot-border-subtle);
+            border-radius: var(--rot-radius-md);
+            overflow: hidden;
+        }
+
+        .preview-toolbar {
+            background: var(--rot-clinical-white);
+            border-bottom: 1px solid var(--rot-border-subtle);
+            padding: var(--rot-space-3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .preview-url {
+            font-family: var(--rot-font-mono);
+            font-size: 12px;
+            color: var(--rot-slate-core);
+            background: var(--rot-bg-secondary);
+            padding: 4px 12px;
+            border-radius: var(--rot-radius-sm);
+            border: 1px solid var(--rot-border-subtle);
+            flex: 1;
+            margin: 0 var(--rot-space-3);
+        }
+
+        .preview-frame {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 17, 40, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal-content {
+            background: var(--rot-clinical-white);
+            border: 1px solid var(--rot-border-subtle);
+            border-radius: var(--rot-radius-md);
+            width: 90%;
+            max-width: 640px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--rot-space-4);
+            border-bottom: 1px solid var(--rot-border-subtle);
+        }
+
+        .modal-title {
+            font-family: var(--rot-font-display);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--rot-slate-heavy);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--rot-slate-light);
+            cursor: pointer;
+        }
+
+        .modal-body { padding: var(--rot-space-4); }
+
+        .modal-footer {
+            padding: var(--rot-space-4);
+            border-top: 1px solid var(--rot-border-subtle);
+            display: flex;
+            justify-content: flex-end;
+            gap: var(--rot-space-3);
+        }
+
+        /* FORMS */
+        .form-group { margin-bottom: var(--rot-space-4); }
+
+        .form-label {
+            display: block;
+            font-family: var(--rot-font-display);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--rot-slate-light);
+            margin-bottom: var(--rot-space-2);
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: var(--rot-space-2) var(--rot-space-3);
+            font-family: var(--rot-font-body);
+            font-size: 14px;
+            color: var(--rot-slate-heavy);
+            background: var(--rot-clinical-white);
+            border: 1px solid var(--rot-border-subtle);
+            border-radius: var(--rot-radius-sm);
+            transition: border-color 0ms;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--rot-action-primary);
+        }
+
+        .form-textarea { min-height: 100px; resize: vertical; }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .sidebar { width: 240px; }
+            .main-content { margin-left: 240px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .result-grid { grid-template-columns: 1fr; }
+            .ooda-diagram { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; }
+            .metrics-grid { grid-template-columns: 1fr; }
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--rot-bg-secondary); }
+        ::-webkit-scrollbar-thumb { background: var(--rot-border-subtle); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--rot-slate-light); }
+
+        /* LOADING ANIMATION */
+        .loading-dots::after {
+            content: '';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0% { content: ''; }
+            25% { content: '.'; }
+            50% { content: '..'; }
+            75% { content: '...'; }
+        }
+
+        /* DESIGN VERIFICATION */
+        .verify-category {
+            display: flex;
+            align-items: center;
+            gap: var(--rot-space-3);
+            padding: var(--rot-space-3);
+            background: var(--rot-bg-secondary);
+            border: 1px solid var(--rot-border-subtle);
+            border-radius: var(--rot-radius-md);
+            margin-bottom: var(--rot-space-2);
+        }
+
+        .verify-category-name {
+            font-family: var(--rot-font-display);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--rot-slate-core);
+            min-width: 120px;
+        }
+
+        .verify-bar {
+            flex: 1;
+            height: 6px;
+            background: var(--rot-border-light);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .verify-bar-fill {
+            height: 100%;
+            background: var(--rot-valid);
+            transition: width 0ms;
+        }
+
+        .verify-bar-fill.partial { background: var(--rot-warning); }
+        .verify-bar-fill.fail { background: var(--rot-invalid); }
+
+        .verify-score {
+            font-family: var(--rot-font-mono);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--rot-slate-heavy);
+            min-width: 40px;
+            text-align: right;
+        }
+
+        .verify-row-pass {
+            color: var(--rot-valid);
+        }
+
+        .verify-row-fail {
+            color: var(--rot-invalid);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-brand">
+                    <div class="brand-logo">V</div>
+                    <div class="brand-text">
+                        <div class="brand-name">VIASURG</div>
+                        <div class="brand-subtitle">AI CMO Platform</div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Command Center</div>
+                    <div class="nav-item active" data-view="dashboard">
+                        <span class="nav-item-icon">◈</span>
+                        <span>Dashboard</span>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Intelligence Skills</div>
+                    <div class="nav-item" data-view="strategy-operator">
+                        <span class="nav-item-icon">◎</span>
+                        <span>Strategy Operator</span>
+                        <span class="nav-item-badge">OODA</span>
+                    </div>
+                    <div class="nav-item" data-view="wiki-compiler">
+                        <span class="nav-item-icon">◉</span>
+                        <span>Wiki Compiler</span>
+                    </div>
+                    <div class="nav-item" data-view="site-generator">
+                        <span class="nav-item-icon">◇</span>
+                        <span>Site Generator</span>
+                    </div>
+                    <div class="nav-item" data-view="autoresearch">
+                        <span class="nav-item-icon">⟐</span>
+                        <span>Autoresearch</span>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Data Pipeline</div>
+                    <div class="nav-item" data-view="keywords">
+                        <span class="nav-item-icon">△</span>
+                        <span>Keywords Data</span>
+                        <span class="nav-item-badge" id="kw-count">898</span>
+                    </div>
+                    <div class="nav-item" data-view="signals">
+                        <span class="nav-item-icon">▽</span>
+                        <span>Signals</span>
+                        <span class="nav-item-badge">3</span>
+                    </div>
+                    <div class="nav-item" data-view="wiki">
+                        <span class="nav-item-icon">⬡</span>
+                        <span>LLM Wiki</span>
+                        <span class="nav-item-badge">41</span>
+                    </div>
+                    <div class="nav-item" data-view="output">
+                        <span class="nav-item-icon">◈</span>
+                        <span>Website Output</span>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="system-status">
+                    <div class="status-indicator" id="status-dot"></div>
+                    <span class="status-text" id="status-text">SYSTEM READY</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="breadcrumb">
+                    <span>VIASURG</span>
+                    <span class="breadcrumb-sep">/</span>
+                    <span>AI CMO</span>
+                    <span class="breadcrumb-sep">/</span>
+                    <span class="breadcrumb-current" id="breadcrumb-current">Dashboard</span>
+                </div>
+                <div class="top-bar-actions">
+                    <button class="btn btn-secondary btn-sm" onclick="showModal('signal-modal')">+ New Signal</button>
+                    <button class="btn btn-primary btn-sm" id="btn-run-pipeline" onclick="runFullPipeline()">▶ Run Pipeline</button>
+                </div>
+            </div>
+
+            <!-- ==================== DASHBOARD ==================== -->
+            <div class="view-panel active" id="view-dashboard">
+                <!-- Metrics -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Keywords Parsed</div>
+                        <div class="metric-value" id="m-kw-total">898</div>
+                        <div class="metric-sub positive">From 21 CSV files</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">High Value Keywords</div>
+                        <div class="metric-value" id="m-kw-hv">373</div>
+                        <div class="metric-sub positive">CPC > $5.00</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Wiki Entities</div>
+                        <div class="metric-value" id="m-wiki">41</div>
+                        <div class="metric-sub positive">All linked</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Pipeline Score</div>
+                        <div class="metric-value" id="m-score">—</div>
+                        <div class="metric-sub" id="m-score-sub">Run pipeline to verify</div>
+                    </div>
+                </div>
+
+                <!-- Pipeline -->
+                <div class="data-slide">
+                    <div class="data-slide-header">
+                        <div>
+                            <div class="data-slide-label">PIPELINE STATUS</div>
+                            <div class="data-slide-title">Intelligence Workflow</div>
+                        </div>
+                        <button class="btn btn-primary" id="btn-run-pipeline-2" onclick="runFullPipeline()">▶ Execute Pipeline</button>
+                    </div>
+
+                    <div class="pipeline-steps">
+                        <div class="pipeline-step" id="step-1">
+                            <div class="step-indicator">01</div>
+                            <div class="step-label">Signal Ingestion</div>
+                        </div>
+                        <div class="pipeline-step" id="step-2">
+                            <div class="step-indicator">02</div>
+                            <div class="step-label">OODA Analysis</div>
+                        </div>
+                        <div class="pipeline-step" id="step-3">
+                            <div class="step-indicator">03</div>
+                            <div class="step-label">Wiki Compile</div>
+                        </div>
+                        <div class="pipeline-step" id="step-4">
+                            <div class="step-indicator">04</div>
+                            <div class="step-label">Content Render</div>
+                        </div>
+                        <div class="pipeline-step" id="step-5">
+                            <div class="step-indicator">05</div>
+                            <div class="step-label">Quality Verify</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Console -->
+                <div class="console-container">
+                    <div class="console-header">
+                        <span class="console-title">SYSTEM CONSOLE</span>
+                        <div class="console-dots">
+                            <div class="console-dot red"></div>
+                            <div class="console-dot yellow"></div>
+                            <div class="console-dot green"></div>
+                        </div>
+                    </div>
+                    <div class="console-body" id="console">
+                        <div class="log-entry">
+                            <span class="log-time">--:--:--</span>
+                            <span class="log-type info">INFO</span>
+                            <span class="log-message">System initialized. Click "Run Pipeline" to start.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== STRATEGY OPERATOR ==================== -->
+            <div class="view-panel" id="view-strategy-operator">
+                <div class="data-slide">
+                    <div class="data-slide-header">
+                        <div>
+                            <div class="data-slide-label">SKILL 01 — STRATEGY OPERATOR</div>
+                            <div class="data-slide-title">OODA Loop Analysis</div>
+                        </div>
+                        <button class="btn btn-primary" onclick="runStage(2)">▶ Execute OODA</button>
+                    </div>
+
+                    <div class="ooda-diagram" id="ooda-diagram">
+                        <div class="ooda-phase" id="ooda-observe">
+                            <div class="ooda-letter">O</div>
+                            <div class="ooda-name">Observe</div>
+                            <div class="ooda-count" id="ooda-count-observe">0</div>
+                        </div>
+                        <div class="ooda-phase" id="ooda-orient">
+                            <div class="ooda-letter">O</div>
+                            <div class="ooda-name">Orient</div>
+                            <div class="ooda-count" id="ooda-count-orient">0</div>
+                        </div>
+                        <div class="ooda-phase" id="ooda-decide">
+                            <div class="ooda-letter">D</div>
+                            <div class="ooda-name">Decide</div>
+                            <div class="ooda-count" id="ooda-count-decide">0</div>
+                        </div>
+                        <div class="ooda-phase" id="ooda-act">
+                            <div class="ooda-letter">A</div>
+                            <div class="ooda-name">Act</div>
+                            <div class="ooda-count" id="ooda-count-act">0</div>
+                        </div>
+                    </div>
+
+                    <div id="strategy-results" style="display:none;">
+                        <div class="result-grid">
+                            <div class="result-card">
+                                <div class="result-card-title">Keyword Clusters Discovered</div>
+                                <div id="cluster-results"></div>
+                            </div>
+                            <div class="result-card">
+                                <div class="result-card-title">OODA Loop Results</div>
+                                <div id="ooda-results"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="console-container">
+                    <div class="console-header">
+                        <span class="console-title">STRATEGY OPERATOR LOG</span>
+                        <div class="console-dots"><div class="console-dot red"></div><div class="console-dot yellow"></div><div class="console-dot green"></div></div>
+                    </div>
+                    <div class="console-body" id="console-strategy"></div>
+                </div>
+            </div>
+
+            <!-- ==================== WIKI COMPILER ==================== -->
+            <div class="view-panel" id="view-wiki-compiler">
+                <div class="data-slide">
+                    <div class="data-slide-header">
+                        <div>
+                            <div class="data-slide-label">SKILL 02 — WIKI COMPILER</div>
+                            <div class="data-slide-title">Knowledge Ontology</div>
+                        </div>
+                        <button class="btn btn-primary" onclick="runStage(3)">▶ Compile Wiki</button>
+                    </div>
+
+                    <div id="wiki-results" style="display:none;">
+                        <div class="metrics-grid" style="margin-bottom: var(--rot-space-4);">
+                            <div class="metric-card">
+                                <div class="metric-label">Total Entities</div>
+                                <div class="metric-value" id="wr-entities">—</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Total Words</div>
+                                <div class="metric-value" id="wr-words">—</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Cross-Links</div>
+                                <div class="metric-value" id="wr-links">—</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Products</div>
+                                <div class="metric-value" id="wr-products">—</div>
+                            </div>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="result-card-title">Top Linked Entities</div>
+                            <table class="specs-table" id="wiki-entity-table">
+                                <thead>
+                                    <tr>
+                                        <th>ENTITY</th>
+                                        <th>TYPE</th>
+                                        <th>LINKS</th>
+                                        <th>WORDS</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="console-container">
+                    <div class="console-header">
+                        <span class="console-title">WIKI COMPILER LOG</span>
+                        <div class="console-dots"><div class="console-dot red"></div><div class="console-dot yellow"></div><div class="console-dot green"></div></div>
+                    </div>
+                    <div class="console-body" id="console-wiki"></div>
+                </div>
+            </div>
+
+            <!-- ==================== SITE GENERATOR ==================== -->
+            <div class="view-panel" id="view-site-generator">
+                <div class="data-slide">
+                    <div class="data-slide-header">
+                        <div>
+                            <div class="data-slide-label">SKILL 03 — SITE GENERATOR</div>
+                            <div class="data-slide-title">Content Rendering</div>
+                        </div>
+                        <div style="display:flex;gap:8px;">
+                            <button class="btn btn-secondary" onclick="checkPages()">🔍 Check Pages</button>
+                            <button class="btn btn-primary" onclick="runStage(4)">▶ Generate Site</button>
+                        </div>
+                    </div>
+
+                    <!-- Page Health Check Panel -->
+                    <div id="page-health" style="display:none; margin-bottom: 16px;">
+                        <div class="result-card" style="margin-bottom: 12px;">
+                            <div class="result-card-title">Page Health Check</div>
+                            <div id="page-health-content" style="font-size: 13px; color: var(--text-light);">
+                                <span id="health-status">Checking...</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="btn-regenerate" style="display:none;" onclick="regeneratePages()">
+                            🔄 Regenerate Missing Pages
+                        </button>
+                    </div>
+
+                    <div id="site-results" style="display:none;">
+                        <div class="metrics-grid" style="margin-bottom: var(--rot-space-4);">
+                            <div class="metric-card">
+                                <div class="metric-label">Pages Generated</div>
+                                <div class="metric-value" id="sr-pages">—</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Schemas Created</div>
+                                <div class="metric-value" id="sr-schemas">—</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Sitemap</div>
+                                <div class="metric-value" id="sr-sitemap">—</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Output</div>
+                                <div class="metric-value" style="font-size:14px;" id="sr-output">—</div>
+                            </div>
+                        </div>
+
+                        <div class="result-card" style="margin-bottom: var(--rot-space-4);">
+                            <div class="result-card-title">Generated Pages</div>
+                            <table class="specs-table" id="site-pages-table">
+                                <thead>
+                                    <tr>
+                                        <th>PAGE</th>
+                                        <th>CATEGORY</th>
+                                        <th>CPC</th>
+                                        <th>SCHEMA</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+
+                        <!-- Output Preview -->
+                        <div class="output-preview">
+                            <div class="preview-toolbar">
+                                <button class="btn btn-secondary btn-sm" onclick="openOutput()">↗ Open Full Page</button>
+                                <div class="preview-url">http://localhost:3001/output/index.html</div>
+                                <button class="btn btn-primary btn-sm" onclick="refreshPreview()">↻ Refresh</button>
+                            </div>
+                            <iframe class="preview-frame" id="output-frame" src="about:blank"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="console-container">
+                    <div class="console-header">
+                        <span class="console-title">SITE GENERATOR LOG</span>
+                        <div class="console-dots"><div class="console-dot red"></div><div class="console-dot yellow"></div><div class="console-dot green"></div></div>
+                    </div>
+                    <div class="console-body" id="console-site"></div>
+                </div>
+            </div>
+
+            <!-- ==================== AUTORESEARCH ==================== -->
+            <div class="view-panel" id="view-autoresearch">
+                <div class="data-slide">
+                    <div class="data-slide-header">
+                        <div>
+                            <div class="data-slide-label">SKILL 04 — AUTORESEARCH</div>
+                            <div class="data-slide-title">Quality Verification</div>
+                        </div>
+                        <button class="btn btn-primary" onclick="runStage(5)">▶ Run Verification</button>
+                    </div>
+
+                    <div id="verify-results" style="display:none;">
+                        <div style="display: grid; grid-template-columns: 200px 1fr; gap: var(--rot-space-4);">
+                            <div class="score-display">
+                                <div class="score-number" id="vr-score">—</div>
+                                <div class="score-label">Quality Score</div>
+                            </div>
+                            <div class="result-card">
+                                <div class="result-card-title">Verification Checklist</div>
+                                <ul class="checklist" id="verify-checklist"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="console-container">
+                    <div class="console-header">
+                        <span class="console-title">AUTORESEARCH LOG</span>
+                        <div class="console-dots"><div class="console-dot red"></div><div class="console-dot yellow"></div><div class="console-dot green"></div></div>
+                    </div>
+                    <div class="console-body" id="console-verify"></div>
+                </div>
+            </div>
+
+            <!-- ==================== KEYWORDS ==================== -->
+            <div class="view-panel" id="view-keywords">
+                <div class="data-slide">
+                    <div class="data-slide-header">
+                        <div>
+                            <div class="data-slide-label">GOOGLE KEYWORDS PLANNER</div>
+                            <div class="data-slide-title">Parsed Keywords Data</div>
+                        </div>
+                        <button class="btn btn-secondary" onclick="loadKeywords()">Refresh Data</button>
+                    </div>
+
+                    <div class="metrics-grid" style="margin-bottom: var(--rot-space-4);">
+                        <div class="metric-card">
+                            <div class="metric-label">Total Keywords</div>
+                            <div class="metric-value">898</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">High CPC (>$5)</div>
+                            <div class="metric-value">373</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">High Volume (1000+)</div>
+                            <div class="metric-value">225</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">CSV Files</div>
+                            <div class="metric-value">21</div>
+                        </div>
+                    </div>
+
+                    <table class="specs-table">
+                        <thead>
+                            <tr>
+                                <th>KEYWORD</th>
+                                <th>SEARCHES</th>
+                                <th>CPC HIGH</th>
+                                <th>COMPETITION</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="keywords-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ==================== SIGNALS ==================== -->
+            <div class="view-panel" id="view-signals">
+                <div class="data-slide">
+                    <div class="data-slide-header">
+                        <div>
+                            <div class="data-slide-label">STRATEGY WIKI</div>
+                            <div class="data-slide-title">Loaded Signals & Strategies</div>
+                        </div>
+                        <button class="btn btn-secondary" onclick="loadSignals()">Refresh Data</button>
+                    </div>
+
+                    <div class="metrics-grid" style="margin-bottom: var(--rot-space-4);">
+                        <div class="metric-card">
+                            <div class="metric-label">Signals</div>
+                            <div class="metric-value">3</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Insights</div>
+                            <div class="metric-value">2</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Strategies</div>
+                            <div class="metric-value">3</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Graph Nodes</div>
+                            <div class="metric-value">6</div>
+                        </div>
+                    </div>
+
+                    <table class="specs-table">
+                        <thead>
+                            <tr>
+                                <th>TYPE</th>
+                                <th>NAME</th>
+                                <th>STATUS</th>
+                                <th>SOURCE</th>
+                            </tr>
+                        </thead>
+                        <tbody id="signals-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ==================== WIKI ==================== -->
+            <div class="view-panel" id="view-wiki">
+                <div class="data-slide">
+                    <div class="data-slide-header">
+                        <div>
+                            <div class="data-slide-label">LLM WIKI</div>
+                            <div class="data-slide-title">Knowledge Graph Entities</div>
+                        </div>
+                        <button class="btn btn-secondary" onclick="loadWiki()">Refresh Data</button>
+                    </div>
+
+                    <div class="metrics-grid" style="margin-bottom: var(--rot-space-4);">
+                        <div class="metric-card">
+                            <div class="metric-label">Entities</div>
+                            <div class="metric-value">41</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">With Links</div>
+                            <div class="metric-value">41</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Total Words</div>
+                            <div class="metric-value">3,933</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Graph Edges</div>
+                            <div class="metric-value">7</div>
+                        </div>
+                    </div>
+
+                    <table class="specs-table">
+                        <thead>
+                            <tr>
+                                <th>ENTITY</th>
+                                <th>FILE</th>
+                                <th>WORDS</th>
+                                <th>LINKS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="wiki-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ==================== OUTPUT ==================== -->
+            <div class="view-panel" id="view-output">
+                <!-- Output Header -->
+                <div class="data-slide">
+                    <div class="data-slide-header">
+                        <div>
+                            <div class="data-slide-label">WEBSITE OUTPUT — 产出验证</div>
+                            <div class="data-slide-title">Generated Content & Design Verification</div>
+                        </div>
+                        <div style="display:flex;gap:8px;">
+                            <button class="btn btn-secondary" onclick="verifyDesign()">🔍 Verify Design</button>
+                            <button class="btn btn-primary" onclick="openOutput()">↗ Open Full Page</button>
+                        </div>
+                    </div>
+
+                    <!-- Output Status -->
+                    <div id="output-status" style="display:none;">
+                        <div class="metrics-grid" style="margin-bottom: var(--rot-space-4);">
+                            <div class="metric-card">
+                                <div class="metric-label">Output Status</div>
+                                <div class="metric-value" id="out-status" style="font-size:20px;">—</div>
+                                <div class="metric-sub" id="out-status-sub">—</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Design Score</div>
+                                <div class="metric-value" id="out-design-score">—</div>
+                                <div class="metric-sub" id="out-design-sub">Click "Verify Design"</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Pages Generated</div>
+                                <div class="metric-value" id="out-pages">—</div>
+                                <div class="metric-sub" id="out-pages-sub">—</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Output Size</div>
+                                <div class="metric-value" id="out-size" style="font-size:20px;">—</div>
+                                <div class="metric-sub" id="out-size-sub">—</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- No Output State -->
+                    <div id="output-empty" style="text-align:center;padding:48px 0;">
+                        <div style="font-family:var(--rot-font-mono);font-size:48px;color:var(--rot-border-subtle);margin-bottom:16px;">◇</div>
+                        <div style="font-family:var(--rot-font-display);font-size:18px;color:var(--rot-slate-core);margin-bottom:8px;">No Output Generated</div>
+                        <div style="font-family:var(--rot-font-body);font-size:14px;color:var(--rot-slate-light);margin-bottom:24px;">Run the pipeline first to generate the output page</div>
+                        <button class="btn btn-primary" onclick="runFullPipeline()">▶ Run Pipeline</button>
+                    </div>
+                </div>
+
+                <!-- Design Verification Panel -->
+                <div class="data-slide" id="design-verify-panel" style="display:none;">
+                    <div class="data-slide-header">
+                        <div>
+                            <div class="data-slide-label">DESIGN SYSTEM VERIFICATION</div>
+                            <div class="data-slide-title">DESIGN.md Compliance Check</div>
+                        </div>
+                        <button class="btn btn-secondary btn-sm" onclick="verifyDesign()">Re-verify</button>
+                    </div>
+
+                    <div id="verify-categories"></div>
+
+                    <table class="specs-table" style="margin-top: var(--rot-space-4);">
+                        <thead>
+                            <tr>
+                                <th>STATUS</th>
+                                <th>RULE</th>
+                                <th>CATEGORY</th>
+                                <th>DETAIL</th>
+                            </tr>
+                        </thead>
+                        <tbody id="verify-tbody"></tbody>
+                    </table>
+                </div>
+
+                <!-- Output Preview -->
+                <div class="data-slide" id="output-preview-panel" style="display:none;">
+                    <div class="data-slide-header">
+                        <div>
+                            <div class="data-slide-label">LIVE PREVIEW</div>
+                            <div class="data-slide-title">Output Page Preview</div>
+                        </div>
+                        <div style="display:flex;gap:8px;">
+                            <button class="btn btn-secondary btn-sm" onclick="refreshPreview()">↻ Refresh</button>
+                            <button class="btn btn-primary btn-sm" onclick="openOutput()">↗ Open Full</button>
+                        </div>
+                    </div>
+                    <div class="output-preview">
+                        <div class="preview-toolbar">
+                            <div class="preview-url">http://localhost:3001/output/index.html</div>
+                        </div>
+                        <iframe class="preview-frame" id="output-frame-main" src="about:blank"></iframe>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Signal Modal -->
+    <div class="modal-overlay" id="signal-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Add Market Signal</div>
+                <button class="modal-close" onclick="hideModal('signal-modal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Signal Title</label>
+                    <input type="text" class="form-input" id="signal-title" placeholder="e.g., Competitor A launches new product">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Source</label>
+                    <select class="form-select" id="signal-source">
+                        <option>Google Keywords Planner</option>
+                        <option>Competitor Website</option>
+                        <option>Industry News</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Content</label>
+                    <textarea class="form-textarea" id="signal-content" placeholder="Describe the market signal..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="hideModal('signal-modal')">Cancel</button>
+                <button class="btn btn-primary" onclick="submitSignal()">Submit Signal</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // STATE
+        // ============================================
+
+        let currentView = 'dashboard';
+        let isRunning = false;
+        let eventSource = null;
+        let pipelineResults = {};
+
+        // ============================================
+        // SSE CONNECTION
+        // ============================================
+
+        function connectSSE() {
+            if (eventSource) {
+                eventSource.close();
+                eventSource = null;
+            }
+
+            eventSource = new EventSource('/api/events');
+
+            eventSource.onopen = function() {
+                console.log('[SSE] Connected');
+                const dot = document.getElementById('status-dot');
+                if (dot && !isRunning) dot.style.background = 'var(--rot-terminal-green)';
+            };
+
+            eventSource.onmessage = function(event) {
+                try {
+                    const data = JSON.parse(event.data);
+                    handleSSE(data);
+                } catch (e) {
+                    console.error('[SSE] Parse error:', e, event.data);
+                }
+            };
+
+            eventSource.onerror = function(e) {
+                console.warn('[SSE] Connection error, reconnecting in 3s...');
+                eventSource.close();
+                eventSource = null;
+                setTimeout(connectSSE, 3000);
+            };
+        }
+
+        function handleSSE(data) {
+            switch (data.type) {
+                case 'connected':
+                    break;
+                case 'pipeline_start':
+                    addLog('console', 'info', data.message);
+                    break;
+                case 'stage_start':
+                    addLog('console', 'stage', `Stage ${data.stage}: ${data.name} starting...`);
+                    updatePipelineStep(data.stage, 'active');
+                    break;
+                case 'stage_complete':
+                    handleStageComplete(data.stage, data.data);
+                    break;
+                case 'pipeline_complete':
+                    handlePipelineComplete(data);
+                    break;
+                case 'new_signal':
+                    addLog('console', 'success', `New signal added: ${data.data?.name || data.data?.type || 'unknown'}`);
+                    break;
+            }
+        }
+
+        function handleStageComplete(stage, result) {
+            pipelineResults[stage] = result;
+
+            // Update pipeline step
+            updatePipelineStep(stage, 'completed');
+
+            // Log stage results
+            if (result.logs) {
+                const consoleId = stage <= 2 ? 'console-strategy' : stage === 3 ? 'console-wiki' : stage === 4 ? 'console-site' : 'console-verify';
+                result.logs.forEach(log => {
+                    addLog('console', log.type, log.message);
+                });
+            }
+
+            // Update stage-specific views
+            switch (stage) {
+                case 1: updateStrategyResults(result); break;
+                case 2: updateOODAResults(result); break;
+                case 3: updateWikiResults(result); break;
+                case 4: updateSiteResults(result); break;
+                case 5: updateVerifyResults(result); break;
+            }
+        }
+
+        function handlePipelineComplete(data) {
+            isRunning = false;
+            setRunningState(false);
+
+            const score = data.summary.score;
+            document.getElementById('m-score').textContent = score + '%';
+            document.getElementById('m-score-sub').textContent = score >= 80 ? 'All checks passed' : 'Some checks need attention';
+            document.getElementById('m-score-sub').className = 'metric-sub ' + (score >= 80 ? 'positive' : 'warning');
+
+            addLog('console', 'success', `✓ Pipeline complete! Quality score: ${score}%`);
+            addLog('console', 'info', `Output: ${data.summary.outputUrl}`);
+
+            // Auto-navigate to output view after 1 second
+            setTimeout(() => {
+                showView('output');
+                updateOutputStatus(data.summary);
+                verifyDesign();
+                refreshPreview();
+            }, 1000);
+        }
+
+        // ============================================
+        // NAVIGATION
+        // ============================================
+
+        function showView(viewId) {
+            document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+            const target = document.getElementById(`view-${viewId}`);
+            if (target) target.classList.add('active');
+
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.view === viewId) item.classList.add('active');
+            });
+
+            const names = {
+                'dashboard': 'Dashboard',
+                'strategy-operator': 'Strategy Operator',
+                'wiki-compiler': 'Wiki Compiler',
+                'site-generator': 'Site Generator',
+                'autoresearch': 'Autoresearch',
+                'keywords': 'Keywords Data',
+                'signals': 'Signals',
+                'wiki': 'LLM Wiki',
+                'output': 'Website Output'
+            };
+            document.getElementById('breadcrumb-current').textContent = names[viewId] || viewId;
+            currentView = viewId;
+
+            // Auto-load data
+            if (viewId === 'keywords') loadKeywords();
+            if (viewId === 'signals') loadSignals();
+            if (viewId === 'wiki') loadWiki();
+            if (viewId === 'output') {
+                checkOutputExists();
+                verifyDesign();
+            }
+        }
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => showView(item.dataset.view));
+        });
+
+        // ============================================
+        // PIPELINE EXECUTION
+        // ============================================
+
+        async function runFullPipeline() {
+            if (isRunning) return;
+            isRunning = true;
+            setRunningState(true);
+
+            // Reset pipeline steps
+            for (let i = 1; i <= 5; i++) {
+                updatePipelineStep(i, '');
+            }
+
+            addLog('console', 'info', 'Initiating full intelligence pipeline...');
+
+            try {
+                const response = await fetch('/api/pipeline/run', { method: 'POST' });
+                const data = await response.json();
+
+                if (data.success) {
+                    addLog('console', 'success', `Pipeline completed with score: ${data.score}%`);
+                } else {
+                    addLog('console', 'error', 'Pipeline failed: ' + (data.error || 'Unknown error'));
+                }
+            } catch (err) {
+                addLog('console', 'error', 'Pipeline error: ' + err.message);
+                isRunning = false;
+                setRunningState(false);
+            }
+        }
+
+        async function runStage(stageNum) {
+            // Find and disable the button that was clicked
+            const btn = event?.target?.closest('.btn');
+            const origText = btn ? btn.textContent : '';
+            if (btn) { btn.disabled = true; btn.textContent = '⏳ Running...'; }
+
+            addLog('console', 'info', `Running stage ${stageNum}...`);
+            updatePipelineStep(stageNum, 'active');
+
+            try {
+                const response = await fetch(`/api/pipeline/stage${stageNum}`, { method: 'POST' });
+                const result = await response.json();
+                handleStageComplete(stageNum, result);
+                addLog('console', 'success', `✓ Stage ${stageNum} completed.`);
+                if (btn) { btn.textContent = '✓ Done'; setTimeout(() => { btn.textContent = origText; btn.disabled = false; }, 2000); }
+            } catch (err) {
+                addLog('console', 'error', `Stage ${stageNum} error: ${err.message}`);
+                updatePipelineStep(stageNum, '');
+                if (btn) { btn.textContent = '✗ Error'; setTimeout(() => { btn.textContent = origText; btn.disabled = false; }, 2000); }
+            }
+        }
+
+        function setRunningState(running) {
+            const btns = [
+                document.getElementById('btn-run-pipeline'),
+                document.getElementById('btn-run-pipeline-2')
+            ];
+            btns.forEach(btn => {
+                if (btn) {
+                    btn.disabled = running;
+                    btn.textContent = running ? '⏳ Running...' : '▶ Run Pipeline';
+                }
+            });
+
+            const dot = document.getElementById('status-dot');
+            const text = document.getElementById('status-text');
+            if (running) {
+                dot.style.background = 'var(--rot-warning)';
+                text.textContent = 'PIPELINE RUNNING';
+            } else {
+                dot.style.background = 'var(--rot-terminal-green)';
+                text.textContent = 'SYSTEM READY';
+            }
+        }
+
+        // ============================================
+        // RESULT UPDATERS
+        // ============================================
+
+        function updateStrategyResults(result) {
+            const container = document.getElementById('strategy-results');
+            container.style.display = 'block';
+
+            // Keyword clusters
+            const clusters = result.results.keywordClusters || [];
+            const clusterHtml = clusters.slice(0, 8).map(c =>
+                `<div class="data-row">
+                    <span class="data-key">${c.term}</span>
+                    <span class="data-val">${c.count} keywords · $${c.avgCPC} avg CPC</span>
+                </div>`
+            ).join('');
+            document.getElementById('cluster-results').innerHTML = clusterHtml;
+        }
+
+        function updateOODAResults(result) {
+            const ooda = result.results?.oodaLoop;
+            if (!ooda) {
+                console.warn('[OODA] oodaLoop data missing from result');
+                return;
+            }
+
+            // Ensure the results container is visible
+            document.getElementById('strategy-results').style.display = 'block';
+
+            // Update OODA diagram phases
+            ['observe', 'orient', 'decide', 'act'].forEach(phase => {
+                const el = document.getElementById(`ooda-${phase}`);
+                if (el) el.classList.add('completed');
+            });
+
+            // OODA results (safe access with fallbacks)
+            const signalsCount = Array.isArray(ooda.observe?.signals) ? ooda.observe.signals.length : (ooda.observe?.signals || 0);
+            const aligned = ooda.orient?.aligned ?? 0;
+            const orphan = ooda.orient?.orphan ?? 0;
+            const strategiesCount = Array.isArray(ooda.decide?.strategies) ? ooda.decide.strategies.length : (ooda.decide?.strategies || 0);
+            const executingCount = Array.isArray(ooda.act?.executing) ? ooda.act.executing.length : (ooda.act?.executing || 0);
+
+            // Update OODA diagram counts
+            document.getElementById('ooda-count-observe').textContent = signalsCount;
+            document.getElementById('ooda-count-orient').textContent = `${aligned}/${orphan}`;
+            document.getElementById('ooda-count-decide').textContent = strategiesCount;
+            document.getElementById('ooda-count-act').textContent = executingCount;
+
+            const oodaHtml = `
+                <div class="data-row">
+                    <span class="data-key">Signals Observed</span>
+                    <span class="data-val">${signalsCount}</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-key">Aligned / Orphan</span>
+                    <span class="data-val">${aligned} / ${orphan}</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-key">Strategies Decided</span>
+                    <span class="data-val">${strategiesCount}</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-key">Now Executing</span>
+                    <span class="data-val">${executingCount}</span>
+                </div>
+            `;
+            document.getElementById('ooda-results').innerHTML = oodaHtml;
+        }
+
+        function updateWikiResults(result) {
+            document.getElementById('wiki-results').style.display = 'block';
+
+            document.getElementById('wr-entities').textContent = result.results.totalEntities;
+            document.getElementById('wr-words').textContent = result.results.totalWords.toLocaleString();
+            document.getElementById('wr-links').textContent = result.results.totalLinks;
+            document.getElementById('wr-products').textContent = result.results.products;
+
+            // Entity table
+            const tbody = document.querySelector('#wiki-entity-table tbody');
+            tbody.innerHTML = '';
+            (result.results.topLinkedEntities || []).forEach(ent => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="data-cell">${ent.name.replace(/_/g, ' ')}</td>
+                    <td>${ent.type}</td>
+                    <td class="data-cell">${ent.linkCount}</td>
+                    <td class="data-cell">${ent.wordCount}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function updateSiteResults(result) {
+            document.getElementById('site-results').style.display = 'block';
+
+            document.getElementById('sr-pages').textContent = result.results.pagesGenerated;
+            document.getElementById('sr-schemas').textContent = result.results.schemasCreated;
+            document.getElementById('sr-sitemap').textContent = result.results.sitemapCreated ? '✓' : '✗';
+            document.getElementById('sr-output').textContent = result.results.outputUrl;
+
+            // Pages table
+            const tbody = document.querySelector('#site-pages-table tbody');
+            tbody.innerHTML = '';
+            (result.results.pages || []).forEach(page => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="data-cell">${page.title}</td>
+                    <td>${page.specs.Category || 'N/A'}</td>
+                    <td class="data-cell">${page.cpc ? '$' + page.cpc : '—'}</td>
+                    <td><span class="status-badge valid">✓ JSON-LD</span></td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            // Load preview
+            refreshPreview();
+        }
+
+        function updateVerifyResults(result) {
+            document.getElementById('verify-results').style.display = 'block';
+
+            const score = result.results.score;
+            const scoreEl = document.getElementById('vr-score');
+            scoreEl.textContent = score + '%';
+            scoreEl.style.color = score >= 80 ? 'var(--rot-valid)' : 'var(--rot-warning)';
+
+            // Checklist
+            const list = document.getElementById('verify-checklist');
+            list.innerHTML = '';
+            (result.results.checks || []).forEach(check => {
+                const li = document.createElement('li');
+                li.className = 'checklist-item';
+                li.innerHTML = `
+                    <div class="check-icon ${check.pass ? 'pass' : 'fail'}">${check.pass ? '✓' : '✗'}</div>
+                    <span class="check-name">${check.name}</span>
+                    <span class="check-value">${check.value}</span>
+                `;
+                list.appendChild(li);
+            });
+
+            // Keyword Coverage
+            const kwCov = result.results.keywordCoverage;
+            if (kwCov) {
+                const kwLi = document.createElement('li');
+                kwLi.className = 'checklist-item';
+                const kwPass = kwCov.percentage >= 20;
+                kwLi.innerHTML = `
+                    <div class="check-icon ${kwPass ? 'pass' : 'fail'}">${kwPass ? '✓' : '✗'}</div>
+                    <span class="check-name">Keyword Coverage</span>
+                    <span class="check-value">${kwCov.covered}/${kwCov.total} (${kwCov.percentage}%)</span>
+                `;
+                list.appendChild(kwLi);
+            }
+        }
+
+        // ============================================
+        // DATA LOADING
+        // ============================================
+
+        async function loadKeywords() {
+            try {
+                const response = await fetch('/data/parsed/high_value_keywords.json');
+                const data = await response.json();
+                const tbody = document.getElementById('keywords-tbody');
+                tbody.innerHTML = '';
+
+                data.keywords.slice(0, 50).forEach(kw => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="data-cell">${kw.keyword}</td>
+                        <td class="data-cell">${kw.avg_monthly_searches.toLocaleString()}</td>
+                        <td class="data-cell">$${kw.top_of_page_bid_high.toFixed(2)}</td>
+                        <td>${kw.competition}</td>
+                        <td><span class="status-badge valid">✓ Parsed</span></td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            } catch (err) {
+                console.error('Error loading keywords:', err);
+            }
+        }
+
+        async function loadSignals() {
+            try {
+                const response = await fetch('/data/parsed/strategy_wiki_data.json');
+                const data = await response.json();
+                const tbody = document.getElementById('signals-tbody');
+                tbody.innerHTML = '';
+
+                data.signals.forEach(sig => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><span class="status-badge warning">SIGNAL</span></td>
+                        <td class="data-cell">${sig.id.replace(/_/g, ' ')}</td>
+                        <td><span class="status-badge valid">✓ Loaded</span></td>
+                        <td>${sig.source}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                data.strategies.forEach(strat => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><span class="status-badge valid">STRATEGY</span></td>
+                        <td class="data-cell">${strat.name}</td>
+                        <td><span class="status-badge warning">${strat.status}</span></td>
+                        <td>${strat.source_insight || '—'}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            } catch (err) {
+                console.error('Error loading signals:', err);
+            }
+        }
+
+        async function loadWiki() {
+            try {
+                const response = await fetch('/data/parsed/llm_wiki_data.json');
+                const data = await response.json();
+                const tbody = document.getElementById('wiki-tbody');
+                tbody.innerHTML = '';
+
+                data.entities.forEach(entity => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="data-cell">${entity.name.replace(/_/g, ' ')}</td>
+                        <td>${entity.file}</td>
+                        <td class="data-cell">${entity.word_count}</td>
+                        <td>${entity.has_links ? '✓' : '✗'}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            } catch (err) {
+                console.error('Error loading wiki:', err);
+            }
+        }
+
+        // ============================================
+        // UTILITY
+        // ============================================
+
+        function addLog(consoleId, type, message) {
+            const consoleEl = document.getElementById(consoleId);
+            if (!consoleEl) return;
+
+            const time = new Date().toLocaleTimeString('en-US', {
+                hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit'
+            });
+
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.innerHTML = `
+                <span class="log-time">${time}</span>
+                <span class="log-type ${type}">${type.toUpperCase()}</span>
+                <span class="log-message">${message}</span>
+            `;
+
+            consoleEl.appendChild(entry);
+            consoleEl.scrollTop = consoleEl.scrollHeight;
+        }
+
+        function updatePipelineStep(step, status) {
+            const el = document.getElementById(`step-${step}`);
+            if (el) el.className = `pipeline-step ${status}`;
+        }
+
+        function showModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function hideModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        async function submitSignal() {
+            const title = document.getElementById('signal-title').value.trim();
+            const source = document.getElementById('signal-source').value;
+            const content = document.getElementById('signal-content').value.trim();
+
+            if (!title) { alert('Please enter a signal title.'); return; }
+
+            hideModal('signal-modal');
+            addLog('console', 'signal', `Submitting signal: ${title}...`);
+
+            try {
+                const resp = await fetch('/api/signals', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ title, source, content })
+                });
+                const data = await resp.json();
+                if (data.success) {
+                    addLog('console', 'success', `✓ Signal added: ${title} (${data.signalId})`);
+                    // Clear form
+                    document.getElementById('signal-title').value = '';
+                    document.getElementById('signal-content').value = '';
+                } else {
+                    addLog('console', 'error', 'Failed to add signal: ' + (data.error || 'Unknown'));
+                }
+            } catch (err) {
+                addLog('console', 'error', 'Signal submission error: ' + err.message);
+            }
+        }
+
+        async function checkPages() {
+            const panel = document.getElementById('page-health');
+            const status = document.getElementById('health-status');
+            const btn = document.getElementById('btn-regenerate');
+            panel.style.display = 'block';
+            status.textContent = 'Checking pages...';
+            btn.style.display = 'none';
+
+            try {
+                const res = await fetch('/api/pages/check');
+                const data = await res.json();
+                if (data.allPresent) {
+                    status.innerHTML = `✅ All <strong>${data.totalExpected}</strong> pages present. No regeneration needed.`;
+                    status.style.color = 'var(--rot-valid)';
+                } else {
+                    const missingList = data.missing.map(p => `<code>${p.filename}</code> (${p.type})`).join(', ');
+                    status.innerHTML = `⚠️ <strong>${data.missing.length}</strong> of ${data.totalExpected} pages missing: ${missingList}`;
+                    status.style.color = 'var(--rot-warning)';
+                    btn.style.display = 'inline-block';
+                    btn.textContent = `🔄 Regenerate ${data.missing.length} Missing Pages`;
+                }
+            } catch (e) {
+                status.textContent = '❌ Error checking pages: ' + e.message;
+                status.style.color = 'var(--rot-danger)';
+            }
+        }
+
+        async function regeneratePages() {
+            const btn = document.getElementById('btn-regenerate');
+            const status = document.getElementById('health-status');
+            btn.disabled = true;
+            btn.textContent = '⏳ Regenerating...';
+            status.textContent = 'Regenerating all pages...';
+
+            try {
+                const res = await fetch('/api/pages/regenerate', { method: 'POST' });
+                const data = await res.json();
+                if (data.success) {
+                    status.innerHTML = `✅ Regenerated <strong>${data.results.totalPagesGenerated}</strong> pages (${data.results.entityPagesGenerated} entity pages, ${data.results.schemasCreated} schemas)`;
+                    status.style.color = 'var(--rot-valid)';
+                    btn.style.display = 'none';
+                    // Refresh site results display if available
+                    updateSiteResults(data);
+                } else {
+                    status.textContent = '❌ ' + (data.error || 'Regeneration failed');
+                    status.style.color = 'var(--rot-danger)';
+                }
+            } catch (e) {
+                status.textContent = '❌ Error: ' + e.message;
+                status.style.color = 'var(--rot-danger)';
+            }
+            btn.disabled = false;
+        }
+
+        function openOutput() {
+            window.open('/output/index.html', '_blank');
+        }
+
+        function refreshPreview() {
+            const frame = document.getElementById('output-frame-main');
+            if (frame) frame.src = '/output/index.html';
+        }
+
+        // ============================================
+        // OUTPUT STATUS
+        // ============================================
+
+        async function updateOutputStatus(summary) {
+            document.getElementById('output-status').style.display = 'block';
+            document.getElementById('output-empty').style.display = 'none';
+            document.getElementById('output-preview-panel').style.display = 'block';
+
+            document.getElementById('out-status').textContent = '✓ Generated';
+            document.getElementById('out-status').style.color = 'var(--rot-valid)';
+            document.getElementById('out-status-sub').textContent = 'Output page ready';
+            document.getElementById('out-status-sub').className = 'metric-sub positive';
+
+            document.getElementById('out-pages').textContent = summary.pagesGenerated || '—';
+            document.getElementById('out-pages-sub').textContent = 'Product pages';
+            document.getElementById('out-pages-sub').className = 'metric-sub positive';
+
+            // Get output size
+            try {
+                const resp = await fetch('/api/verify-design');
+                const data = await resp.json();
+                document.getElementById('out-size').textContent = (data.outputSize / 1024).toFixed(1) + 'KB';
+                document.getElementById('out-size-sub').textContent = data.outputSize + ' bytes';
+            } catch (e) {
+                document.getElementById('out-size').textContent = '—';
+            }
+        }
+
+        // ============================================
+        // DESIGN VERIFICATION
+        // ============================================
+
+        async function verifyDesign() {
+            const panel = document.getElementById('design-verify-panel');
+            panel.style.display = 'block';
+
+            try {
+                const resp = await fetch('/api/verify-design');
+                const data = await resp.json();
+
+                if (data.error) {
+                    addLog('console', 'error', 'Design verification: ' + data.error);
+                    return;
+                }
+
+                // Update score
+                document.getElementById('out-design-score').textContent = data.score + '%';
+                document.getElementById('out-design-score').style.color =
+                    data.score >= 80 ? 'var(--rot-valid)' : data.score >= 60 ? 'var(--rot-warning)' : 'var(--rot-invalid)';
+                document.getElementById('out-design-sub').textContent =
+                    `${data.passed}/${data.total} rules passed`;
+                document.getElementById('out-design-sub').className = 'metric-sub ' +
+                    (data.score >= 80 ? 'positive' : 'warning');
+
+                // Category bars
+                const catContainer = document.getElementById('verify-categories');
+                catContainer.innerHTML = '';
+                Object.entries(data.categories).forEach(([name, cat]) => {
+                    const pct = Math.round((cat.passed / cat.total) * 100);
+                    const barClass = pct === 100 ? '' : pct >= 50 ? 'partial' : 'fail';
+                    catContainer.innerHTML += `
+                        <div class="verify-category">
+                            <span class="verify-category-name">${name}</span>
+                            <div class="verify-bar">
+                                <div class="verify-bar-fill ${barClass}" style="width:${pct}%"></div>
+                            </div>
+                            <span class="verify-score">${cat.passed}/${cat.total}</span>
+                        </div>
+                    `;
+                });
+
+                // Detail table
+                const tbody = document.getElementById('verify-tbody');
+                tbody.innerHTML = '';
+                data.checks.forEach(check => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="${check.pass ? 'verify-row-pass' : 'verify-row-fail'}">${check.pass ? '✓ PASS' : '✗ FAIL'}</td>
+                        <td class="data-cell">${check.rule}</td>
+                        <td>${check.category}</td>
+                        <td>${check.detail}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                addLog('console', 'success', `Design verification: ${data.score}% (${data.passed}/${data.total} rules passed)`);
+
+            } catch (err) {
+                addLog('console', 'error', 'Design verification failed: ' + err.message);
+            }
+        }
+
+        // ============================================
+        // CHECK OUTPUT ON VIEW SWITCH
+        // ============================================
+
+        async function checkOutputExists() {
+            try {
+                const resp = await fetch('/api/pipeline/results');
+                const data = await resp.json();
+                if (data.hasResults) {
+                    document.getElementById('output-status').style.display = 'block';
+                    document.getElementById('output-empty').style.display = 'none';
+                    document.getElementById('output-preview-panel').style.display = 'block';
+
+                    const s4 = data.stages[4];
+                    if (s4) {
+                        document.getElementById('out-status').textContent = '✓ Generated';
+                        document.getElementById('out-status').style.color = 'var(--rot-valid)';
+                        document.getElementById('out-pages').textContent = s4.results.pagesGenerated;
+                        refreshPreview();
+                    }
+                }
+            } catch (e) { /* ignore */ }
+        }
+
+        // ============================================
+        // INITIALIZATION
+        // ============================================
+
+        document.addEventListener('DOMContentLoaded', () => {
+            connectSSE();
+            addLog('console', 'success', 'ViaSurg AI CMO Platform initialized.');
+            addLog('console', 'info', 'All data sources integrated. System ready.');
+
+            // Check if output already exists
+            checkOutputExists();
+        });
+    </script>
+</body>
+</html>

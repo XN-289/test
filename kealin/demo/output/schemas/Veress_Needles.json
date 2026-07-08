@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Veress Needles",
+  "description": "Disposable needles for establishing pneumoperitoneum during laparoscopic surgery. Features a spring-loaded blunt stylet for safe insertion. - Trocars - ViaSurg",
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "ViaSurg"
+  },
+  "category": "Access",
+  "url": "https://viasurg.com/output/pages/veress-needles.html"
+}

@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Staplers",
+  "description": "Surgical Staplers (Laparoscopic and Circular) are highly technical and heavily regulated products. While high in volume and margin, they are subject to strict oversight. - ViaSurg - Absorbable Sutures",
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "ViaSurg"
+  },
+  "category": "Instrumentation",
+  "url": "https://viasurg.com/output/pages/staplers.html"
+}

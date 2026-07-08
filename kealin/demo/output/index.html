@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViaSurg - Clinical Intelligence Medical Devices</title>
+    <meta name="description" content="ViaSurg provides FDA 510(k) and CE MDR certified medical devices with transparent manufacturing and clinical evidence.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Lato:wght@300;400;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "ViaSurg",
+        "description": "Clinical Intelligence Medical Device Platform",
+        "url": "https://viasurg.com",
+        "sameAs": [],
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US"
+        },
+        "makesOffer": [{"@type":"Offer","itemOffered":{"@type":"Product","name":"Absorbable Sutures","category":"Sutures"}},{"@type":"Offer","itemOffered":{"@type":"Product","name":"Biopsy Forceps","category":"Instrumentation"}},{"@type":"Offer","itemOffered":{"@type":"Product","name":"Guidewires","category":"Medical Device"}},{"@type":"Offer","itemOffered":{"@type":"Product","name":"Hemoclips","category":"Clips"}},{"@type":"Offer","itemOffered":{"@type":"Product","name":"Hernia Meshes","category":"Medical Device"}}]
+    }
+    </script>
+
+    <style>
+        /* ============================================
+           DESIGN SYSTEM: reOpenTest - Clinical Minimalism
+           ============================================ */
+
+        :root {
+            --rot-foundational-blue: #00539F;
+            --rot-action-primary: #0066CC;
+            --rot-action-hover: #004C99;
+            --rot-clinical-white: #FFFFFF;
+            --rot-bg-secondary: #F8FAFC;
+            --rot-border-subtle: #E2E8F0;
+            --rot-border-light: #F1F5F9;
+            --rot-blueprint-dark: #0A1128;
+            --rot-dark-surface: #131B33;
+            --rot-terminal-green: #4ADE80;
+            --rot-dark-divider: rgba(255, 255, 255, 0.1);
+            --rot-slate-heavy: #0F172A;
+            --rot-slate-core: #475569;
+            --rot-slate-light: #94A3B8;
+            --rot-valid: #10B981;
+            --rot-valid-bg: #ECFDF5;
+            --rot-warning: #F59E0B;
+            --rot-warning-bg: #FFFBEB;
+            --rot-font-display: 'Montserrat', 'Helvetica Neue', sans-serif;
+            --rot-font-body: 'Lato', 'Helvetica', 'Arial', sans-serif;
+            --rot-font-mono: 'JetBrains Mono', 'Roboto Mono', monospace;
+            --rot-radius-sm: 2px;
+            --rot-radius-md: 4px;
+            --rot-radius-lg: 6px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--rot-font-body);
+            color: var(--rot-slate-core);
+            background: var(--rot-clinical-white);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        .site-header {
+            background: var(--rot-clinical-white);
+            border-bottom: 1px solid var(--rot-border-subtle);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 48px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: var(--rot-font-display);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--rot-foundational-blue);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+        }
+
+        .logo span {
+            color: var(--rot-slate-light);
+            font-size: 11px;
+            font-weight: 400;
+            margin-left: 8px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-link {
+            font-family: var(--rot-font-body);
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--rot-slate-core);
+            text-decoration: none;
+            transition: color 0ms;
+        }
+
+        .nav-link:hover { color: var(--rot-slate-heavy); }
+
+        .nav-link.active {
+            color: var(--rot-action-primary);
+            font-weight: 700;
+        }
+
+        .nav-cta {
+            font-family: var(--rot-font-body);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--rot-clinical-white);
+            background: var(--rot-action-primary);
+            padding: 8px 20px;
+            border-radius: var(--rot-radius-sm);
+            text-decoration: none;
+            transition: background-color 0ms;
+        }
+
+        .nav-cta:hover { background: var(--rot-action-hover); }
+        .nav-cta:active { transform: translateY(1px); }
+
+        /* HERO */
+        .hero {
+            background: var(--rot-bg-secondary);
+            border-bottom: 1px solid var(--rot-border-subtle);
+            padding: 96px 48px;
+        }
+
+        .hero-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .hero-content {}
+
+        .hero-badge {
+            font-family: var(--rot-font-display);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--rot-action-primary);
+            margin-bottom: 16px;
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(0, 102, 204, 0.08);
+            border: 1px solid rgba(0, 102, 204, 0.15);
+            border-radius: var(--rot-radius-sm);
+        }
+
+        .hero-title {
+            font-family: var(--rot-font-display);
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--rot-slate-heavy);
+            margin-bottom: 24px;
+        }
+
+        .hero-subtitle {
+            font-family: var(--rot-font-body);
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--rot-slate-core);
+            margin-bottom: 40px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            font-family: var(--rot-font-body);
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            background: var(--rot-action-primary);
+            padding: 12px 32px;
+            border: none;
+            border-radius: var(--rot-radius-sm);
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0ms;
+        }
+
+        .btn-primary:hover { background: var(--rot-action-hover); }
+        .btn-primary:active { transform: translateY(1px); }
+
+        .btn-secondary {
+            font-family: var(--rot-font-body);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--rot-foundational-blue);
+            background: var(--rot-clinical-white);
+            padding: 12px 32px;
+            border: 1px solid var(--rot-border-subtle);
+            border-radius: var(--rot-radius-sm);
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0ms;
+        }
+
+        .btn-secondary:hover { background: var(--rot-bg-secondary); }
+        .btn-secondary:active { transform: translateY(1px); }
+
+        .hero-proof {
+            display: flex;
+            gap: 48px;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--rot-border-subtle);
+        }
+
+        .proof-item {}
+
+        .proof-value {
+            font-family: var(--rot-font-mono);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--rot-slate-heavy);
+            line-height: 1;
+        }
+
+        .proof-label {
+            font-family: var(--rot-font-display);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--rot-slate-light);
+            margin-top: 8px;
+        }
+
+        .hero-visual {
+            background: var(--rot-clinical-white);
+            border: 1px solid var(--rot-border-subtle);
+            border-radius: var(--rot-radius-md);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .visual-header {
+            font-family: var(--rot-font-display);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--rot-slate-light);
+        }
+
+        .visual-metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--rot-border-light);
+        }
+
+        .visual-metric:last-child { border-bottom: none; }
+
+        .metric-name {
+            font-family: var(--rot-font-body);
+            font-size: 14px;
+            color: var(--rot-slate-core);
+        }
+
+        .metric-val {
+            font-family: var(--rot-font-mono);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--rot-slate-heavy);
+        }
+
+        .metric-val.green { color: var(--rot-valid); }
+
+        /* TRUST BAR */
+        .trust-bar {
+            background: var(--rot-clinical-white);
+            border-bottom: 1px solid var(--rot-border-subtle);
+            padding: 32px 48px;
+        }
+
+        .trust-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .trust-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--rot-bg-secondary);
+            border: 1px solid var(--rot-border-subtle);
+            border-radius: var(--rot-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .trust-text {
+            font-family: var(--rot-font-display);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--rot-slate-heavy);
+        }
+
+        .trust-sub {
+            font-family: var(--rot-font-mono);
+            font-size: 11px;
+            color: var(--rot-slate-light);
+        }
+
+        /* PRODUCTS SECTION */
+        .section-products {
+            padding: 96px 48px;
+        }
+
+        .section-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-label {
+            font-family: var(--rot-font-display);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--rot-action-primary);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: var(--rot-font-display);
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--rot-slate-heavy);
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            font-family: var(--rot-font-body);
+            font-size: 18px;
+            color: var(--rot-slate-core);
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .product-card {
+            background: var(--rot-clinical-white);
+            border: 1px solid var(--rot-border-subtle);
+            border-radius: var(--rot-radius-md);
+            padding: 24px;
+            transition: border-color 0ms;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .product-card:hover {
+            border-color: var(--rot-action-primary);
+        }
+
+        .product-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .product-category {
+            font-family: var(--rot-font-display);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--rot-slate-light);
+        }
+
+        .product-badge {
+            font-family: var(--rot-font-mono);
+            font-size: 10px;
+            font-weight: 500;
+            padding: 2px 8px;
+            border-radius: var(--rot-radius-sm);
+            background: var(--rot-valid-bg);
+            color: #065F46;
+        }
+
+        .product-name {
+            font-family: var(--rot-font-display);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--rot-slate-heavy);
+            margin-bottom: 8px;
+        }
+
+        .product-desc {
+            font-family: var(--rot-font-body);
+            font-size: 14px;
+            color: var(--rot-slate-core);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 16px;
+            border-top: 1px solid var(--rot-border-light);
+        }
+
+        .meta-item {}
+
+        .meta-label {
+            font-family: var(--rot-font-display);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--rot-slate-light);
+        }
+
+        .meta-value {
+            font-family: var(--rot-font-mono);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--rot-slate-heavy);
+        }
+
+        /* DARK SECTION - ANALYTICAL */
+        .section-dark {
+            background: var(--rot-blueprint-dark);
+            padding: 96px 48px;
+        }
+
+        .dark-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .dark-title {
+            font-family: var(--rot-font-display);
+            font-size: 32px;
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .dark-desc {
+            font-family: var(--rot-font-body);
+            font-size: 18px;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 64px;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .proof-card {
+            background: var(--rot-dark-surface);
+            border: 1px solid var(--rot-dark-divider);
+            border-radius: var(--rot-radius-md);
+            padding: 32px;
+        }
+
+        .proof-card-value {
+            font-family: var(--rot-font-mono);
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--rot-terminal-green);
+            margin-bottom: 8px;
+        }
+
+        .proof-card-title {
+            font-family: var(--rot-font-display);
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .proof-card-desc {
+            font-family: var(--rot-font-body);
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.5;
+        }
+
+        /* EVIDENCE SECTION */
+        .section-evidence {
+            background: var(--rot-bg-secondary);
+            padding: 96px 48px;
+        }
+
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .evidence-card {
+            background: var(--rot-clinical-white);
+            border: 1px solid var(--rot-border-subtle);
+            border-radius: var(--rot-radius-md);
+            padding: 32px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .evidence-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--rot-bg-secondary);
+            border: 1px solid var(--rot-border-subtle);
+            border-radius: var(--rot-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .evidence-title {
+            font-family: var(--rot-font-display);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--rot-slate-heavy);
+            margin-bottom: 8px;
+        }
+
+        .evidence-desc {
+            font-family: var(--rot-font-body);
+            font-size: 14px;
+            color: var(--rot-slate-core);
+            line-height: 1.5;
+        }
+
+        .evidence-link {
+            font-family: var(--rot-font-body);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--rot-action-primary);
+            text-decoration: none;
+            margin-top: 12px;
+            display: inline-block;
+        }
+
+        .evidence-link:hover { color: var(--rot-action-hover); }
+
+        /* SPECS TABLE */
+        .section-specs {
+            padding: 96px 48px;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .specs-table thead th {
+            background: var(--rot-bg-secondary);
+            font-family: var(--rot-font-display);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--rot-slate-light);
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--rot-border-subtle);
+        }
+
+        .specs-table tbody td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--rot-border-light);
+            font-size: 14px;
+            color: var(--rot-slate-core);
+        }
+
+        .specs-table tbody tr:hover {
+            background: var(--rot-bg-secondary);
+        }
+
+        .specs-table .data-cell {
+            font-family: var(--rot-font-mono);
+            font-weight: 500;
+            color: var(--rot-slate-heavy);
+        }
+
+        /* CTA SECTION */
+        .section-cta {
+            background: var(--rot-foundational-blue);
+            padding: 96px 48px;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-family: var(--rot-font-display);
+            font-size: 32px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .cta-desc {
+            font-family: var(--rot-font-body);
+            font-size: 18px;
+            color: rgba(255,255,255,0.85);
+            max-width: 480px;
+            margin: 0 auto 40px;
+        }
+
+        .btn-white {
+            font-family: var(--rot-font-body);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--rot-foundational-blue);
+            background: white;
+            padding: 14px 40px;
+            border: none;
+            border-radius: var(--rot-radius-sm);
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0ms;
+        }
+
+        .btn-white:hover { background: var(--rot-bg-secondary); }
+        .btn-white:active { transform: translateY(1px); }
+
+        /* FOOTER */
+        .site-footer {
+            background: var(--rot-blueprint-dark);
+            padding: 64px 48px 32px;
+        }
+
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand-name {
+            font-family: var(--rot-font-display);
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand-desc {
+            font-family: var(--rot-font-body);
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+        }
+
+        .footer-col-title {
+            font-family: var(--rot-font-display);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--rot-slate-light);
+            margin-bottom: 20px;
+        }
+
+        .footer-link {
+            display: block;
+            font-family: var(--rot-font-body);
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin-bottom: 12px;
+        }
+
+        .footer-link:hover { color: white; }
+
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid var(--rot-dark-divider);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-copy {
+            font-family: var(--rot-font-mono);
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-cert {
+            display: flex;
+            gap: 16px;
+        }
+
+        .cert-badge {
+            font-family: var(--rot-font-mono);
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            padding: 4px 10px;
+            border: 1px solid var(--rot-dark-divider);
+            border-radius: var(--rot-radius-sm);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); }
+            .proof-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner { padding: 0 24px; }
+            .hero { padding: 64px 24px; }
+            .hero-title { font-size: 32px; }
+            .products-grid { grid-template-columns: 1fr; }
+            .proof-grid { grid-template-columns: 1fr; }
+            .evidence-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .trust-inner { flex-wrap: wrap; gap: 24px; }
+        }
+
+        /* i18n Language Toggle */
+        .lang-toggle { display: inline-flex; align-items: center; gap: 0; border: 1px solid var(--rot-border-subtle); border-radius: 2px; overflow: hidden; margin-left: 24px; }
+        .lang-btn { padding: 4px 10px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; background: #fff; color: var(--rot-slate-core); transition: all 0.15s; font-family: var(--rot-font-display); }
+        .lang-btn.active { background: var(--rot-foundational-blue); color: #fff; }
+        .lang-btn:hover:not(.active) { background: rgba(0, 102, 204, 0.08); }
+        [data-lang="zh"] { display: none !important; }
+        body.lang-zh [data-lang="zh"] { display: block !important; }
+        body.lang-zh span[data-lang="zh"], body.lang-zh a[data-lang="zh"], body.lang-zh button[data-lang="zh"] { display: inline !important; }
+        body.lang-zh [data-lang="en"] { display: none !important; }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="/" class="logo">VIASURG <span>CLINICAL INTELLIGENCE</span></a>
+            <nav class="nav-main">
+                <a href="#products" class="nav-link active"><span data-lang="en">Products</span><span data-lang="zh">产品中心</span></a>
+                <a href="#competitors" class="nav-link"><span data-lang="en">Specifications</span><span data-lang="zh">规格参数</span></a>
+                <a href="#evidence" class="nav-link"><span data-lang="en">Clinical Evidence</span><span data-lang="zh">临床证据</span></a>
+                <a href="#contact" class="nav-cta"><span data-lang="en">Request Quote</span><span data-lang="zh">询价</span></a>
+                <div class="lang-toggle">
+                    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+                    <button class="lang-btn" onclick="setLang('zh')">中</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-badge"><span data-lang="en">FDA 510(k) & CE MDR Certified</span><span data-lang="zh">FDA 510(k) 和 CE MDR 认证</span></div>
+                <h1 class="hero-title"><span data-lang="en">Deterministic<br>Medical Intelligence</span><span data-lang="zh">确定性<br>医疗智能</span></h1>
+                <p class="hero-subtitle"><span data-lang="en">ViaSurg replaces opaque supply chains with transparent, evidence-backed medical devices. Every product ships with verifiable compliance documentation and batch-level quality data.</span><span data-lang="zh">ViaSurg 以透明、循证的医疗设备取代不透明的供应链。每件产品都附带可验证的合规文件和批次级质量数据。</span></p>
+                <div class="hero-actions">
+                    <a href="#products" class="btn-primary"><span data-lang="en">View Products</span><span data-lang="zh">查看产品</span></a>
+                    <a href="#evidence" class="btn-secondary"><span data-lang="en">Download Evidence</span><span data-lang="zh">下载证据</span></a>
+                </div>
+                <div class="hero-proof">
+                    <div class="proof-item">
+                        <div class="proof-value">12</div>
+                        <div class="proof-label"><span data-lang="en">Product Lines</span><span data-lang="zh">产品线</span></div>
+                    </div>
+                    <div class="proof-item">
+                        <div class="proof-value">100%</div>
+                        <div class="proof-label"><span data-lang="en">Certified</span><span data-lang="zh">已认证</span></div>
+                    </div>
+                    <div class="proof-item">
+                        <div class="proof-value">40%</div>
+                        <div class="proof-label"><span data-lang="en">Cost Savings</span><span data-lang="zh">成本节省</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="visual-header"><span data-lang="en">QUALITY METRICS</span><span data-lang="zh">质量指标</span></div>
+                <div class="visual-metric">
+                    <span class="metric-name"><span data-lang="en">FDA 510(k) Status</span><span data-lang="zh">FDA 510(k) 状态</span></span>
+                    <span class="metric-val green"><span data-lang="en">✓ Cleared</span><span data-lang="zh">✓ 已获批</span></span>
+                </div>
+                <div class="visual-metric">
+                    <span class="metric-name"><span data-lang="en">CE MDR Compliance</span><span data-lang="zh">CE MDR 合规</span></span>
+                    <span class="metric-val green"><span data-lang="en">✓ Certified</span><span data-lang="zh">✓ 已认证</span></span>
+                </div>
+                <div class="visual-metric">
+                    <span class="metric-name"><span data-lang="en">ISO 13485 QMS</span><span data-lang="zh">ISO 13485 质量管理</span></span>
+                    <span class="metric-val green"><span data-lang="en">✓ Active</span><span data-lang="zh">✓ 有效</span></span>
+                </div>
+                <div class="visual-metric">
+                    <span class="metric-name"><span data-lang="en">Batch Traceability</span><span data-lang="zh">批次追溯</span></span>
+                    <span class="metric-val green"><span data-lang="en">✓ 100%</span><span data-lang="zh">✓ 100%</span></span>
+                </div>
+                <div class="visual-metric">
+                    <span class="metric-name"><span data-lang="en">NomoFlow™ Monitoring</span><span data-lang="zh">NomoFlow™ 监控</span></span>
+                    <span class="metric-val green"><span data-lang="en">✓ Real-time</span><span data-lang="zh">✓ 实时</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <div class="trust-bar">
+        <div class="trust-inner">
+            <div class="trust-item">
+                <div class="trust-icon">📋</div>
+                <div>
+                    <div class="trust-text"><span data-lang="en">FDA Registered</span><span data-lang="zh">FDA 注册</span></div>
+                    <div class="trust-sub"><span data-lang="en">21 CFR 807 Compliant</span><span data-lang="zh">符合 21 CFR 807</span></div>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">🇪🇺</div>
+                <div>
+                    <div class="trust-text"><span data-lang="en">CE MDR Certified</span><span data-lang="zh">CE MDR 认证</span></div>
+                    <div class="trust-sub"><span data-lang="en">EU Medical Device Regulation</span><span data-lang="zh">欧盟医疗器械法规</span></div>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">🔬</div>
+                <div>
+                    <div class="trust-text"><span data-lang="en">ISO 13485</span><span data-lang="zh">ISO 13485</span></div>
+                    <div class="trust-sub"><span data-lang="en">Quality Management System</span><span data-lang="zh">质量管理体系</span></div>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">📊</div>
+                <div>
+                    <div class="trust-text"><span data-lang="en">NomoFlow™</span><span data-lang="zh">NomoFlow™</span></div>
+                    <div class="trust-sub"><span data-lang="en">AI-Powered QA</span><span data-lang="zh">AI 驱动的质量保证</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCTS -->
+    <section class="section-products" id="products">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-label"><span data-lang="en">Product Portfolio</span><span data-lang="zh">产品组合</span></div>
+                <h2 class="section-title"><span data-lang="en">Clinical-Grade Medical Devices</span><span data-lang="zh">临床级医疗设备</span></h2>
+                <p class="section-desc"><span data-lang="en">Each product is backed by verifiable compliance documentation and transparent manufacturing data.</span><span data-lang="zh">每款产品都附带可验证的合规文件和透明的制造数据。</span></p>
+            </div>
+            <div class="products-grid">
+                
+                <a class="product-card" href="/output/pages/absorbable-sutures.html">
+                    <div class="product-card-header">
+                        <span class="product-category">Sutures</span>
+                        <span class="product-badge"><span data-lang="en">Verified</span><span data-lang="zh">已验证</span></span>
+                    </div>
+                    <h3 class="product-name">Absorbable Sutures</h3>
+                    <p class="product-desc">Target generic search intent</p>
+                    <p class="product-desc" style="font-size:12px;color:var(--rot-slate-light);margin-top:4px;border-top:1px solid var(--rot-border-light);padding-top:8px;">可吸收缝合线 (Absorbable Sutures) · 伤口闭合 > 缝合线</p>
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">CPC VALUE</span><span data-lang="zh">CPC 价值</span></div>
+                            <div class="meta-value">$14.91</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">STATUS</span><span data-lang="zh">状态</span></div>
+                            <div class="meta-value"><span data-lang="en">Active</span><span data-lang="zh">活跃</span></div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a class="product-card" href="/output/pages/biopsy-forceps.html">
+                    <div class="product-card-header">
+                        <span class="product-category">Instrumentation</span>
+                        <span class="product-badge"><span data-lang="en">Verified</span><span data-lang="zh">已验证</span></span>
+                    </div>
+                    <h3 class="product-name">Biopsy Forceps</h3>
+                    <p class="product-desc">Dominate this category with a "Bottom Price + Ready Stock" (底价+现货) model to displace incumbent suppliers</p>
+                    
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">CPC VALUE</span><span data-lang="zh">CPC 价值</span></div>
+                            <div class="meta-value">$49.06</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">STATUS</span><span data-lang="zh">状态</span></div>
+                            <div class="meta-value"><span data-lang="en">Active</span><span data-lang="zh">活跃</span></div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a class="product-card" href="/output/pages/guidewires.html">
+                    <div class="product-card-header">
+                        <span class="product-category">Medical Device</span>
+                        <span class="product-badge"><span data-lang="en">Verified</span><span data-lang="zh">已验证</span></span>
+                    </div>
+                    <h3 class="product-name">Guidewires</h3>
+                    <p class="product-desc">Stable volume-driver</p>
+                    
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">CPC VALUE</span><span data-lang="zh">CPC 价值</span></div>
+                            <div class="meta-value">$3.10</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">STATUS</span><span data-lang="zh">状态</span></div>
+                            <div class="meta-value"><span data-lang="en">Active</span><span data-lang="zh">活跃</span></div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a class="product-card" href="/output/pages/hemoclips.html">
+                    <div class="product-card-header">
+                        <span class="product-category">Clips</span>
+                        <span class="product-badge"><span data-lang="en">Verified</span><span data-lang="zh">已验证</span></span>
+                    </div>
+                    <h3 class="product-name">Hemoclips</h3>
+                    <p class="product-desc">Provision of Hemoclips appliers to bind long-term consumable consumption, reducing capital expenditure for the hospital</p>
+                    
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">CPC VALUE</span><span data-lang="zh">CPC 价值</span></div>
+                            <div class="meta-value">$6.64</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">STATUS</span><span data-lang="zh">状态</span></div>
+                            <div class="meta-value"><span data-lang="en">Active</span><span data-lang="zh">活跃</span></div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a class="product-card" href="/output/pages/hernia-meshes.html">
+                    <div class="product-card-header">
+                        <span class="product-category">Medical Device</span>
+                        <span class="product-badge"><span data-lang="en">Verified</span><span data-lang="zh">已验证</span></span>
+                    </div>
+                    <h3 class="product-name">Hernia Meshes</h3>
+                    <p class="product-desc">Material-first messaging</p>
+                    
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">CPC VALUE</span><span data-lang="zh">CPC 价值</span></div>
+                            <div class="meta-value">$6.79</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">STATUS</span><span data-lang="zh">状态</span></div>
+                            <div class="meta-value"><span data-lang="en">Active</span><span data-lang="zh">活跃</span></div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a class="product-card" href="/output/pages/non-absorbable-sutures.html">
+                    <div class="product-card-header">
+                        <span class="product-category">Sutures</span>
+                        <span class="product-badge"><span data-lang="en">Verified</span><span data-lang="zh">已验证</span></span>
+                    </div>
+                    <h3 class="product-name">Non Absorbable Sutures</h3>
+                    <p class="product-desc">Comprehensive SKU Matrix</p>
+                    
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">CPC VALUE</span><span data-lang="zh">CPC 价值</span></div>
+                            <div class="meta-value">$6.00</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">STATUS</span><span data-lang="zh">状态</span></div>
+                            <div class="meta-value"><span data-lang="en">Active</span><span data-lang="zh">活跃</span></div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a class="product-card" href="/output/pages/polymer-clips.html">
+                    <div class="product-card-header">
+                        <span class="product-category">Clips</span>
+                        <span class="product-badge"><span data-lang="en">Verified</span><span data-lang="zh">已验证</span></span>
+                    </div>
+                    <h3 class="product-name">Polymer Clips</h3>
+                    <p class="product-desc">Ecosystem capture</p>
+                    
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">CPC VALUE</span><span data-lang="zh">CPC 价值</span></div>
+                            <div class="meta-value">$6.43</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">STATUS</span><span data-lang="zh">状态</span></div>
+                            <div class="meta-value"><span data-lang="en">Active</span><span data-lang="zh">活跃</span></div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a class="product-card" href="/output/pages/snares.html">
+                    <div class="product-card-header">
+                        <span class="product-category">Instrumentation</span>
+                        <span class="product-badge"><span data-lang="en">Verified</span><span data-lang="zh">已验证</span></span>
+                    </div>
+                    <h3 class="product-name">Snares</h3>
+                    <p class="product-desc">Focus on "Cold Snare" as a safety-first, electricity-free alternative for rapid outpatient procedures</p>
+                    
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">CPC VALUE</span><span data-lang="zh">CPC 价值</span></div>
+                            <div class="meta-value">$4.52</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">STATUS</span><span data-lang="zh">状态</span></div>
+                            <div class="meta-value"><span data-lang="en">Active</span><span data-lang="zh">活跃</span></div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a class="product-card" href="/output/pages/staplers.html">
+                    <div class="product-card-header">
+                        <span class="product-category">Instrumentation</span>
+                        <span class="product-badge"><span data-lang="en">Verified</span><span data-lang="zh">已验证</span></span>
+                    </div>
+                    <h3 class="product-name">Staplers</h3>
+                    <p class="product-desc">Ultimate SKU Snipe (终极 SKU 狙击战)</p>
+                    
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">CPC VALUE</span><span data-lang="zh">CPC 价值</span></div>
+                            <div class="meta-value">$9.79</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">STATUS</span><span data-lang="zh">状态</span></div>
+                            <div class="meta-value"><span data-lang="en">Active</span><span data-lang="zh">活跃</span></div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a class="product-card" href="/output/pages/trocars.html">
+                    <div class="product-card-header">
+                        <span class="product-category">Access</span>
+                        <span class="product-badge"><span data-lang="en">Verified</span><span data-lang="zh">已验证</span></span>
+                    </div>
+                    <h3 class="product-name">Trocars</h3>
+                    <p class="product-desc">Clinically validated medical device with transparent manufacturing and evidence-backed performance.</p>
+                    
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">CPC VALUE</span><span data-lang="zh">CPC 价值</span></div>
+                            <div class="meta-value">$9.00</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">STATUS</span><span data-lang="zh">状态</span></div>
+                            <div class="meta-value"><span data-lang="en">Active</span><span data-lang="zh">活跃</span></div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a class="product-card" href="/output/pages/ultrasonic-shears.html">
+                    <div class="product-card-header">
+                        <span class="product-category">Instrumentation</span>
+                        <span class="product-badge"><span data-lang="en">Verified</span><span data-lang="zh">已验证</span></span>
+                    </div>
+                    <h3 class="product-name">Ultrasonic Shears</h3>
+                    <p class="product-desc">"Compatibility War" (兼容性战争)</p>
+                    
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">CPC VALUE</span><span data-lang="zh">CPC 价值</span></div>
+                            <div class="meta-value">$2.94</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">STATUS</span><span data-lang="zh">状态</span></div>
+                            <div class="meta-value"><span data-lang="en">Active</span><span data-lang="zh">活跃</span></div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a class="product-card" href="/output/pages/veress-needles.html">
+                    <div class="product-card-header">
+                        <span class="product-category">Access</span>
+                        <span class="product-badge"><span data-lang="en">Verified</span><span data-lang="zh">已验证</span></span>
+                    </div>
+                    <h3 class="product-name">Veress Needles</h3>
+                    <p class="product-desc">Volume standard</p>
+                    
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">CPC VALUE</span><span data-lang="zh">CPC 价值</span></div>
+                            <div class="meta-value">$7.00</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label"><span data-lang="en">STATUS</span><span data-lang="zh">状态</span></div>
+                            <div class="meta-value"><span data-lang="en">Active</span><span data-lang="zh">活跃</span></div>
+                        </div>
+                    </div>
+                </a>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- DARK SECTION - PROOF -->
+    <section class="section-dark">
+        <div class="dark-inner">
+            <h2 class="dark-title"><span data-lang="en">The Glass Factory Advantage</span><span data-lang="zh">玻璃工厂优势</span></h2>
+            <p class="dark-desc"><span data-lang="en">Unlike incumbents that rely on opaque pricing and invisible supply chains, ViaSurg provides deterministic engineering proof.</span><span data-lang="zh">与依赖不透明定价和隐形供应链的现有企业不同，ViaSurg 提供确定性的工程证明。</span></p>
+            <div class="proof-grid">
+                <div class="proof-card">
+                    <div class="proof-card-value">100%</div>
+                    <div class="proof-card-title"><span data-lang="en">Batch Traceability</span><span data-lang="zh">100% 批次追溯</span></div>
+                    <div class="proof-card-desc"><span data-lang="en">Every product ships with a digital link to its specific quality verification report and manufacturing batch log.</span><span data-lang="zh">每件产品都附带指向其特定质量验证报告和制造批次日志的数字链接。</span></div>
+                </div>
+                <div class="proof-card">
+                    <div class="proof-card-value">40%</div>
+                    <div class="proof-card-title"><span data-lang="en">Cost Reduction</span><span data-lang="zh">40% 成本降低</span></div>
+                    <div class="proof-card-desc"><span data-lang="en">Direct B2B pricing eliminates the traditional 3-4 layer distribution markup while maintaining identical quality standards.</span><span data-lang="zh">直接 B2B 定价消除了传统的 3-4 层分销加价，同时保持相同的质量标准。</span></div>
+                </div>
+                <div class="proof-card">
+                    <div class="proof-card-value">24h</div>
+                    <div class="proof-card-title"><span data-lang="en">Response Time</span><span data-lang="zh">24 小时响应</span></div>
+                    <div class="proof-card-desc"><span data-lang="en">NomoFlow™ AI monitoring enables real-time quality alerts and 24-hour technical support response commitment.</span><span data-lang="zh">NomoFlow™ AI 监控实现实时质量警报和 24 小时技术支持响应承诺。</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVIDENCE -->
+    <section class="section-evidence" id="evidence">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-label"><span data-lang="en">Evidence Protocol</span><span data-lang="zh">证据协议</span></div>
+                <h2 class="section-title"><span data-lang="en">Verified Documentation</span><span data-lang="zh">经验证的文件</span></h2>
+                <p class="section-desc"><span data-lang="en">Every claim is backed by verifiable evidence. Access compliance certificates, clinical data, and quality reports.</span><span data-lang="zh">每项声明都有可验证的证据支持。获取合规证书、临床数据和质量报告。</span></p>
+            </div>
+            <div class="evidence-grid">
+                <div class="evidence-card">
+                    <div class="evidence-icon">📋</div>
+                    <div>
+                        <h3 class="evidence-title"><span data-lang="en">FDA 510(k) Clearance Letters</span><span data-lang="zh">FDA 510(k) 批准函</span></h3>
+                        <p class="evidence-desc"><span data-lang="en">Access official FDA clearance documentation for all registered products. Verified against the FDA 510(k) database.</span><span data-lang="zh">获取所有注册产品的官方 FDA 批准文件。根据 FDA 510(k) 数据库验证。</span></p>
+                        <a href="#" class="evidence-link"><span data-lang="en">Download PDF →</span><span data-lang="zh">下载 PDF →</span></a>
+                    </div>
+                </div>
+                <div class="evidence-card">
+                    <div class="evidence-icon">🇪🇺</div>
+                    <div>
+                        <h3 class="evidence-title"><span data-lang="en">CE MDR Certificates</span><span data-lang="zh">CE MDR 证书</span></h3>
+                        <p class="evidence-desc"><span data-lang="en">European conformity certificates issued by notified bodies. Full compliance with EU Medical Device Regulation.</span><span data-lang="zh">由公告机构颁发的欧洲合格证书。完全符合欧盟医疗器械法规。</span></p>
+                        <a href="#" class="evidence-link"><span data-lang="en">Download PDF →</span><span data-lang="zh">下载 PDF →</span></a>
+                    </div>
+                </div>
+                <div class="evidence-card">
+                    <div class="evidence-icon">🔬</div>
+                    <div>
+                        <h3 class="evidence-title"><span data-lang="en">Clinical Evaluation Reports</span><span data-lang="zh">临床评价报告</span></h3>
+                        <p class="evidence-desc"><span data-lang="en">Peer-reviewed clinical data supporting safety and efficacy claims. Updated quarterly with latest study results.</span><span data-lang="zh">支持安全性和有效性声明的同行评审临床数据。每季度更新最新研究结果。</span></p>
+                        <a href="#" class="evidence-link"><span data-lang="en">Download PDF →</span><span data-lang="zh">下载 PDF →</span></a>
+                    </div>
+                </div>
+                <div class="evidence-card">
+                    <div class="evidence-icon">📊</div>
+                    <div>
+                        <h3 class="evidence-title"><span data-lang="en">Batch Quality Reports</span><span data-lang="zh">批次质量报告</span></h3>
+                        <p class="evidence-desc"><span data-lang="en">Real-time manufacturing quality data from NomoFlow™. Access batch-specific QC metrics and test results.</span><span data-lang="zh">来自 NomoFlow™ 的实时制造质量数据。访问批次特定的 QC 指标和测试结果。</span></p>
+                        <a href="#" class="evidence-link"><span data-lang="en">View Dashboard →</span><span data-lang="zh">查看仪表板 →</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECS TABLE -->
+    <section class="section-specs" id="specs">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-label"><span data-lang="en">Technical Specifications</span><span data-lang="zh">技术规格</span></div>
+                <h2 class="section-title"><span data-lang="en">Product Cross-Reference</span><span data-lang="zh">产品规格对比</span></h2>
+                <p class="section-desc"><span data-lang="en">Direct technical equivalents to incumbent products with verified compatibility.</span><span data-lang="zh">比较所有 ViaSurg 产品的技术规格。</span></p>
+            </div>
+            <table class="specs-table">
+                <thead>
+                    <tr>
+                        <th><span data-lang="en">VIASURG PRODUCT</span><span data-lang="zh">ViaSurg 产品</span></th>
+                        <th><span data-lang="en">CATEGORY</span><span data-lang="zh">类别</span></th>
+                        <th><span data-lang="en">EQUIVALENT TO</span><span data-lang="zh">等效产品</span></th>
+                        <th><span data-lang="en">CPC VALUE</span><span data-lang="zh">CPC 价值</span></th>
+                        <th><span data-lang="en">STATUS</span><span data-lang="zh">状态</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td class="data-cell">Absorbable Sutures</td>
+                        <td>Sutures</td>
+                        <td>Ethicon (Vicryl, Monocryl)</td>
+                        <td class="data-cell">$14.91</td>
+                        <td><span style="color: var(--rot-valid); font-family: var(--rot-font-mono); font-size: 12px;"><span data-lang="en">✓ Active</span><span data-lang="zh">✓ 活跃</span></span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="data-cell">Biopsy Forceps</td>
+                        <td>Instrumentation</td>
+                        <td>Olympus, ConMed</td>
+                        <td class="data-cell">$49.06</td>
+                        <td><span style="color: var(--rot-valid); font-family: var(--rot-font-mono); font-size: 12px;"><span data-lang="en">✓ Active</span><span data-lang="zh">✓ 活跃</span></span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="data-cell">Guidewires</td>
+                        <td>Medical Device</td>
+                        <td>Terumo, Boston Scientific</td>
+                        <td class="data-cell">$3.10</td>
+                        <td><span style="color: var(--rot-valid); font-family: var(--rot-font-mono); font-size: 12px;"><span data-lang="en">✓ Active</span><span data-lang="zh">✓ 活跃</span></span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="data-cell">Hemoclips</td>
+                        <td>Clips</td>
+                        <td>OEM Equivalent</td>
+                        <td class="data-cell">$6.64</td>
+                        <td><span style="color: var(--rot-valid); font-family: var(--rot-font-mono); font-size: 12px;"><span data-lang="en">✓ Active</span><span data-lang="zh">✓ 活跃</span></span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="data-cell">Hernia Meshes</td>
+                        <td>Medical Device</td>
+                        <td>Bard (BD), Ethicon</td>
+                        <td class="data-cell">$6.79</td>
+                        <td><span style="color: var(--rot-valid); font-family: var(--rot-font-mono); font-size: 12px;"><span data-lang="en">✓ Active</span><span data-lang="zh">✓ 活跃</span></span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="data-cell">Non Absorbable Sutures</td>
+                        <td>Sutures</td>
+                        <td>Ethicon (Prolene, Ethilon)</td>
+                        <td class="data-cell">$6.00</td>
+                        <td><span style="color: var(--rot-valid); font-family: var(--rot-font-mono); font-size: 12px;"><span data-lang="en">✓ Active</span><span data-lang="zh">✓ 活跃</span></span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="data-cell">Polymer Clips</td>
+                        <td>Clips</td>
+                        <td>Teleflex (Hem-o-lok)</td>
+                        <td class="data-cell">$6.43</td>
+                        <td><span style="color: var(--rot-valid); font-family: var(--rot-font-mono); font-size: 12px;"><span data-lang="en">✓ Active</span><span data-lang="zh">✓ 活跃</span></span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="data-cell">Snares</td>
+                        <td>Instrumentation</td>
+                        <td>Olympus, Cook Medical</td>
+                        <td class="data-cell">$4.52</td>
+                        <td><span style="color: var(--rot-valid); font-family: var(--rot-font-mono); font-size: 12px;"><span data-lang="en">✓ Active</span><span data-lang="zh">✓ 活跃</span></span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="data-cell">Staplers</td>
+                        <td>Instrumentation</td>
+                        <td>Ethicon, Medtronic</td>
+                        <td class="data-cell">$9.79</td>
+                        <td><span style="color: var(--rot-valid); font-family: var(--rot-font-mono); font-size: 12px;"><span data-lang="en">✓ Active</span><span data-lang="zh">✓ 活跃</span></span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="data-cell">Trocars</td>
+                        <td>Access</td>
+                        <td>OEM Equivalent</td>
+                        <td class="data-cell">$9.00</td>
+                        <td><span style="color: var(--rot-valid); font-family: var(--rot-font-mono); font-size: 12px;"><span data-lang="en">✓ Active</span><span data-lang="zh">✓ 活跃</span></span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="data-cell">Ultrasonic Shears</td>
+                        <td>Instrumentation</td>
+                        <td>Ethicon (Harmonic Scalpel)</td>
+                        <td class="data-cell">$2.94</td>
+                        <td><span style="color: var(--rot-valid); font-family: var(--rot-font-mono); font-size: 12px;"><span data-lang="en">✓ Active</span><span data-lang="zh">✓ 活跃</span></span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="data-cell">Veress Needles</td>
+                        <td>Access</td>
+                        <td>Ethicon</td>
+                        <td class="data-cell">$7.00</td>
+                        <td><span style="color: var(--rot-valid); font-family: var(--rot-font-mono); font-size: 12px;"><span data-lang="en">✓ Active</span><span data-lang="zh">✓ 活跃</span></span></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-cta" id="contact">
+        <h2 class="cta-title"><span data-lang="en">Request Clinical Evidence Package</span><span data-lang="zh">申请临床证据包</span></h2>
+        <p class="cta-desc"><span data-lang="en">Get access to full compliance documentation, clinical data, and pricing for your institution.</span><span data-lang="zh">获取完整的合规文件、临床数据和您机构的定价。</span></p>
+        <a href="mailto:info@viasurg.com" class="btn-white"><span data-lang="en">Contact ViaSurg</span><span data-lang="zh">联系 ViaSurg</span></a>
+    </section>
+
+    <!-- COMPETITOR COMPARISON (from wiki entities) -->
+    <section class="section-dark" id="competitors" style="background:var(--rot-blueprint-dark);padding:80px 48px;">
+        <div style="max-width:1280px;margin:0 auto;">
+            <div style="font-family:var(--rot-font-display);font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--rot-terminal-green);margin-bottom:16px;"><span data-lang="en">COMPETITIVE INTELLIGENCE</span><span data-lang="zh">竞争情报</span></div>
+            <h2 style="font-family:var(--rot-font-display);font-size:32px;font-weight:700;color:white;margin-bottom:12px;"><span data-lang="en">Direct Equivalents to Incumbent Products</span><span data-lang="zh">与现有产品的直接等效</span></h2>
+            <p style="font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:48px;max-width:700px;"><span data-lang="en">ViaSurg provides verified 1:1 cross-references to high-cost incumbent products. Every equivalence is backed by NomoFlow™ batch-level quality data.</span><span data-lang="zh">ViaSurg 提供经过验证的 1:1 高成本现有产品交叉引用。每项等效都有 NomoFlow™ 批次级质量数据支持。</span></p>
+            <table style="width:100%;border-collapse:collapse;font-size:14px;">
+                <thead>
+                    <tr>
+                        <th style="text-align:left;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.15);font-family:var(--rot-font-display);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--rot-slate-light);"><span data-lang="en">INCUMBENT</span><span data-lang="zh">现有品牌</span></th>
+                        <th style="text-align:left;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.15);font-family:var(--rot-font-display);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--rot-slate-light);"><span data-lang="en">PRODUCT LINE</span><span data-lang="zh">产品线</span></th>
+                        <th style="text-align:left;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.15);font-family:var(--rot-font-display);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--rot-slate-light);"><span data-lang="en">MARKET PAIN POINT</span><span data-lang="zh">市场痛点</span></th>
+                        <th style="text-align:left;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.15);font-family:var(--rot-font-display);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--rot-terminal-green);"><span data-lang="en">VIASURG DISRUPTION</span><span data-lang="zh">ViaSurg 颠覆</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:white;font-weight:600;"><a href="/output/pages/competitor-bard.html" style="color:white;text-decoration:underline;text-underline-offset:3px;">Bard</a></td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Ventralight (Hernia Mesh), PowerPICC (Catheters).</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Market inefficiency</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:var(--rot-terminal-green);font-family:var(--rot-font-mono);font-size:13px;">Transparent manufacturing</td>
+                        </tr><tr>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:white;font-weight:600;"><a href="/output/pages/competitor-boston-scientific.html" style="color:white;text-decoration:underline;text-underline-offset:3px;">Boston Scientific</a></td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Jagwire (Guidewires), Resolution Clip (Hemoclips), SpyGlass (Endoscopy).</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Market inefficiency</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:var(--rot-terminal-green);font-family:var(--rot-font-mono);font-size:13px;">Transparent manufacturing</td>
+                        </tr><tr>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:white;font-weight:600;"><a href="/output/pages/competitor-competitor-disruption.html" style="color:white;text-decoration:underline;text-underline-offset:3px;">Competitor Disruption</a></td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Multiple lines</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Opaque</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:var(--rot-terminal-green);font-family:var(--rot-font-mono);font-size:13px;">Verified</td>
+                        </tr><tr>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:white;font-weight:600;"><a href="/output/pages/competitor-cook-medical.html" style="color:white;text-decoration:underline;text-underline-offset:3px;">Cook Medical</a></td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Amplatz (Guidewires), Bakri Balloon (OB/GYN), Snares.</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Market inefficiency</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:var(--rot-terminal-green);font-family:var(--rot-font-mono);font-size:13px;">Transparent manufacturing</td>
+                        </tr><tr>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:white;font-weight:600;"><a href="/output/pages/competitor-ethicon.html" style="color:white;text-decoration:underline;text-underline-offset:3px;">Ethicon</a></td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Vicryl (Sutures), Harmonic Scalpel (Ultrasonic Shears), Echelon (Staplers).</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Market inefficiency</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:var(--rot-terminal-green);font-family:var(--rot-font-mono);font-size:13px;">Transparent manufacturing</td>
+                        </tr><tr>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:white;font-weight:600;"><a href="/output/pages/competitor-medtronic.html" style="color:white;text-decoration:underline;text-underline-offset:3px;">Medtronic</a></td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Endo GIA (Staplers), Sonicision (Ultrasonic Shears), Ligasure (Vessel Sealing).</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Market inefficiency</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:var(--rot-terminal-green);font-family:var(--rot-font-mono);font-size:13px;">Transparent manufacturing</td>
+                        </tr><tr>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:white;font-weight:600;"><a href="/output/pages/competitor-olympus.html" style="color:white;text-decoration:underline;text-underline-offset:3px;">Olympus</a></td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">QuickClip (Hemoclips), Single-Use Biopsy Forceps, Cold Snares.</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Market inefficiency</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:var(--rot-terminal-green);font-family:var(--rot-font-mono);font-size:13px;">Transparent manufacturing</td>
+                        </tr><tr>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:white;font-weight:600;"><a href="/output/pages/competitor-teleflex.html" style="color:white;text-decoration:underline;text-underline-offset:3px;">Teleflex</a></td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Hem-o-lok (Polymer Clips), Weck (Surgical Clips), LMA (Airway Management).</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Market inefficiency</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:var(--rot-terminal-green);font-family:var(--rot-font-mono);font-size:13px;">Transparent manufacturing</td>
+                        </tr><tr>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:white;font-weight:600;"><a href="/output/pages/competitor-terumo.html" style="color:white;text-decoration:underline;text-underline-offset:3px;">Terumo</a></td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Pinnacle (Access Sheaths), Zebra (Guidewires), Radifocus (Guidewires).</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Market inefficiency</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:var(--rot-terminal-green);font-family:var(--rot-font-mono);font-size:13px;">Transparent manufacturing</td>
+                        </tr><tr>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:white;font-weight:600;"><a href="/output/pages/competitor-viasurg-academy.html" style="color:white;text-decoration:underline;text-underline-offset:3px;">ViaSurg Academy</a></td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Multiple lines</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);">Market inefficiency</td>
+                            <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);color:var(--rot-terminal-green);font-family:var(--rot-font-mono);font-size:13px;">Transparent manufacturing</td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- CATEGORIES (from wiki entities) -->
+    <section style="background:var(--rot-clinical-white);padding:80px 48px;border-bottom:1px solid var(--rot-border-subtle);">
+        <div style="max-width:1280px;margin:0 auto;">
+            <div style="font-family:var(--rot-font-display);font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--rot-action-primary);margin-bottom:16px;"><span data-lang="en">PRODUCT CATEGORIES</span><span data-lang="zh">产品类别</span></div>
+            <h2 style="font-family:var(--rot-font-display);font-size:32px;font-weight:700;color:var(--rot-slate-heavy);margin-bottom:48px;"><span data-lang="en">Browse by Category</span><span data-lang="zh">按类别浏览</span></h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(240px,1fr));gap:16px;">
+                <a href="/output/pages/category-access.html" style="background:var(--rot-bg-secondary);border:1px solid var(--rot-border-subtle);border-radius:4px;padding:20px;text-decoration:none;color:inherit;display:block;">
+                        <div style="font-family:var(--rot-font-display);font-size:15px;font-weight:600;color:var(--rot-slate-heavy);">Access</div>
+                        <div style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-slate-light);margin-top:4px;"><span data-lang="en">View Products →</span><span data-lang="zh">查看产品 →</span></div>
+                    </a><a href="/output/pages/category-clips.html" style="background:var(--rot-bg-secondary);border:1px solid var(--rot-border-subtle);border-radius:4px;padding:20px;text-decoration:none;color:inherit;display:block;">
+                        <div style="font-family:var(--rot-font-display);font-size:15px;font-weight:600;color:var(--rot-slate-heavy);">Clips</div>
+                        <div style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-slate-light);margin-top:4px;"><span data-lang="en">View Products →</span><span data-lang="zh">查看产品 →</span></div>
+                    </a><a href="/output/pages/category-instrumentation.html" style="background:var(--rot-bg-secondary);border:1px solid var(--rot-border-subtle);border-radius:4px;padding:20px;text-decoration:none;color:inherit;display:block;">
+                        <div style="font-family:var(--rot-font-display);font-size:15px;font-weight:600;color:var(--rot-slate-heavy);">Instrumentation</div>
+                        <div style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-slate-light);margin-top:4px;"><span data-lang="en">View Products →</span><span data-lang="zh">查看产品 →</span></div>
+                    </a><a href="/output/pages/category-intelligence.html" style="background:var(--rot-bg-secondary);border:1px solid var(--rot-border-subtle);border-radius:4px;padding:20px;text-decoration:none;color:inherit;display:block;">
+                        <div style="font-family:var(--rot-font-display);font-size:15px;font-weight:600;color:var(--rot-slate-heavy);">Intelligence</div>
+                        <div style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-slate-light);margin-top:4px;"><span data-lang="en">View Products →</span><span data-lang="zh">查看产品 →</span></div>
+                    </a><a href="/output/pages/category-minimally-invasive-surgery.html" style="background:var(--rot-bg-secondary);border:1px solid var(--rot-border-subtle);border-radius:4px;padding:20px;text-decoration:none;color:inherit;display:block;">
+                        <div style="font-family:var(--rot-font-display);font-size:15px;font-weight:600;color:var(--rot-slate-heavy);">Minimally Invasive Surgery</div>
+                        <div style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-slate-light);margin-top:4px;"><span data-lang="en">View Products →</span><span data-lang="zh">查看产品 →</span></div>
+                    </a><a href="/output/pages/category-nomoflow-solutions.html" style="background:var(--rot-bg-secondary);border:1px solid var(--rot-border-subtle);border-radius:4px;padding:20px;text-decoration:none;color:inherit;display:block;">
+                        <div style="font-family:var(--rot-font-display);font-size:15px;font-weight:600;color:var(--rot-slate-heavy);">NomoFlow Solutions</div>
+                        <div style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-slate-light);margin-top:4px;"><span data-lang="en">View Products →</span><span data-lang="zh">查看产品 →</span></div>
+                    </a><a href="/output/pages/category-sutures.html" style="background:var(--rot-bg-secondary);border:1px solid var(--rot-border-subtle);border-radius:4px;padding:20px;text-decoration:none;color:inherit;display:block;">
+                        <div style="font-family:var(--rot-font-display);font-size:15px;font-weight:600;color:var(--rot-slate-heavy);">Sutures</div>
+                        <div style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-slate-light);margin-top:4px;"><span data-lang="en">View Products →</span><span data-lang="zh">查看产品 →</span></div>
+                    </a><a href="/output/pages/category-wound-closure.html" style="background:var(--rot-bg-secondary);border:1px solid var(--rot-border-subtle);border-radius:4px;padding:20px;text-decoration:none;color:inherit;display:block;">
+                        <div style="font-family:var(--rot-font-display);font-size:15px;font-weight:600;color:var(--rot-slate-heavy);">Wound Closure</div>
+                        <div style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-slate-light);margin-top:4px;"><span data-lang="en">View Products →</span><span data-lang="zh">查看产品 →</span></div>
+                    </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MATERIALS & TECHNOLOGY (from wiki entities) -->
+    <section style="background:var(--rot-bg-secondary);padding:80px 48px;border-top:1px solid var(--rot-border-subtle);border-bottom:1px solid var(--rot-border-subtle);">
+        <div style="max-width:1280px;margin:0 auto;">
+            <div style="font-family:var(--rot-font-display);font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--rot-action-primary);margin-bottom:16px;"><span data-lang="en">Material & TECHNOLOGY</span><span data-lang="zh">材料与技术</span></div>
+            <h2 style="font-family:var(--rot-font-display);font-size:32px;font-weight:700;color:var(--rot-slate-heavy);margin-bottom:48px;"><span data-lang="en">Technical Foundation</span><span data-lang="zh">技术基础</span></h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px,1fr));gap:24px;">
+                <a href="/output/pages/material-pga-material.html" style="background:white;border:1px solid var(--rot-border-subtle);border-radius:4px;padding:24px;text-decoration:none;color:inherit;display:block;">
+                        <div style="font-family:var(--rot-font-display);font-size:16px;font-weight:600;color:var(--rot-slate-heavy);margin-bottom:8px;">PGA Material</div>
+                        <p style="font-size:14px;color:var(--rot-slate-core);margin-bottom:12px;">A biodegradable, thermoplastic polymer and the simplest linear, aliphatic polyester. Used extensively in synthetic absorbable sutures.</p>
+                        <div style="font-family:var(--rot-font-mono);font-size:12px;color:var(--rot-slate-light);padding:4px 0;border-top:1px solid var(--rot-border-light);">Absorption Method: Hydrolysis.</div><div style="font-family:var(--rot-font-mono);font-size:12px;color:var(--rot-slate-light);padding:4px 0;border-top:1px solid var(--rot-border-light);">Tensile Strength Retention: High for the first 14-21 days.</div>
+                        <div style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-slate-light);margin-top:12px;"><span data-lang="en">View Details →</span><span data-lang="zh">了解更多 →</span></div>
+                    </a><a href="/output/pages/material-polypropylene-material.html" style="background:white;border:1px solid var(--rot-border-subtle);border-radius:4px;padding:24px;text-decoration:none;color:inherit;display:block;">
+                        <div style="font-family:var(--rot-font-display);font-size:16px;font-weight:600;color:var(--rot-slate-heavy);margin-bottom:8px;">Polypropylene Material</div>
+                        <p style="font-size:14px;color:var(--rot-slate-core);margin-bottom:12px;">A rugged and unusually resistant thermoplastic polymer. In surgery, it is used for non-absorbable monofilament sutures and hernia meshes.</p>
+                        <div style="font-family:var(--rot-font-mono);font-size:12px;color:var(--rot-slate-light);padding:4px 0;border-top:1px solid var(--rot-border-light);">Durability: Permanent wound support.</div><div style="font-family:var(--rot-font-mono);font-size:12px;color:var(--rot-slate-light);padding:4px 0;border-top:1px solid var(--rot-border-light);">Reactivity: Extremely low tissue reaction.</div>
+                        <div style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-slate-light);margin-top:12px;"><span data-lang="en">View Details →</span><span data-lang="zh">了解更多 →</span></div>
+                    </a>
+                <a href="/output/pages/tech-nomoflow-technology.html" style="background:white;border:1px solid var(--rot-border-subtle);border-radius:4px;padding:24px;border-left:3px solid var(--rot-terminal-green);text-decoration:none;color:inherit;display:block;">
+                        <div style="font-family:var(--rot-font-display);font-size:16px;font-weight:600;color:var(--rot-slate-heavy);margin-bottom:8px;">NomoFlow Technology <span style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-terminal-green);background:rgba(74,222,128,0.1);padding:2px 6px;border-radius:2px;">TECHNOLOGY</span></div>
+                        <p style="font-size:14px;color:var(--rot-slate-core);">NomoFlow™ is a closed-loop control platform designed to reduce batch variability through high-frequency parameter compensation. 1. Sensing: 150 nodes sample variables (Thermal, Pressure, Flow) at 1000</p>
+                        <div style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-slate-light);margin-top:12px;"><span data-lang="en">View Details →</span><span data-lang="zh">了解更多 →</span></div>
+                    </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (i18n: © 2026 ViaSurg. Powered by NomoFlow™ Technology. / © 2026 ViaSurg. 由 NomoFlow™ 技术驱动。) -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand-name">VIASURG</div>
+                    <p class="footer-brand-desc"><span data-lang="en">Clinical Intelligence Medical Device Platform. Powered by NomoFlow™ Technology for transparent, evidence-backed healthcare solutions.</span><span data-lang="zh">临床智能医疗设备平台。由 NomoFlow™ 技术驱动，提供透明、循证的医疗解决方案。</span></p>
+                </div>
+                <div>
+                    <div class="footer-col-title"><span data-lang="en">Products</span><span data-lang="zh">产品中心</span></div>
+                    <a href="/output/pages/cat-wound-closure.html" class="footer-link"><span data-lang="en">Wound Closure</span><span data-lang="zh">伤口闭合</span></a>
+                    <a href="/output/pages/cat-minimally-invasive-surgery.html" class="footer-link"><span data-lang="en">Minimally Invasive</span><span data-lang="zh">微创手术</span></a>
+                    <a href="/output/pages/cat-endoscopy-instruments.html" class="footer-link"><span data-lang="en">Endoscopy</span><span data-lang="zh">内窥镜</span></a>
+                    <a href="/output/pages/cat-nomoflow-solutions.html" class="footer-link">NomoFlow™</a>
+                </div>
+                <div>
+                    <div class="footer-col-title"><span data-lang="en">Clinical Evidence</span><span data-lang="zh">临床证据</span></div>
+                    <a href="/output/#evidence" class="footer-link"><span data-lang="en">FDA Clearances</span><span data-lang="zh">FDA 批准</span></a>
+                    <a href="/output/#evidence" class="footer-link"><span data-lang="en">CE Certificates</span><span data-lang="zh">CE 证书</span></a>
+                    <a href="/output/#evidence" class="footer-link"><span data-lang="en">Clinical Data</span><span data-lang="zh">临床数据</span></a>
+                    <a href="/output/#evidence" class="footer-link"><span data-lang="en">Quality Reports</span><span data-lang="zh">质量报告</span></a>
+                </div>
+                <div>
+                    <div class="footer-col-title"><span data-lang="en">Company</span><span data-lang="zh">公司</span></div>
+                    <a href="/output/#about" class="footer-link"><span data-lang="en">About ViaSurg</span><span data-lang="zh">关于 ViaSurg</span></a>
+                    <a href="/output/#contact" class="footer-link"><span data-lang="en">Contact</span><span data-lang="zh">联系我们</span></a>
+                    <a href="/output/#compliance" class="footer-link"><span data-lang="en">Compliance Statement</span><span data-lang="zh">合规声明</span></a>
+                    <a href="/output/#privacy" class="footer-link"><span data-lang="en">Privacy Policy</span><span data-lang="zh">隐私政策</span></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copy"><span data-lang="en">© 2026 ViaSurg. Powered by NomoFlow™ Technology.</span><span data-lang="zh">© 2026 ViaSurg. 由 NomoFlow™ 技术驱动。</span></div>
+                <div class="footer-cert">
+                    <span class="cert-badge">FDA REGISTERED</span>
+                    <span class="cert-badge">CE MDR</span>
+                    <span class="cert-badge">ISO 13485</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+    function setLang(lang) {
+        document.body.className = lang === 'zh' ? 'lang-zh' : '';
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === (lang === 'zh' ? '中' : 'EN')));
+        localStorage.setItem('viasurg-lang', lang);
+    }
+    (function() {
+        var saved = localStorage.getItem('viasurg-lang') || 'en';
+        if (saved === 'zh') setLang('zh');
+    })();
+    </script>
+</body>
+</html>

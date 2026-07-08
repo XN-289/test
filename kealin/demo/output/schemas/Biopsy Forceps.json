@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Biopsy Forceps",
+  "description": "Disposable Biopsy Forceps are a standard consumable in endoscopy suites and are considered a \"Cash Cow\" (第二大现金牛) for ViaSurg. - ViaSurg - Snares",
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "ViaSurg"
+  },
+  "category": "Instrumentation",
+  "url": "https://viasurg.com/output/pages/biopsy-forceps.html"
+}

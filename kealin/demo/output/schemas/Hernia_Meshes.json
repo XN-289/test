@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Hernia Meshes",
+  "description": "Surgical mesh for reinforcement of soft tissue defects in hernia repair. Primarily made from synthetic non-absorbable polymers (e.g., Polypropylene). - Staplers - Non_Absorbable_Sutures",
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "ViaSurg"
+  },
+  "category": "Medical Device",
+  "url": "https://viasurg.com/output/pages/hernia-meshes.html"
+}

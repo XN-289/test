@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Ultrasonic Shears",
+  "description": "Active energy device for simultaneous cutting and coagulation of tissue. Operates at ultrasonic frequencies (e.g., 55.5 kHz) to minimize thermal spread. - Trocars - ViaSurg",
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "ViaSurg"
+  },
+  "category": "Instrumentation",
+  "url": "https://viasurg.com/output/pages/ultrasonic-shears.html"
+}

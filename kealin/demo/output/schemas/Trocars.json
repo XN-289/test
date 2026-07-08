@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Trocars",
+  "description": "High-precision laparoscopic access instruments. Deterministic manufacturing via NomoFlow_Technology. - ViaSurg - Veress_Needles",
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "ViaSurg"
+  },
+  "category": "Access",
+  "url": "https://viasurg.com/output/pages/trocars.html"
+}

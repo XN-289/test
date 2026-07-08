@@ -1,0 +1,440 @@
+{
+  "loaded_at": "2026-07-07T04:42:32.509Z",
+  "entities": [
+    {
+      "name": "Absorbable_Sutures",
+      "file": "Absorbable_Sutures.md",
+      "content": "# Absorbable Sutures (可吸收缝线)\n\n## Overview\nSynthetic absorbable surgical sutures (e.g., PGA, PGLA). Designed to provide reliable wound support during critical healing and then absorb via hydrolysis.\n\n## Hierarchy\n- **Type**: [[Product]]\n- **Category**: [[Sutures]]\n- **Parent Category**: [[Wound_Closure]]\n- **Material**: [[PGA_Material]]\n- **Primary Use**: [[Laparoscopic_Surgery]]\n\n## Market Strategy\n- **Target Brands**: [[Ethicon]] ([[Vicryl]], [[Monocryl]]).\n- **High Intent Keywords**: `pga suture`, `vicryl suture`, `monocryl suture`, `polyglycolic acid suture`.\n- **CPC Range**: $8.74 - $21.07.\n- **Strategy**: Target generic search intent. High CPC for `PGA Suture` indicates significant OEM/B2B volume. Emphasize \"Pure Physical Material Quality\" over brand name.\n\n## Regulatory Status\n- **Priority**: Medium (Phase 2).\n- **Reasoning**: Absorbable materials require time-dependent biodegradation studies (e.g., tensile strength retention over 14, 28, 42 days).\n- **Action**: Use standard OBL route for Phase 1, followed by own-brand registration for premium suture variants.\n\n## Technical Specs\n- **Material**: Polyglycolic Acid (PGA) / Polyglactin 910 (PGLA).\n- **Structure**: Braided / Monofilament.\n- **Coating**: Polycaprolactone and Calcium Stearate.\n- **Absorption Time**: ~60-90 days (complete).\n\n## Related Entities\n- [[Staplers]]\n- [[ViaSurg]]\n- [[Ethicon]]\n",
+      "word_count": 178,
+      "has_links": true
+    },
+    {
+      "name": "Access",
+      "file": "Access.md",
+      "content": "# Access (通路管理)\n\n## Description\n手术切口建立与维持工具。\n\n## Hierarchy\n- **Type**: [[Category]]\n- **Parent**: [[Minimally_Invasive_Surgery]]\n- **Products**:\n    - [[Trocars]]\n    - [[Veress Needles]]\n",
+      "word_count": 22,
+      "has_links": true
+    },
+    {
+      "name": "Bard",
+      "file": "Bard.md",
+      "content": "# Bard (BD)\n\n## Overview\nC.R. Bard, Inc. is a leading medical technology company, now part of BD (Becton, Dickinson and Company).\n\n## Market Position\n- **Dominant Products**: [[Ventralight]] (Hernia Mesh), [[PowerPICC]] (Catheters).\n- **Strategy**: Global market leader in hernia mesh and vascular access.\n\n## ViaSurg Cross-Reference\n- **Hernia Mesh**: [[Hernia_Meshes]] (Polypropylene mesh equivalent).\n\n## Related Entities\n- [[ViaSurg]]\n- [[Ethicon]]\n- [[Medtronic]]\n",
+      "word_count": 64,
+      "has_links": true
+    },
+    {
+      "name": "Biopsy Forceps",
+      "file": "Biopsy Forceps.md",
+      "content": "# Biopsy Forceps (一次性活检钳)\n\n## Overview\nDisposable Biopsy Forceps are a standard consumable in endoscopy suites and are considered a \"Cash Cow\" (第二大现金牛) for [[ViaSurg]].\n\n## Hierarchy\n- **Type**: [[Product]]\n- **Category**: [[Instrumentation]]\n- **Parent Category**: [[Minimally_Invasive_Surgery]]\n- **Primary Use**: [[Endoscopic_Procedures]]\n\n## Market Strategy\n- **Target Brands**: [[Olympus]], [[ConMed]].\n- **High Intent Keywords**: `endoscopic biopsy forceps`, `disposable biopsy forceps`.\n- **CPC**: **$49.06** (Extremely high CPC).\n- **Strategy**: Dominate this category with a \"Bottom Price + Ready Stock\" (底价+现货) model to displace incumbent suppliers.\n\n## Regulatory Status\n- **Priority**: High (Phase 1).\n- **Complexity**: Low (Pure consumable, low risk, standard FDA 510(k) path).\n\n## Related Entities\n- [[ViaSurg]]\n- [[Snares]]\n- [[Olympus]]\n",
+      "word_count": 112,
+      "has_links": true
+    },
+    {
+      "name": "Boston_Scientific",
+      "file": "Boston_Scientific.md",
+      "content": "# Boston Scientific\n\n## Overview\nA worldwide developer, manufacturer, and marketer of medical devices used in interventional medical specialties.\n\n## Market Position\n- **Dominant Products**: [[Jagwire]] (Guidewires), [[Resolution Clip]] (Hemoclips), [[SpyGlass]] (Endoscopy).\n- **Strategy**: Strong presence in GI and interventional cardiology. Leader in high-end guidewire and clip technology.\n\n## ViaSurg Cross-Reference\n- **Guidewire**: [[Guidewires]] (Jagwire equivalent).\n- **Hemoclip**: [[Hemoclips]].\n\n## Related Entities\n- [[ViaSurg]]\n- [[Olympus]]\n- [[Terumo]]\n- [[Cook Medical]]\n",
+      "word_count": 72,
+      "has_links": true
+    },
+    {
+      "name": "Clips",
+      "file": "Clips.md",
+      "content": "# Clips (结扎夹)\n\n## Description\n用于止血或组织结扎的机械装置。\n\n## Hierarchy\n- **Type**: [[Category]]\n- **Parent**: [[Wound_Closure]]\n- **Products**:\n    - [[Hemoclips]]\n    - [[Polymer Clips]]\n",
+      "word_count": 22,
+      "has_links": true
+    },
+    {
+      "name": "Competitor_Disruption",
+      "file": "Competitor_Disruption.md",
+      "content": "# Competitor Disruption & Market Arbitrage\n\n## Strategic Positioning\nViaSurg provides direct technical equivalents to high-cost incumbents while disrupting the \"Opaque Pricing\" and \"Supply Chain Invisibility\" of traditional big medtech.\n\n## Direct Comparison Registry\n\n| Incumbent | Product Line | Market Pain-Point | ViaSurg Disruption |\n| :--- | :--- | :--- | :--- |\n| **Ethicon (J&J)** | Staplers / Trocars | High premium on legacy brand recognition. | Verified 1:1 cross-reference via [[NomoFlow_Technology]]. |\n| **Medtronic** | MIS Instruments | Fragmented supply chain / cost-inflation. | Vertical integration and direct B2B pricing models. |\n| **Olympus** | Endoscopic Clips | Proprietary system locking / opaque specs. | Open-compatibility and transparent sensor-driven QA. |\n\n## The \"Glass Factory\" Advantage\nUnlike incumbents that rely on clinical marketing \"Storytelling,\" ViaSurg relies on **Deterministic Engineering Proof**. We provide direct access to manufacturing batch logs, eliminating the \"Black Box Risk.\"\n\n## Related Entities\n- [[ViaSurg]]\n- [[NomoFlow_Technology]]\n- [[Trocars]]\n- [[Staplers]]\n",
+      "word_count": 159,
+      "has_links": true
+    },
+    {
+      "name": "Compliance_Framework",
+      "file": "Compliance_Framework.md",
+      "content": "# Compliance Framework (Regulatory Rigor)\n\n## Overview\nViaSurg operates under a strict \"Verified Transparency\" model for regulatory compliance, leveraging existing factory certifications while maintaining independent quality audits.\n\n## Regulatory Pathways\n- **OBL (Own Brand Labeler)**: Utilizing partner factory FDA 510(k) and CE MDR certificates to ensure rapid and legal market entry.\n- **Relabeler/Repackager Registration**: ViaSurg is registered as a Relabeler/Repackager, assuming legal responsibility for branding and quality assurance as per FDA 21 CFR 807.\n\n## Verification Protocols\n- **ISO 13485**: Certified Quality Management System for medical devices.\n- **Evidence Protocols**: Every product shipment includes a digital link to its specific quality verification report.\n\n## Related Entities\n- [[ViaSurg]]\n- [[NomoFlow_Technology]]\n- [[Hangzhou_Sode]]\n",
+      "word_count": 113,
+      "has_links": true
+    },
+    {
+      "name": "Cook_Medical",
+      "file": "Cook_Medical.md",
+      "content": "# Cook Medical\n\n## Overview\nA family-owned medical device company that develops and manufactures products used in minimally invasive medical procedures.\n\n## Market Position\n- **Dominant Products**: [[Amplatz]] (Guidewires), [[Bakri Balloon]] (OB/GYN), [[Snares]].\n- **Strategy**: Strong presence in GI, Urology, and Critical Care. Known for high-quality, specialized access devices.\n\n## ViaSurg Cross-Reference\n- **Guidewire**: [[Guidewires]].\n- **Snare**: [[Snares]].\n\n## Related Entities\n- [[ViaSurg]]\n- [[Olympus]]\n- [[Boston Scientific]]\n",
+      "word_count": 69,
+      "has_links": true
+    },
+    {
+      "name": "Endoscopic_Procedures",
+      "file": "Endoscopic_Procedures.md",
+      "content": "# Endoscopic Procedures (内镜诊疗)\n\n## Description\nA procedure used in medicine to look inside the body. The endoscopy procedure uses an endoscope to examine the interior of a hollow organ or cavity of the body.\n\n## Hierarchy\n- **Type**: [[Surgical_Procedure]]\n\n## Key Requirements\n- **Diagnostics**: [[Biopsy Forceps]].\n- **Therapeutics**: [[Snares]], [[Hemoclips]].\n\n## Related Entities\n- [[Minimally_Invasive_Surgery]]\n",
+      "word_count": 57,
+      "has_links": true
+    },
+    {
+      "name": "Ethicon",
+      "file": "Ethicon.md",
+      "content": "# Ethicon (Johnson & Johnson)\n\n## Overview\nA global leader in surgical sutures, staplers, and energy devices. Part of the Johnson & Johnson MedTech family.\n\n## Market Position\n- **Dominant Products**: [[Vicryl]] (Sutures), [[Harmonic Scalpel]] (Ultrasonic Shears), [[Echelon]] (Staplers).\n- **Strategy**: Established standard setter. High brand loyalty, but premium pricing.\n\n## ViaSurg Cross-Reference\n- **Trocar**: [[Ethicon B5LT]] -> [[Trocars]].\n- **Stapler**: [[Johnson CDH29P]] -> [[Staplers]].\n- **Sutures**: [[Absorbable_Sutures]] (Vicryl / Monocryl), [[Non_Absorbable_Sutures]] (Prolene / Ethilon).\n\n## Related Entities\n- [[ViaSurg]]\n- [[Medtronic]]\n- [[Olympus]]\n",
+      "word_count": 85,
+      "has_links": true
+    },
+    {
+      "name": "Ethicon_B5LT",
+      "file": "Ethicon_B5LT.md",
+      "content": "# Ethicon B5LT (ENDOPATH® XCEL® Trocar)\n\n## Overview\nThe industry-standard bladed trocar from Ethicon, designed for ease of insertion and abdominal wall retention.\n\n## Market Analysis\n- **Competitor Brand**: [[Ethicon]].\n- **Keywords**: `ethicon b5lt`, `laparoscopic trocar`, `disposable trocar`.\n- **CPC Range**: $4.54 - $9.57.\n- **Search Intent**: Purchasing managers looking for price-sensitive alternatives for high-volume MIS procedures.\n\n## ViaSurg Equivalent: VS-T-B5LT\n- **Cost Saving**: ~40% vs. OEM.\n- **Compatibility**: 100% compatible with standard MIS instruments.\n- **Key Advantage**: Verified gas-tight seal and low insertion force.\n\n## Related Entities\n- [[Trocars]]\n- [[Ethicon]]\n- [[ViaSurg]]\n",
+      "word_count": 95,
+      "has_links": true
+    },
+    {
+      "name": "Guidewires",
+      "file": "Guidewires.md",
+      "content": "# Guidewires (亲水/斑马导丝)\n\n## Overview\nHigh-performance guidewires for GI, Urology, and Peripheral Vascular access. Featuring Zebra (striped) patterning for visual confirmation of movement and hydrophilic coating for ultra-low friction.\n\n## Market Strategy\n- **Target Brands**: [[Terumo]], [[Boston Scientific]].\n- **High Intent Keywords**: `hydrophilic guidewire`, `terumo guide wire 0.035`, `boston scientific guidewires`.\n- **CPC Range**: $2.50 - $3.70.\n- **Strategy**: Stable volume-driver. Focus on `0.035\"` core parameter for SEO. Position as the reliable, cost-effective alternative to market leaders.\n\n## Regulatory Status\n- **Priority**: High (Phase 1).\n- **Reasoning**: Well-defined test standards (kink resistance, friction coefficient). Low clinical complexity for access devices.\n- **Action**: Leverage [[Compliance_Framework]] for rapid market entry.\n\n## Technical Specs\n- **Core Material**: Nitinol (Shape Memory).\n- **Coating**: Hydrophilic (PVP-based).\n- **Tip**: Straight, J-tip, Angled.\n- **Radiopacity**: Tungsten-loaded for fluoroscopic visibility.\n\n## Related Entities\n- [[Trocars]]\n- [[Hemoclips]]\n- [[ViaSurg]]\n- [[Terumo]]\n- [[Boston Scientific]]\n",
+      "word_count": 147,
+      "has_links": true
+    },
+    {
+      "name": "Hangzhou_Sode",
+      "file": "Hangzhou_Sode.md",
+      "content": "#杭州索德 (Hangzhou Sode)\n\n## Overview\nHangzhou Sode is a key supply chain partner for [[ViaSurg]]. As a leading Chinese OEM/ODM factory for minimally invasive surgery instruments, they provide the manufacturing backbone forหลาย品类.\n\n## Strategic Role\n- **Manufacturing**: Produces [[Trocars]], [[Ligating Clips]], [[Retrieval Bags]], and [[Incision Protectors]].\n- **Regulatory Shortcut**: ViaSurg leverages Hangzhou Sode's existing FDA 510(k) and CE certificates through OBL (Own Brand Labeler) agreements to accelerate market entry.\n\n## Product Scope (via raw_docs)\n- [[Trocars]] (2025.2 version)\n- [[Hemoclips]] (Ligating Clips)\n- [[Incision Protectors]] (切口保护套)\n- [[Retrieval Bags]] (取物袋)\n- [[Fascia Closure]] (筋膜闭合器)\n- [[Circumcision Staplers]] (包皮切割吻合器)\n\n## Related Entities\n- [[ViaSurg]]\n- [[Trocars]]\n- [[Hemoclips]]\n",
+      "word_count": 108,
+      "has_links": true
+    },
+    {
+      "name": "Hemoclips",
+      "file": "Hemoclips.md",
+      "content": "# Hemoclips & Ligating Clips (Cluster 02)\n\n## Overview\nComprehensive hemostasis solution matrix covering both endoscopic (Rotatable) and laparoscopic (Polymer) applications.\n\n## Hierarchy\n- **Type**: [[Product]]\n- **Category**: [[Clips]]\n- **Parent Category**: [[Wound_Closure]]\n\n## Stakeholder Impact Matrix\n\n### 1. Clinical Outcome (For Surgeons)\n- **Rotatable Hemoclips**: 360° bidirectional rotation provides precise lesion targeting. High-clamping force ensures effective immediate hemostasis.\n- **Polymer Clips**: Integrated locking mechanism with tactile \"click\" feedback. Atraumatic teeth prevent vessel slippage.\n- **Reference Standard**: Equivalent to [[Teleflex]] Hem-o-lok and [[Olympus]] QuickClip.\n\n### 2. Economic Value (For Procurement)\n- **Revenue Capture**: Targets the highest CPC procurement intent categories. \n- **Free-Applier Strategy**: Provision of [[Hemoclips]] appliers to bind long-term consumable consumption, reducing capital expenditure for the hospital.\n- **Market Arbitrage**: Capture of premium market share from high-cost incumbents through verified technical parity.\n\n### 3. Regulatory & Safety (For Compliance)\n- **Biocompatibility**: Medical Grade POM/PC, certified for long-term implantation.\n- **MRI Safety**: Non-metallic, MRI-conditional (verified via ISO 10993).\n- **Verification ID**: V-HC-2025-04 (Closure security test).\n\n## Related Entities\n- [[ViaSurg]]\n- [[Biopsy_Forceps]]\n- [[Olympus]]\n- [[Teleflex]]\n",
+      "word_count": 177,
+      "has_links": true
+    },
+    {
+      "name": "Hernia_Meshes",
+      "file": "Hernia_Meshes.md",
+      "content": "# Hernia Meshes (疝气修补网片)\n\n## Overview\nSurgical mesh for reinforcement of soft tissue defects in hernia repair. Primarily made from synthetic non-absorbable polymers (e.g., Polypropylene).\n\n## Market Strategy\n- **Target Brands**: [[Bard]] ([[BD]]), [[Ethicon]].\n- **High Intent Keywords**: `polypropylene mesh`, `surgical mesh`.\n- **CPC Range**: $3.59 - $10.00.\n- **Strategy**: Material-first messaging. Avoid brand-heavy marketing; instead, emphasize \"Pure Polypropylene Quality\" and \"Zero-additive\" manufacturing.\n\n## Regulatory Status\n- **Priority**: Low (Phase 3).\n- **Reasoning**: High-risk implantable. History of major litigation in the industry makes this a \"Minefield\" for new entrants.\n- **Action**: Deprioritize. Monitor long-term safety data before aggressive entry.\n\n## Technical Specs\n- **Material**: Monofilament Polypropylene.\n- **Weight**: Ultra-light / Light / Heavyweight options.\n- **Pore Size**: Optimized for tissue ingrowth (e.g., Macroporous).\n\n## Related Entities\n- [[Staplers]]\n- [[Non_Absorbable_Sutures]]\n- [[ViaSurg]]\n- [[Bard]]\n",
+      "word_count": 135,
+      "has_links": true
+    },
+    {
+      "name": "Instrumentation",
+      "file": "Instrumentation.md",
+      "content": "# Instrumentation (手术器械)\n\n## Description\n微创手术中的功能性操作工具。\n\n## Hierarchy\n- **Type**: [[Category]]\n- **Parent**: [[Minimally_Invasive_Surgery]]\n- **Products**:\n    - [[Ultrasonic Shears]]\n    - [[Staplers]]\n    - [[Snares]]\n    - [[Biopsy Forceps]]\n",
+      "word_count": 27,
+      "has_links": true
+    },
+    {
+      "name": "Intelligence",
+      "file": "Intelligence.md",
+      "content": "# Intelligence (算法与智能)\n\n## Description\nNomoFlow™ 核心逻辑与 ViaSurg 知识体系。\n\n## Hierarchy\n- **Type**: [[Category]]\n- **Parent**: [[NomoFlow_Solutions]]\n- **Entities**:\n    - [[NomoFlow Technology]]\n    - [[ViaSurg Academy]]\n",
+      "word_count": 26,
+      "has_links": true
+    },
+    {
+      "name": "Johnson_CDH29P",
+      "file": "Johnson_CDH29P.md",
+      "content": "# Johnson CDH29P (Proximate® ILS Circular Stapler)\n\n## Overview\nEthicon's 29mm Circular Stapler, widely used in colorectal and gastric anastomosis.\n\n## Market Analysis\n- **Competitor Brand**: [[Ethicon]].\n- **Keywords**: `cdh29p`, `circular stapler`, `johnson & johnson stapler`.\n- **CPC Range**: $9.00 - $10.59.\n- **Search Intent**: Specific SKU-level search for hospital procurement replacement or cost-optimization.\n\n## ViaSurg Equivalent: VS-CS-CDH29P\n- **Cost Saving**: Significant ROI improvement for high-volume surgical centers.\n- **Reliability**: Verified tissue burst pressure performance (compatible with OEM benchmarks).\n- **Safety Strategy**: Address Class III regulatory awareness through transparent batch-level evidence logs.\n\n## Related Entities\n- [[Staplers]]\n- [[Ethicon]]\n- [[ViaSurg]]\n- [[NomoFlow_Technology]]\n",
+      "word_count": 104,
+      "has_links": true
+    },
+    {
+      "name": "Laparoscopic_Surgery",
+      "file": "Laparoscopic_Surgery.md",
+      "content": "# Laparoscopic Surgery (腹腔镜手术)\n\n## Description\nA modern surgical technique in which operations are performed far from their location through small incisions (usually 0.5–1.5 cm) elsewhere in the body.\n\n## Hierarchy\n- **Type**: [[Surgical_Procedure]]\n\n## Key Requirements\n- **Access**: [[Trocars]], [[Veress Needles]].\n- **Action**: [[Ultrasonic Shears]], [[Staplers]].\n- **Closure**: [[Polymer Clips]], [[Absorbable Sutures]].\n\n## Related Entities\n- [[Minimally_Invasive_Surgery]]\n",
+      "word_count": 59,
+      "has_links": true
+    },
+    {
+      "name": "Medtronic",
+      "file": "Medtronic.md",
+      "content": "# Medtronic (Covidien)\n\n## Overview\nA global leader in medical technology, especially in surgery, patient monitoring, and cardiology. Acquired Covidien in 2015, strengthening its position in the MIS/Lap market.\n\n## Market Position\n- **Dominant Products**: [[Endo GIA]] (Staplers), [[Sonicision]] (Ultrasonic Shears), [[Ligasure]] (Vessel Sealing).\n- **Strategy**: Strong presence in laparoscopic surgery. Market leader in surgical stapling alongside Ethicon.\n\n## ViaSurg Cross-Reference\n- **Stapler**: [[Staplers]].\n- **Trocar**: [[Trocars]].\n- **Shears**: [[Ultrasonic_Shears]].\n\n## Related Entities\n- [[ViaSurg]]\n- [[Ethicon]]\n- [[Olympus]]\n",
+      "word_count": 80,
+      "has_links": true
+    },
+    {
+      "name": "Minimally_Invasive_Surgery",
+      "file": "Minimally_Invasive_Surgery.md",
+      "content": "# Minimally Invasive Surgery (微创外科)\n\n## Description\n涵盖腹腔镜手术所需的通路工具与精细操作器械。\n\n## Hierarchy\n- **Type**: [[Category]]\n- **Parent**: [[ViaSurg]]\n- **Sub-Categories**:\n    - [[Access]]\n    - [[Instrumentation]]\n",
+      "word_count": 23,
+      "has_links": true
+    },
+    {
+      "name": "NomoFlow_Solutions",
+      "file": "NomoFlow_Solutions.md",
+      "content": "# NomoFlow Solutions (数字化实验室)\n\n## Description\nViaSurg 的前瞻性数字化业务，专注于算法与临床培训。\n\n## Hierarchy\n- **Type**: [[Category]]\n- **Parent**: [[ViaSurg]]\n- **Sub-Categories**:\n    - [[Intelligence]]\n",
+      "word_count": 21,
+      "has_links": true
+    },
+    {
+      "name": "NomoFlow_Technology",
+      "file": "NomoFlow_Technology.md",
+      "content": "# NomoFlow™ Technology (Deterministic Control)\n\n## Hierarchy\n- **Type**: [[Technology]]\n- **Category**: [[Intelligence]]\n- **Parent Category**: [[NomoFlow_Solutions]]\n\n## Control Architecture\nNomoFlow™ is a closed-loop control platform designed to reduce batch variability through high-frequency parameter compensation.\n\n## Causal Logic (The Feedback Loop)\n1. **Sensing**: 150 nodes sample variables (Thermal, Pressure, Flow) at **1000Hz**.\n2. **Analysis**: AI-driven PID loops compare real-time data against the master reference model.\n3. **Action**: If a variance > **0.05%** is detected, the system applies sub-millisecond compensation or isolates the batch.\n4. **Result**: Statistical stabilization of the batch-to-batch coefficient of variation (CV) to **≤ 5.0%**.\n\n## Technical Constraints & Risks\n- **Calibration Dependency**: Control precision is strictly contingent on a 30-day sensor recalibration cycle.\n- **Data Drift Risk**: Operating without valid certificates triggers an automated system lockout (Safety Protocol NF-L01).\n\n## Related Entities\n- [[ViaSurg]]\n- [[Trocars]]\n- [[Compliance_Framework]]\n",
+      "word_count": 142,
+      "has_links": true
+    },
+    {
+      "name": "Non_Absorbable_Sutures",
+      "file": "Non_Absorbable_Sutures.md",
+      "content": "# Non-Absorbable Sutures (非吸收缝线)\n\n## Overview\nPermanent surgical sutures (e.g., Polypropylene, Nylon). Essential for vascular, cardiac, and orthopedic procedures requiring permanent wound support.\n\n## Hierarchy\n- **Type**: [[Product]]\n- **Category**: [[Sutures]]\n- **Parent Category**: [[Wound_Closure]]\n- **Material**: [[Polypropylene_Material]]\n- **Primary Use**: [[Vascular_Surgery]]\n\n## Market Strategy\n- **Target Brands**: [[Ethicon]] ([[Prolene]], [[Ethilon]]).\n- **High Intent Keywords**: `polypropylene suture`, `prolene suture`, `ethilon 4 0`.\n- **CPC Range**: $2.73 - $9.26.\n- **Strategy**: Comprehensive SKU Matrix. Provide every size (from 0 to 10-0) to catch all decentralized searches.\n\n## Regulatory Status\n- **Priority**: Medium (Phase 2).\n- **Reasoning**: Non-absorbable polymers are generally lower risk than absorbable ones, but still require ISO 10993 biocompatibility and long-term stability testing.\n- **Action**: Combine with [[Absorbable_Sutures]] for a single regulatory submission.\n\n## Technical Specs\n- **Material**: Polypropylene / Polyamide (Nylon) / Silk.\n- **Structure**: Monofilament.\n- **Radiopacity**: Non-radiopaque.\n\n## Related Entities\n- [[Staplers]]\n- [[Hernia_Meshes]]\n- [[ViaSurg]]\n- [[Ethicon]]\n",
+      "word_count": 153,
+      "has_links": true
+    },
+    {
+      "name": "Olympus",
+      "file": "Olympus.md",
+      "content": "# Olympus\n\n## Overview\nA Japanese medical technology company and a global leader in endoscopic solutions (GI, Respiratory, Urology).\n\n## Market Position\n- **Dominant Products**: [[QuickClip]] (Hemoclips), [[Single-Use Biopsy Forceps]], [[Cold Snares]].\n- **Strategy**: Absolute market leader in endoscopy equipment and consumables.\n\n## ViaSurg Cross-Reference\n- **Hemoclip**: [[Hemoclips]] (QuickClip equivalent).\n- **Biopsy Forceps**: [[Biopsy Forceps]].\n- **Snare**: [[Snares]] (Cold Snare equivalent).\n\n## Related Entities\n- [[ViaSurg]]\n- [[Ethicon]]\n- [[Medtronic]]\n- [[Cook Medical]]\n",
+      "word_count": 74,
+      "has_links": true
+    },
+    {
+      "name": "PGA_Material",
+      "file": "PGA_Material.md",
+      "content": "# PGA (Polyglycolic Acid)\n\n## Description\nA biodegradable, thermoplastic polymer and the simplest linear, aliphatic polyester. Used extensively in synthetic absorbable sutures.\n\n## Hierarchy\n- **Type**: [[Material]]\n\n## Technical Properties\n- **Absorption Method**: Hydrolysis.\n- **Tensile Strength Retention**: High for the first 14-21 days.\n- **Complete Absorption**: 60 to 90 days.\n\n## Related Products\n- [[Absorbable Sutures]]\n",
+      "word_count": 58,
+      "has_links": true
+    },
+    {
+      "name": "Polymer_Clips",
+      "file": "Polymer_Clips.md",
+      "content": "# Polymer Clips (高分子结扎夹)\n\n## Overview\nNon-absorbable polymer ligation clips for high-security closure of vessels and tissue bundles. Designed for use in laparoscopic surgery.\n\n## Hierarchy\n- **Type**: [[Product]]\n- **Category**: [[Clips]]\n- **Parent Category**: [[Wound_Closure]]\n\n## Market Strategy\n- **Target Brands**: [[Teleflex]] ([[Hem-o-lok]]).\n- **High Intent Keywords**: `ligating clips`, `hem o lok clip applier`, `weck hemolock`.\n- **CPC Range**: $5.86 - $7.00.\n- **Strategy**: Ecosystem capture. By providing the high-quality clip appliers (施夹钳), ensure long-term consumable binding. Direct replacement for Teleflex Hem-o-lok.\n\n## Regulatory Status\n- **Priority**: High (Phase 1).\n- **Reasoning**: Extremely well-defined predicate (Teleflex). Short-term tissue contact (non-absorbable polymer).\n- **Action**: Immediate OBL transfer via [[Compliance_Framework]].\n\n## Technical Specs\n- **Material**: Non-absorbable, inert polymer (e.g., Polyacetal).\n- **Security**: Integrated \"Integrated Boss\" locking mechanism for zero-slippage.\n- **Compatibility**: Compatible with industry-standard appliers.\n- **Sizes**: Medium (Purple), Medium-Large (Green), Large (Orange), Extra-Large (Yellow).\n\n## Related Entities\n- [[Hemoclips]]\n- [[ViaSurg]]\n- [[Teleflex]]\n",
+      "word_count": 154,
+      "has_links": true
+    },
+    {
+      "name": "Polypropylene_Material",
+      "file": "Polypropylene_Material.md",
+      "content": "# Polypropylene\n\n## Description\nA rugged and unusually resistant thermoplastic polymer. In surgery, it is used for non-absorbable monofilament sutures and hernia meshes.\n\n## Hierarchy\n- **Type**: [[Material]]\n\n## Technical Properties\n- **Durability**: Permanent wound support.\n- **Reactivity**: Extremely low tissue reaction.\n- **Handling**: High memory, requires secure knotting.\n\n## Related Products\n- [[Non Absorbable Sutures]]\n- [[Hernia_Meshes]]\n",
+      "word_count": 59,
+      "has_links": true
+    },
+    {
+      "name": "Snares",
+      "file": "Snares.md",
+      "content": "# Snares (息肉圈套器)\n\n## Overview\nCold and Hot Snares for endoscopic polypectomy. Following the global shift towards \"Cold Snare Polypectomy\" (CSP) for safety and efficiency in outpatient settings.\n\n## Hierarchy\n- **Type**: [[Product]]\n- **Category**: [[Instrumentation]]\n- **Parent Category**: [[Minimally_Invasive_Surgery]]\n\n## Market Strategy\n- **Target Brands**: [[Olympus]], [[Cook Medical]].\n- **High Intent Keywords**: `cold snare polypectomy`, `polypectomy snare`.\n- **CPC Range**: $4.52.\n- **Strategy**: Focus on \"Cold Snare\" as a safety-first, electricity-free alternative for rapid outpatient procedures.\n\n## Regulatory Status\n- **Priority**: High (Phase 1).\n- **Reasoning**: Low safety risk, well-established predicate devices, high-volume consumable.\n- **Action**: Fast-track via [[Compliance_Framework]] (OBL model).\n\n## Technical Specs\n- **Loop Shape**: Oval, Hexagonal, Crescent.\n- **Wire Diameter**: Optimized for sharp-cutting without thermal damage (for cold snares).\n- **Compatibility**: Standard 2.8mm / 3.2mm biopsy channels.\n\n## Related Entities\n- [[Biopsy Forceps]]\n- [[Hemoclips]]\n- [[ViaSurg]]\n",
+      "word_count": 142,
+      "has_links": true
+    },
+    {
+      "name": "Staplers",
+      "file": "Staplers.md",
+      "content": "# Staplers (吻合器)\n\n## Overview\nSurgical Staplers (Laparoscopic and Circular) are highly technical and heavily regulated products. While high in volume and margin, they are subject to strict oversight.\n\n## Hierarchy\n- **Type**: [[Product]]\n- **Category**: [[Instrumentation]]\n- **Parent Category**: [[Minimally_Invasive_Surgery]]\n\n## Market Strategy\n- **Target Brands**: [[Ethicon]], [[Medtronic]].\n- **High Intent Keywords**: `circular stapler`, `cdh29p`, `eea stapler`, `linear cutter stapler`.\n- **CPC Range**: $9.00 - $10.59.\n- **Strategy**: Ultimate SKU Snipe (终极 SKU 狙击战). Create individual landing pages for specific competitor models (e.g., `CDH29P`).\n\n## Regulatory Status\n- **Priority**: Low (Phase 3).\n- **Reasoning**: FDA has upgraded regulation (Class III) due to past safety concerns (staple failure/leaks). Requires extensive tissue burst pressure tests and animal trials.\n- **Action**: Deprioritize initial certification; potentially leverage OBL if a partner factory already holds the 510(k).\n\n## Related Entities\n- [[ViaSurg]]\n- [[Absorbable Sutures]]\n- [[Ethicon]]\n- [[Medtronic]]\n",
+      "word_count": 146,
+      "has_links": true
+    },
+    {
+      "name": "Sutures",
+      "file": "Sutures.md",
+      "content": "# Sutures (缝合线)\n\n## Description\n基础临床耗材，包括可吸收与非可吸收材料。\n\n## Hierarchy\n- **Type**: [[Category]]\n- **Parent**: [[Wound_Closure]]\n- **Products**:\n    - [[Absorbable Sutures]]\n    - [[Non Absorbable Sutures]]\n",
+      "word_count": 24,
+      "has_links": true
+    },
+    {
+      "name": "Teleflex",
+      "file": "Teleflex.md",
+      "content": "# Teleflex\n\n## Overview\nA global provider of medical technologies designed to improve the health and quality of people's lives.\n\n## Market Position\n- **Dominant Products**: [[Hem-o-lok]] (Polymer Clips), [[Weck]] (Surgical Clips), [[LMA]] (Airway Management).\n- **Strategy**: Market leader in polymer ligation clips. Established the industry standard with the \"Hem-o-lok\" brand.\n\n## ViaSurg Cross-Reference\n- **Ligating Clip**: [[Polymer_Clips]] (Hem-o-lok equivalent).\n\n## Related Entities\n- [[ViaSurg]]\n- [[Ethicon]]\n- [[Medtronic]]\n",
+      "word_count": 70,
+      "has_links": true
+    },
+    {
+      "name": "Teleflex_Hem_o_lok",
+      "file": "Teleflex_Hem_o_lok.md",
+      "content": "# Teleflex Hem-o-lok (Polymer Ligating Clips)\n\n## Overview\nThe gold-standard polymer ligation clip, recognized globally for its high-security \"Integrated Boss\" locking mechanism.\n\n## Market Analysis\n- **Competitor Brand**: [[Teleflex]].\n- **Keywords**: `hem o lok`, `hem o lok clip applier`, `weck hemolock`.\n- **CPC Range**: $5.86 - $7.00.\n- **Search Intent**: Ecosystem lock-in. Purchasing managers often search for the clips *and* the appliers.\n\n## ViaSurg Equivalent: VS-LC-HL\n- **Strategy**: Ecosystem capture. Provide high-durability appliers to drive recurring clip sales.\n- **Security**: 100% compatible locking interface with OEM appliers.\n- **Cost Advantage**: ~40% reduction in consumable spend for high-volume surgical centers.\n\n## Related Entities\n- [[Polymer_Clips]]\n- [[Teleflex]]\n- [[Hemoclips]]\n- [[ViaSurg]]\n",
+      "word_count": 111,
+      "has_links": true
+    },
+    {
+      "name": "Terumo",
+      "file": "Terumo.md",
+      "content": "# Terumo\n\n## Overview\nA Japanese medical device company and a global leader in vascular and interventional technology.\n\n## Market Position\n- **Dominant Products**: [[Pinnacle]] (Access Sheaths), [[Zebra]] (Guidewires), [[Radifocus]] (Guidewires).\n- **Strategy**: Strong presence in interventional access. Market standard for guidewire hydrophilic coatings.\n\n## ViaSurg Cross-Reference\n- **Guidewire**: [[Guidewires]] (Pinnacle/Zebra equivalent).\n- **Access Sheath**: [[Guidewires]].\n\n## Related Entities\n- [[ViaSurg]]\n- [[Boston Scientific]]\n- [[Cook Medical]]\n",
+      "word_count": 68,
+      "has_links": true
+    },
+    {
+      "name": "Trocars",
+      "file": "Trocars.md",
+      "content": "# Disposable Trocars (Cluster 01)\n\n## Overview\nHigh-precision laparoscopic access instruments. Deterministic manufacturing via [[NomoFlow_Technology]].\n\n## Hierarchy\n- **Type**: [[Product]]\n- **Category**: [[Access]]\n- **Parent Category**: [[Minimally_Invasive_Surgery]]\n- **Primary Use**: [[Laparoscopic_Surgery]]\n\n## Stakeholder Impact Matrix\n\n### 1. Clinical Outcome (For Surgeons)\n- **Low-Friction Entry**: Verified reduction in insertion force (< 15.0 N) minimizes abdominal wall trauma.\n- **Visual Stability**: Proprietary dual-seal valve maintains pneumoperitoneum during high-frequency instrument exchange, preventing \"scope-fogging\" and loss of visualization.\n- **Reference Standard**: 1:1 tactile equivalence to [[Ethicon]] B5LT and [[Applied_Medical]] CFF03.\n\n### 2. Economic Value (For Procurement)\n- **40% Cost Reduction**: Direct replacement of OEM SKUs with no loss in clinical performance.\n- **Simplified Inventory**: Universal compatibility reduces the need for multiple vendor SKU variants.\n- **ROI Projection**: High-frequency consumable. Estimated annual savings for a standard ASC: $12,000 - $18,000.\n\n### 3. Regulatory & Safety (For Compliance)\n- **FDA 510(k)**: Registered via OBL (Relabeler) Protocol VS-TR-21.\n- **ISO 13485**: Manufacturing lot-traceability integrated into [[NomoFlow_Technology]] ledger.\n- **Verification ID**: V-TR-2025-01 (Air-tightness certification).\n\n## Related Entities\n- [[ViaSurg]]\n- [[Veress_Needles]]\n- [[NomoFlow_Technology]]\n",
+      "word_count": 176,
+      "has_links": true
+    },
+    {
+      "name": "Ultrasonic_Shears",
+      "file": "Ultrasonic_Shears.md",
+      "content": "# Ultrasonic Shears (超声刀头)\n\n## Overview\nActive energy device for simultaneous cutting and coagulation of tissue. Operates at ultrasonic frequencies (e.g., 55.5 kHz) to minimize thermal spread.\n\n## Hierarchy\n- **Type**: [[Product]]\n- **Category**: [[Instrumentation]]\n- **Parent Category**: [[Minimally_Invasive_Surgery]]\n\n## Market Strategy\n- **Target Brands**: [[Ethicon]] ([[Harmonic Scalpel]]).\n- **High Intent Keywords**: `harmonic scalpel ethicon`, `ultrasonic scalpel`.\n- **CPC Range**: $2.43 - $3.44.\n- **Strategy**: \"Compatibility War\" (兼容性战争). 100% compatible with existing Ethicon Harmonic generators to lower hospital adoption barriers. Position as the high-performance, cost-effective alternative.\n\n## Regulatory Status\n- **Priority**: Medium (Phase 2).\n- **Reasoning**: Active device (Energy Device). Requires IEC 60601-1 / IEC 60601-1-2 electrical safety and electromagnetic compatibility (EMC) testing.\n- **Action**: Use Phase 1 revenue to fund rigorous EMC and bench testing.\n\n## Technical Specs\n- **Frequency**: 55.5 kHz.\n- **Thermal Spread**: < 2.0 mm.\n- **Vessel Sealing**: Reliable up to 5mm diameter.\n- **Handpiece**: Reusable or Disposable variants available.\n\n## Related Entities\n- [[Trocars]]\n- [[ViaSurg]]\n- [[Ethicon]]\n- [[NomoFlow_Technology]]\n",
+      "word_count": 166,
+      "has_links": true
+    },
+    {
+      "name": "Veress_Needles",
+      "file": "Veress_Needles.md",
+      "content": "# Veress Needles (气腹针)\n\n## Overview\nDisposable needles for establishing pneumoperitoneum during laparoscopic surgery. Features a spring-loaded blunt stylet for safe insertion.\n\n## Hierarchy\n- **Type**: [[Product]]\n- **Category**: [[Access]]\n- **Parent Category**: [[Minimally_Invasive_Surgery]]\n\n## Market Strategy\n- **Target Brands**: [[Ethicon]].\n- **High Intent Keywords**: `veress needle`.\n- **CPC Range**: $7.00.\n- **Strategy**: Volume standard. Bundle with [[Trocars]] for \"Access Kits\" (Procedure Trays). Large search volume (50k) offers massive brand awareness.\n\n## Regulatory Status\n- **Priority**: High (Phase 1).\n- **Reasoning**: Purely mechanical safety device with high predicate device similarity.\n- **Action**: Register via [[Compliance_Framework]] for rapid launch.\n\n## Technical Specs\n- **Safety Mechanism**: Spring-loaded retracting blunt tip.\n- **Length**: 120mm / 150mm.\n- **Luer Lock**: High-flow stopcock for rapid CO2 insufflation.\n\n## Related Entities\n- [[Trocars]]\n- [[ViaSurg]]\n- [[Ethicon]]\n",
+      "word_count": 132,
+      "has_links": true
+    },
+    {
+      "name": "ViaSurg",
+      "file": "ViaSurg.md",
+      "content": "# ViaSurg\n\n## Overview\nViaSurg is positioned as a \"Global Medical Standard Traffic Arbitrage Machine\" (全球医疗标品流量套利机器). The strategic goal is to leverage established industry standards (Ethicon, Medtronic, etc.) to capture B2B procurement traffic through optimized digital presence and competitive pricing.\n\n## Strategic Pillars\n- **Budget Allocation**: Focus on high-value \"Gold Mine\" keywords with high CPC (e.g., [[Hemoclips]], [[Biopsy Forceps]]).\n- **SKU Targeting**: Create specific landing pages for cross-referenced (平替互译) parts (e.g., [[Ethicon B5LT]]).\n- **Negative SEO**: Filter out non-B2B traffic (students, home users, veterinary).\n\n## Regulatory Roadmap\n- **Phase 1 ( 造血期)**: Prioritize low-barrier, high-volume products like [[Trocars]], [[Polymer Clips]], [[Guidewires]].\n- **Phase 2 (暴利期)**: Follow up with high-margin items like [[Hemoclips]], [[Ultrasonic Shears]], [[Absorbable Sutures]].\n- **Phase 3 (持久战)**: Long-term handling of highly regulated items like [[Staplers]], [[Hernia Meshes]].\n\n## Supply Chain\n- Partners: [[Hangzhou Sode]] (杭州索德微创), Suture & Stapler factories.\n- Strategy: Utilize OBL (Own Brand Labeler) to leverage existing factory FDA/CE certifications.\n",
+      "word_count": 156,
+      "has_links": true
+    },
+    {
+      "name": "ViaSurg_Academy",
+      "file": "ViaSurg_Academy.md",
+      "content": "# ViaSurg Academy (Clinical Education)\n\n## Hierarchy\n- **Type**: [[Portal]]\n- **Category**: [[Intelligence]]\n- **Parent Category**: [[NomoFlow_Solutions]]\n\n## Overview\nA specialized education and verification portal modeled after industry standards (e.g., Medtronic Academy). It serves as a **Content Magnet** to establish ViaSurg as a clinical authority.\n\n## Portals & Modules\n### 1. The Expert Series\n- Mechanism-of-Action (MOA) animations of [[NomoFlow_Technology]].\n- Clinical interviews with surgeons on \"Batch-Consistency in Consumables.\"\n\n### 2. Validation Hub\n- Interactive evidence explorer for [[Evidence_Protocol]] nodes.\n- Comparative performance whitepapers (ViaSurg vs. Incumbents).\n\n### 3. Procurement ROI Center\n- Calculators for estimating OR cost savings via SKU-standardization.\n- Regulatory guides for OBL-Relabeler registrations.\n\n## Related Entities\n- [[ViaSurg]]\n- [[Evidence_Protocol]]\n- [[Compliance_Framework]]\n",
+      "word_count": 117,
+      "has_links": true
+    },
+    {
+      "name": "Wound_Closure",
+      "file": "Wound_Closure.md",
+      "content": "# Wound Closure (伤口闭合与管理)\n\n## Description\nViaSurg 的核心业务支柱之一，涵盖了从传统缝合线到高分子结扎夹的全线伤口关闭解决方案。\n\n## Hierarchy\n- **Type**: [[Category]]\n- **Parent**: [[ViaSurg]]\n- **Sub-Categories**:\n    - [[Sutures]]\n    - [[Clips]]\n\n## Strategic Intent\n通过提供高性能的机械与化学闭合工具，建立产品的临床信任度，为后续 [[NomoFlow Technology]] 的介入提供入口。\n",
+      "word_count": 30,
+      "has_links": true
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "ViaSurg",
+        "type": "Brand",
+        "label": "ViaSurg"
+      },
+      {
+        "id": "Trocars",
+        "type": "Product",
+        "label": "Disposable Trocars"
+      },
+      {
+        "id": "Hemoclips",
+        "type": "Product",
+        "label": "Hemoclips & Ligating Clips"
+      },
+      {
+        "id": "Biopsy Forceps",
+        "type": "Product",
+        "label": "Biopsy Forceps"
+      },
+      {
+        "id": "Staplers",
+        "type": "Product",
+        "label": "Surgical Staplers"
+      },
+      {
+        "id": "Hangzhou_Sode",
+        "type": "Supplier",
+        "label": "Hangzhou Sode"
+      }
+    ],
+    "edges": [
+      {
+        "source": "ViaSurg",
+        "target": "Trocars",
+        "relation": "Includes"
+      },
+      {
+        "source": "ViaSurg",
+        "target": "Hemoclips",
+        "relation": "Includes"
+      },
+      {
+        "source": "ViaSurg",
+        "target": "Biopsy Forceps",
+        "relation": "Includes"
+      },
+      {
+        "source": "ViaSurg",
+        "target": "Staplers",
+        "relation": "Includes"
+      },
+      {
+        "source": "Hangzhou_Sode",
+        "target": "ViaSurg",
+        "relation": "Supplies"
+      },
+      {
+        "source": "Hangzhou_Sode",
+        "target": "Trocars",
+        "relation": "Manufactures"
+      },
+      {
+        "source": "Hangzhou_Sode",
+        "target": "Hemoclips",
+        "relation": "Manufactures"
+      }
+    ]
+  },
+  "ontology": {
+    "entities": [
+      {
+        "name": "Product",
+        "description": "具体的产品型号或品类。"
+      },
+      {
+        "name": "Category",
+        "description": "医疗器械的层级分类（如：缝合线 > 可吸收）。"
+      },
+      {
+        "name": "Reference",
+        "description": "第三方证据、FDA/CE 认证、临床论文。"
+      },
+      {
+        "name": "Competitor",
+        "description": "竞品公司或具体竞品型号。"
+      },
+      {
+        "name": "Material",
+        "description": "产品所使用的生物或物理材质（如：PGA, 不锈钢）。"
+      },
+      {
+        "name": "Surgical_Procedure",
+        "description": "该产品适用的临床术式（如：腹腔镜胆囊切除术）。"
+      },
+      {
+        "name": "Standard",
+        "description": "合规性标准（如：ISO 13485, CE Class III）。"
+      }
+    ],
+    "relations": [
+      {
+        "source": "Product",
+        "target": "Category",
+        "type": "sub_category_of",
+        "description": "定义产品的层级归属。"
+      },
+      {
+        "source": "Product",
+        "target": "Reference",
+        "type": "backed_by",
+        "description": "由证据支撑效能声明。"
+      },
+      {
+        "source": "Product",
+        "target": "Competitor",
+        "type": "benchmarked_against",
+        "description": "与竞品对标。"
+      },
+      {
+        "source": "Product",
+        "target": "Material",
+        "type": "made_of",
+        "description": "定义材质属性。"
+      },
+      {
+        "source": "Product",
+        "target": "Surgical_Procedure",
+        "type": "used_in",
+        "description": "定义临床应用场景。"
+      },
+      {
+        "source": "Product",
+        "target": "Standard",
+        "type": "complies_with",
+        "description": "定义合规边界。"
+      },
+      {
+        "source": "Category",
+        "target": "Category",
+        "type": "parent_of",
+        "description": "构建分类树结构。"
+      }
+    ]
+  },
+  "index": "# LLM Wiki Index (Hierarchical Taxonomy)\n\n## Navigation Architecture\n- **GI & Access (内镜与介入)**: [[Hemoclips]], [[Biopsy Forceps]], [[Snares]], [[Guidewires]]\n- **MIS / Lap (微创腹腔镜)**: [[Trocars]], [[Veress_Needles]], [[Lap Instruments]], [[Polymer_Clips]], [[Ultrasonic_Shears]]\n- **Surg Closure (闭合与吻合)**: [[Staplers]], [[Absorbable_Sutures]], [[Non_Absorbable_Sutures]], [[Hernia_Meshes]]\n- **Technology Hub**: [[NomoFlow_Technology]], [[Compliance_Framework]], [[ViaSurg_Academy]]\n\n## Major OEM Brands\n- [[Ethicon]]\n- [[Medtronic]]\n- [[Olympus]]\n- [[Terumo]]\n- [[Boston_Scientific]]\n- [[Cook_Medical]]\n- [[Teleflex]]\n- [[Bard]]\n\n## SKU Cross-Reference (Snipe Matrix)\n- [[Ethicon_B5LT]] (Trocar)\n- [[Johnson_CDH29P]] (Stapler)\n- [[Teleflex_Hem_o_lok]] (Polymer Clip)\n\n## Footer Metadata\n- **Global Compliance**: ISO 13485:2016 Certified | FDA 21 CFR 807\n- **Address Logic**: Global Distribution Hubs: USA, EU, APAC.\n- **Support Hub**: [Download IFU], [Evidence Portal], [OEM Inquiry]\n"
+}

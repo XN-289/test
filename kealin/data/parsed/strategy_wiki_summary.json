@@ -1,0 +1,14 @@
+{
+  "loaded_at": "2026-07-07T04:42:26.064Z",
+  "total_signals": 3,
+  "total_insights": 2,
+  "total_strategies": 3,
+  "has_graph": true,
+  "signal_types": [
+    "Supply Chain Signal",
+    "Market Signal"
+  ],
+  "strategy_statuses": [
+    "executing"
+  ]
+}

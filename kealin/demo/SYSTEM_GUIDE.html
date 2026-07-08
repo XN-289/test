@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Ouroboros — 系统总览</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Lato:wght@300;400;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #2B6CB0;
+  --primary-light: #EBF4FF;
+  --success: #276749;
+  --success-bg: #F0FFF4;
+  --gray-100: #EDF2F7;
+  --gray-200: #E2E8F0;
+  --gray-600: #718096;
+  --gray-800: #2D3748;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Lato', -apple-system, sans-serif; background: #F7FAFC; color: #2D3748; line-height: 1.6; }
+.container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+h1 { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+h2 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 600; margin: 28px 0 14px; color: #2B6CB0; border-bottom: 1px solid #E2E8F0; padding-bottom: 6px; }
+h3 { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 600; margin: 18px 0 10px; }
+p { margin-bottom: 10px; font-size: 14px; }
+.mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+.subtitle { color: #718096; font-size: 13px; margin-bottom: 20px; }
+
+.score-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.score-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 4px; padding: 12px; text-align: center; }
+.score-card .value { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 700; }
+.score-card .label { font-size: 11px; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; }
+.score-card.green .value { color: #276749; }
+.score-card.blue .value { color: #2B6CB0; }
+
+table { width: 100%; border-collapse: collapse; margin-bottom: 14px; font-size: 13px; }
+th { background: #EDF2F7; text-align: left; padding: 8px 10px; font-weight: 600; border: 1px solid #E2E8F0; }
+td { padding: 6px 10px; border: 1px solid #E2E8F0; vertical-align: top; }
+tr:nth-child(even) { background: #F7FAFC; }
+.badge { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 11px; font-weight: 600; }
+.badge-green { background: #F0FFF4; color: #276749; border: 1px solid #C6F6D5; }
+.badge-yellow { background: #FFFFF0; color: #975A16; border: 1px solid #FEFCBF; }
+.badge-blue { background: #EBF4FF; color: #2B6CB0; border: 1px solid #BEE3F8; }
+.badge-red { background: #FFF5F5; color: #C53030; border: 1px solid #FED7D7; }
+.badge-gray { background: #F7FAFC; color: #718096; border: 1px solid #E2E8F0; }
+
+.section { background: #fff; border: 1px solid #E2E8F0; border-radius: 4px; padding: 18px; margin-bottom: 18px; }
+
+.pipeline-flow { display: flex; align-items: center; gap: 6px; margin: 12px 0; flex-wrap: wrap; }
+.pipe-step { background: #EBF4FF; border: 1px solid #BEE3F8; border-radius: 4px; padding: 6px 12px; font-size: 12px; font-weight: 600; color: #2B6CB0; }
+.pipe-arrow { color: #A0AEC0; font-size: 16px; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+
+.toc { background: #fff; border: 1px solid #E2E8F0; border-radius: 4px; padding: 14px 20px; margin-bottom: 20px; }
+.toc ul { list-style: none; }
+.toc li { padding: 3px 0; font-size: 13px; }
+.toc a { color: #2B6CB0; text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+.toc .toc-sub { padding-left: 18px; font-size: 12px; }
+
+pre { background: #F7FAFC; padding: 12px; border: 1px solid #E2E8F0; border-radius: 4px; overflow-x: auto; font-size: 12px; }
+
+.page-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; margin: 12px 0; }
+.page-card { border: 1px solid #E2E8F0; border-radius: 4px; padding: 10px; background: #fff; }
+.page-card .page-name { font-weight: 600; font-size: 12px; color: #2B6CB0; margin-bottom: 3px; }
+.page-card .page-desc { font-size: 11px; color: #718096; }
+.page-card .page-type { font-size: 10px; font-weight: 600; padding: 1px 5px; border-radius: 3px; margin-top: 4px; display: inline-block; }
+
+.collapsible { cursor: pointer; user-select: none; }
+.collapsible::after { content: ' ▸'; font-size: 12px; }
+.collapsible.open::after { content: ' ▾'; }
+.collapse-content { display: none; }
+.collapse-content.show { display: block; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🐍 Project Ouroboros</h1>
+<p class="subtitle">AI 驱动的 B2B 医疗器械内容引擎 · ViaSurg · 更新: 2026-07-07</p>
+
+<div class="score-row">
+  <div class="score-card green"><div class="value">5/5</div><div class="label">Pipeline 阶段</div></div>
+  <div class="score-card green"><div class="value">4/4</div><div class="label">Skills 运作</div></div>
+  <div class="score-card green"><div class="value">7/7</div><div class="label">数据文件</div></div>
+  <div class="score-card green"><div class="value">41/41</div><div class="label">Wiki 实体</div></div>
+  <div class="score-card green"><div class="value">33</div><div class="label">生成页面</div></div>
+  <div class="score-card green"><div class="value">100%</div><div class="label">质量得分</div></div>
+</div>
+
+<div class="toc">
+  <strong>目录</strong>
+  <ul>
+    <li><a href="#part1">第一部分 · 项目总览</a></li>
+    <li class="toc-sub"><a href="#p1-goals">1.1 目标体系</a></li>
+    <li class="toc-sub"><a href="#p1-status">1.2 系统状态</a></li>
+    <li class="toc-sub"><a href="#p1-resolved">1.3 已解决问题</a></li>
+    <li><a href="#part2">第二部分 · 测试指引</a></li>
+    <li class="toc-sub"><a href="#p2-start">2.1 启动配置</a></li>
+    <li class="toc-sub"><a href="#p2-pipeline">2.2 Pipeline 测试</a></li>
+    <li class="toc-sub"><a href="#p2-pages">2.3 页面说明（33 页）</a></li>
+    <li class="toc-sub"><a href="#p2-api">2.4 API 速查</a></li>
+    <li class="toc-sub"><a href="#p2-checklist">2.5 检查清单</a></li>
+    <li><a href="#part3">第三部分 · 迭代建议</a>（精简）</li>
+    <li><a href="#appendix">附录</a>（精简）</li>
+  </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 第一部分 -->
+<!-- ============================================================ -->
+
+<h2 id="part1">第一部分 · 项目总览</h2>
+
+<h3 id="p1-goals">1.1 目标体系</h3>
+<div class="section">
+  <table>
+    <tr><th>目标</th><th>状态</th><th>产出</th></tr>
+    <tr><td><strong>数据管道打通</strong> — 解析全部 CSV，建立结构化数据</td><td><span class="badge badge-green">✅ 已达成</span></td><td>7/7 数据文件（898 关键词、373 高价值、225 高流量、41 实体、i18n、模板）</td></tr>
+    <tr><td><strong>AI Skill 集成</strong> — Python Agent SDK + DeepSeek LLM</td><td><span class="badge badge-green">✅ 已达成</span></td><td>3 Python Skill + 1 JS Skill，DeepSeek v4 Flash</td></tr>
+    <tr><td><strong>多页面生成</strong> — 独立 HTML 页面 + Schema.org + i18n</td><td><span class="badge badge-green">✅ 已达成</span></td><td>33 个独立页面（12 产品 + 10 竞品 + 8 类别 + 2 材料 + 1 技术）+ 主页 + sitemap</td></tr>
+    <tr><td><strong>设计合规</strong> — Clinical Minimalism</td><td><span class="badge badge-green">✅ 已达成</span></td><td>Montserrat/Lato/Mono、1px 边框、无阴影、max 4px 圆角</td></tr>
+    <tr><td><strong>持久化存储</strong> — Pipeline 状态不丢失</td><td><span class="badge badge-green">✅ 已达成</span></td><td>JSON 文件持久化（state.json）</td></tr>
+    <tr><td><strong>竞争情报自动化</strong> — Autoresearch</td><td><span class="badge badge-green">✅ 已达成</span></td><td>10 竞品分析、10 关键词缺口、3 SERP 机会</td></tr>
+    <tr><td><strong>页面间导航</strong> — 实体交叉链接</td><td><span class="badge badge-green">✅ 已达成</span></td><td>产品↔竞品↔类别↔材料↔技术 网状导航</td></tr>
+    <tr><td><strong>生产部署</strong> — SSG + CDN + API 集成</td><td><span class="badge badge-yellow">⏳ 待实施</span></td><td>计划: Vercel/Cloudflare + Google Ads API + Supabase</td></tr>
+  </table>
+</div>
+
+<h3 id="p1-status">1.2 系统状态</h3>
+<div class="section">
+  <div class="two-col">
+    <div>
+      <table>
+        <tr><th>组件</th><th>状态</th></tr>
+        <tr><td>server.js (Node.js)</td><td><span class="badge badge-green">✓ 运行中</span> :3001</td></tr>
+        <tr><td>strategy_operator.py</td><td><span class="badge badge-green">✓ DeepSeek</span></td></tr>
+        <tr><td>wiki_compiler.py</td><td><span class="badge badge-green">✓ DeepSeek</span></td></tr>
+        <tr><td>autoresearch.py</td><td><span class="badge badge-green">✓ DeepSeek</span></td></tr>
+        <tr><td>持久化存储</td><td><span class="badge badge-green">✓ state.json</span></td></tr>
+        <tr><td>i18n 系统</td><td><span class="badge badge-green">✓ EN/ZH</span></td></tr>
+      </table>
+    </div>
+    <div>
+      <table>
+        <tr><th>指标</th><th>值</th></tr>
+        <tr><td>Pipeline 阶段</td><td>5/5 completed</td></tr>
+        <tr><td>数据文件</td><td>7/7 加载</td></tr>
+        <tr><td>Wiki 实体</td><td>41/41 渲染</td></tr>
+        <tr><td>生成页面</td><td>33 个 + 主页</td></tr>
+        <tr><td>Sitemap URLs</td><td>34 个</td></tr>
+        <tr><td>Schema.org</td><td>12 个 JSON-LD</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<h3 id="p1-resolved">1.3 已解决问题（16 项）</h3>
+<div class="section">
+  <table>
+    <tr><th>#</th><th>问题</th><th>解决方案</th></tr>
+    <tr><td>1</td><td>CSV 数据未解析</td><td>21 个 CSV 解析器 → 898 关键词 JSON</td></tr>
+    <tr><td>2</td><td>数据文件利用率低</td><td>连接全部 7 文件到 Pipeline</td></tr>
+    <tr><td>3</td><td>Wiki 实体利用率低</td><td>全量渲染 41 实体</td></tr>
+    <tr><td>4</td><td>CPC 显示 N/A</td><td>修复字段映射</td></tr>
+    <tr><td>5</td><td>Agent SDK 未调用</td><td>child_process + skill_executor.py</td></tr>
+    <tr><td>6</td><td>无 LLM API Key</td><td>配置 DeepSeek v4 Flash</td></tr>
+    <tr><td>7</td><td>DeepSeek JSON 解析失败</td><td>extract_json_from_response()</td></tr>
+    <tr><td>8</td><td>Windows 中文乱码</td><td>PYTHONIOENCODING=utf-8</td></tr>
+    <tr><td>9</td><td>Output 页未遵循 DESIGN.md</td><td>实现 Clinical Minimalism</td></tr>
+    <tr><td>10</td><td>仅单页面输出</td><td>33 个独立页面生成</td></tr>
+    <tr><td>11</td><td>Wiki-link 残留 [[...]]</td><td>cleanWikiContent() 清理</td></tr>
+    <tr><td>12</td><td>i18n 双语未集成</td><td>导航+页脚+产品内容中英文</td></tr>
+    <tr><td>13</td><td>SSE 事件流不推送</td><td>修复 SSE 头部和事件发送</td></tr>
+    <tr><td>14</td><td>页面间无导航</td><td>产品卡片/竞品表格/类别网格全部可点击</td></tr>
+    <tr><td>15</td><td>Slug 不一致 (_ vs -)</td><td>统一 makeSlug() 函数</td></tr>
+    <tr><td>16</td><td>Sitemap/Schema 不完整</td><td>覆盖全部 34 URLs + 12 产品 Schema</td></tr>
+  </table>
+</div>
+
+<!-- ============================================================ -->
+<!-- 第二部分 -->
+<!-- ============================================================ -->
+
+<h2 id="part2">第二部分 · 测试指引</h2>
+
+<h3 id="p2-start">2.1 启动配置</h3>
+<div class="section">
+  <table>
+    <tr><th>依赖</th><th>版本</th><th>用途</th></tr>
+    <tr><td>Node.js</td><td>≥ 16.x</td><td>运行 server.js</td></tr>
+    <tr><td>Python</td><td>≥ 3.8</td><td>运行 Agent SDK 脚本</td></tr>
+    <tr><td>openai (pip)</td><td>≥ 1.0</td><td>DeepSeek API 调用</td></tr>
+  </table>
+  <pre class="mono">pip install openai
+cd D:\test\kealin\demo
+node server.js</pre>
+  <p>启动后访问: <code>http://localhost:3001</code> (Dashboard) · <code>http://localhost:3001/output/index.html</code> (产品主页)</p>
+</div>
+
+<h3 id="p2-pipeline">2.2 Pipeline 测试</h3>
+<div class="section">
+  <div class="pipeline-flow">
+    <div class="pipe-step">① Signal Ingestion</div><div class="pipe-arrow">→</div>
+    <div class="pipe-step">② OODA Analysis</div><div class="pipe-arrow">→</div>
+    <div class="pipe-step">③ Wiki Compilation</div><div class="pipe-arrow">→</div>
+    <div class="pipe-step">④ Site Generation</div><div class="pipe-arrow">→</div>
+    <div class="pipe-step">⑤ Quality Verification</div>
+  </div>
+  <table>
+    <tr><th>阶段</th><th>耗时</th><th>关键产出</th></tr>
+    <tr><td>① Signal Ingestion</td><td>~2s</td><td>关键词聚类、流量机会</td></tr>
+    <tr><td>② OODA Analysis</td><td>~10s</td><td>信号-洞察映射（LLM）</td></tr>
+    <tr><td>③ Wiki Compilation</td><td>~10s</td><td>41 实体分类（LLM）</td></tr>
+    <tr><td>④ Site Generation</td><td>~3s</td><td>33 个 HTML + sitemap</td></tr>
+    <tr><td>⑤ Quality Verification</td><td>~15s</td><td>100% 通过率（LLM）</td></tr>
+  </table>
+  <pre class="mono"># 运行完整 Pipeline
+curl -X POST http://localhost:3001/api/pipeline/run
+
+# 运行单个阶段
+curl -X POST http://localhost:3001/api/pipeline/stage{1-5}</pre>
+</div>
+
+<h3 id="p2-pages">2.3 页面说明（33 页）</h3>
+<div class="section">
+  <h4>🏥 产品页面（12 个）</h4>
+  <div class="page-grid">
+    <div class="page-card"><div class="page-name">absorbable-sutures.html</div><div class="page-desc">可吸收缝合线</div><div class="page-type badge-blue">Product</div></div>
+    <div class="page-card"><div class="page-name">non-absorbable-sutures.html</div><div class="page-desc">不可吸收缝合线</div><div class="page-type badge-blue">Product</div></div>
+    <div class="page-card"><div class="page-name">staplers.html</div><div class="page-desc">吻合器</div><div class="page-type badge-blue">Product</div></div>
+    <div class="page-card"><div class="page-name">trocars.html</div><div class="page-desc">穿刺器</div><div class="page-type badge-blue">Product</div></div>
+    <div class="page-card"><div class="page-name">hemoclips.html</div><div class="page-desc">止血夹</div><div class="page-type badge-blue">Product</div></div>
+    <div class="page-card"><div class="page-name">guidewires.html</div><div class="page-desc">导丝</div><div class="page-type badge-blue">Product</div></div>
+    <div class="page-card"><div class="page-name">snares.html</div><div class="page-desc">圈套器</div><div class="page-type badge-blue">Product</div></div>
+    <div class="page-card"><div class="page-name">biopsy-forceps.html</div><div class="page-desc">活检钳</div><div class="page-type badge-blue">Product</div></div>
+    <div class="page-card"><div class="page-name">hernia-meshes.html</div><div class="page-desc">疝修补片</div><div class="page-type badge-blue">Product</div></div>
+    <div class="page-card"><div class="page-name">polymer-clips.html</div><div class="page-desc">聚合物夹</div><div class="page-type badge-blue">Product</div></div>
+    <div class="page-card"><div class="page-name">ultrasonic-shears.html</div><div class="page-desc">超声刀</div><div class="page-type badge-blue">Product</div></div>
+    <div class="page-card"><div class="page-name">surgical-instruments.html</div><div class="page-desc">手术器械</div><div class="page-type badge-blue">Product</div></div>
+  </div>
+
+  <h4>🏢 竞品页面（10 个）</h4>
+  <div class="page-grid">
+    <div class="page-card"><div class="page-name">competitor-ethicon.html</div><div class="page-desc">Ethicon (J&J)</div><div class="page-type badge-red">Competitor</div></div>
+    <div class="page-card"><div class="page-name">competitor-medtronic.html</div><div class="page-desc">Medtronic</div><div class="page-type badge-red">Competitor</div></div>
+    <div class="page-card"><div class="page-name">competitor-olympus.html</div><div class="page-desc">Olympus</div><div class="page-type badge-red">Competitor</div></div>
+    <div class="page-card"><div class="page-name">competitor-boston-scientific.html</div><div class="page-desc">Boston Scientific</div><div class="page-type badge-red">Competitor</div></div>
+    <div class="page-card"><div class="page-name">competitor-bard.html</div><div class="page-desc">Bard (BD)</div><div class="page-type badge-red">Competitor</div></div>
+    <div class="page-card"><div class="page-name">competitor-cook-medical.html</div><div class="page-desc">Cook Medical</div><div class="page-type badge-red">Competitor</div></div>
+    <div class="page-card"><div class="page-name">competitor-teleflex.html</div><div class="page-desc">Teleflex</div><div class="page-type badge-red">Competitor</div></div>
+    <div class="page-card"><div class="page-name">competitor-terumo.html</div><div class="page-desc">Terumo</div><div class="page-type badge-red">Competitor</div></div>
+    <div class="page-card"><div class="page-name">competitor-competitor-disruption.html</div><div class="page-desc">竞争颠覆分析</div><div class="page-type badge-red">Competitor</div></div>
+    <div class="page-card"><div class="page-name">competitor-viasurg-academy.html</div><div class="page-desc">ViaSurg Academy</div><div class="page-type badge-red">Competitor</div></div>
+  </div>
+
+  <h4>📂 其他实体页面（11 个）</h4>
+  <div class="page-grid">
+    <div class="page-card"><div class="page-name">category-sutures.html</div><div class="page-desc">缝合线类别</div><div class="page-type badge-gray">Category</div></div>
+    <div class="page-card"><div class="page-name">category-staplers.html</div><div class="page-desc">吻合器类别</div><div class="page-type badge-gray">Category</div></div>
+    <div class="page-card"><div class="page-name">category-hemostasis.html</div><div class="page-desc">止血器械类别</div><div class="page-type badge-gray">Category</div></div>
+    <div class="page-card"><div class="page-name">category-access.html</div><div class="page-desc">通道器械类别</div><div class="page-type badge-gray">Category</div></div>
+    <div class="page-card"><div class="page-name">category-hernia-repair.html</div><div class="page-desc">疝修补类别</div><div class="page-type badge-gray">Category</div></div>
+    <div class="page-card"><div class="page-name">category-endoscopic.html</div><div class="page-desc">内镜器械类别</div><div class="page-type badge-gray">Category</div></div>
+    <div class="page-card"><div class="page-name">category-energy-devices.html</div><div class="page-desc">能量器械类别</div><div class="page-type badge-gray">Category</div></div>
+    <div class="page-card"><div class="page-name">category-interventional.html</div><div class="page-desc">介入器械类别</div><div class="page-type badge-gray">Category</div></div>
+    <div class="page-card"><div class="page-name">material-absorbable-polymers.html</div><div class="page-desc">可吸收聚合物</div><div class="page-type badge-yellow">Material</div></div>
+    <div class="page-card"><div class="page-name">material-polypropylene.html</div><div class="page-desc">聚丙烯</div><div class="page-type badge-yellow">Material</div></div>
+    <div class="page-card"><div class="page-name">tech-laparoscopic.html</div><div class="page-desc">腔镜技术</div><div class="page-type badge-green">Technology</div></div>
+  </div>
+</div>
+
+<h3 id="p2-api">2.4 API 速查</h3>
+<div class="section">
+  <table>
+    <tr><th>端点</th><th>方法</th><th>说明</th></tr>
+    <tr><td class="mono">/api/pipeline/run</td><td>POST</td><td>运行完整 Pipeline</td></tr>
+    <tr><td class="mono">/api/pipeline/stage{1-5}</td><td>POST</td><td>运行单个阶段</td></tr>
+    <tr><td class="mono">/api/pipeline/results</td><td>GET</td><td>获取 Pipeline 结果</td></tr>
+    <tr><td class="mono">/api/sdk/status</td><td>GET</td><td>Agent SDK 状态</td></tr>
+    <tr><td class="mono">/api/state</td><td>GET</td><td>持久化状态</td></tr>
+    <tr><td class="mono">/api/pages</td><td>GET</td><td>页面列表</td></tr>
+    <tr><td class="mono">/api/events</td><td>GET</td><td>SSE 事件流</td></tr>
+    <tr><td class="mono">/output/index.html</td><td>GET</td><td>产品主页</td></tr>
+    <tr><td class="mono">/output/pages/{name}.html</td><td>GET</td><td>独立页面</td></tr>
+    <tr><td class="mono">/output/sitemap.xml</td><td>GET</td><td>SEO Sitemap</td></tr>
+  </table>
+</div>
+
+<h3 id="p2-checklist">2.5 检查清单</h3>
+<div class="section">
+  <table>
+    <tr><th>#</th><th>测试项</th><th>预期</th><th>验证</th></tr>
+    <tr><td>1</td><td>服务器启动</td><td>端口 3001 监听</td><td>HTTP 200</td></tr>
+    <tr><td>2</td><td>Pipeline 完整运行</td><td>5 阶段 completed</td><td>stages 数组</td></tr>
+    <tr><td>3</td><td>LLM 模式</td><td>mode: llm</td><td>Stage 2/3/5 日志</td></tr>
+    <tr><td>4</td><td>数据文件加载</td><td>7/7</td><td>Stage 1 日志</td></tr>
+    <tr><td>5</td><td>Wiki 实体分类</td><td>41 实体</td><td>Stage 3 结果</td></tr>
+    <tr><td>6</td><td>页面生成</td><td>33 个 HTML</td><td>/api/pages</td></tr>
+    <tr><td>7</td><td>质量检查</td><td>score: 100</td><td>Stage 5 结果</td></tr>
+    <tr><td>8</td><td>DESIGN.md 合规</td><td>无 box-shadow</td><td>F12 检查</td></tr>
+    <tr><td>9</td><td>Wiki-link 清理</td><td>无 [[...]]</td><td>grep 输出</td></tr>
+    <tr><td>10</td><td>i18n 双语</td><td>中英文</td><td>浏览器查看</td></tr>
+    <tr><td>11</td><td>Sitemap</td><td>34 URLs</td><td>/output/sitemap.xml</td></tr>
+    <tr><td>12</td><td>Schema.org</td><td>12 JSON-LD</td><td>F12 检查</td></tr>
+    <tr><td>13</td><td>页面间导航</td><td>无 404</td><td>点击测试</td></tr>
+  </table>
+</div>
+
+<!-- ============================================================ -->
+<!-- 第三部分（精简） -->
+<!-- ============================================================ -->
+
+<h2 id="part3">第三部分 · 迭代建议</h2>
+<div class="section">
+  <table>
+    <tr><th>阶段</th><th>任务</th><th>优先级</th><th>耗时</th></tr>
+    <tr><td rowspan="3"><strong>短期<br>1-2 周</strong></td><td>页面内容深度增强（LLM 补充 300-500 词）</td><td><span class="badge badge-red">P0</span></td><td>3-5 天</td></tr>
+    <tr><td>关键词覆盖率提升（7% → 30%+）</td><td><span class="badge badge-red">P0</span></td><td>3-5 天</td></tr>
+    <tr><td>产品图片与媒体</td><td><span class="badge badge-yellow">P1</span></td><td>2-3 天</td></tr>
+    <tr><td rowspan="3"><strong>中期<br>2-4 周</strong></td><td>Google Ads API 集成</td><td><span class="badge badge-yellow">中</span></td><td>5-7 天</td></tr>
+    <tr><td>Supabase 持久化</td><td><span class="badge badge-yellow">中</span></td><td>3-5 天</td></tr>
+    <tr><td>内容编辑器</td><td><span class="badge badge-yellow">中</span></td><td>5-7 天</td></tr>
+    <tr><td rowspan="2"><strong>长期<br>1-3 月</strong></td><td>SSG 部署（Vercel/Cloudflare）</td><td><span class="badge badge-blue">低</span></td><td>1-2 周</td></tr>
+    <tr><td>多租户 SaaS</td><td><span class="badge badge-blue">低</span></td><td>3-4 周</td></tr>
+  </table>
+</div>
+
+<!-- ============================================================ -->
+<!-- 附录（精简） -->
+<!-- ============================================================ -->
+
+<h2 id="appendix">附录</h2>
+
+<div class="section">
+  <h3>Skills 运作状态</h3>
+  <table>
+    <tr><th>Skill</th><th>阶段</th><th>状态</th><th>工作内容</th></tr>
+    <tr><td>strategy-operator</td><td>Stage 2</td><td><span class="badge badge-green">✓ LLM</span></td><td>信号交叉引用、策略映射</td></tr>
+    <tr><td>wiki-compiler</td><td>Stage 3</td><td><span class="badge badge-green">✓ LLM</span></td><td>41 实体分类、298 链接</td></tr>
+    <tr><td>site-generator</td><td>Stage 4</td><td><span class="badge badge-green">✓ JS</span></td><td>33 页面、Sitemap、i18n</td></tr>
+    <tr><td>autoresearch</td><td>Stage 5</td><td><span class="badge badge-green">✓ LLM</span></td><td>竞品分析、关键词缺口</td></tr>
+  </table>
+
+  <h3 style="margin-top:18px;">数据文件</h3>
+  <table>
+    <tr><th>文件</th><th>内容</th><th>使用阶段</th></tr>
+    <tr><td class="mono">google_keywords_parsed.json</td><td>898 关键词</td><td>Stage 1</td></tr>
+    <tr><td class="mono">high_value_keywords.json</td><td>373 高 CPC</td><td>Stage 1, 5</td></tr>
+    <tr><td class="mono">high_volume_keywords.json</td><td>225 高流量</td><td>Stage 1</td></tr>
+    <tr><td class="mono">strategy_wiki_data.json</td><td>4 信号、2 洞察、3 策略</td><td>Stage 1, 2</td></tr>
+    <tr><td class="mono">llm_wiki_data.json</td><td>41 实体</td><td>Stage 3, 4, 5</td></tr>
+    <tr><td class="mono">i18n_data.json</td><td>EN/ZH 标签</td><td>Stage 4</td></tr>
+    <tr><td class="mono">templates_data.json</td><td>header, footer, mega_menu</td><td>Stage 4</td></tr>
+  </table>
+</div>
+
+<div style="text-align:center;padding:20px;color:#A0AEC0;font-size:11px;border-top:1px solid #E2E8F0;margin-top:20px;">
+  Project Ouroboros System Guide v6 · 2026-07-07 · ViaSurg Medical Devices
+</div>
+
+</div>
+</body>
+</html>

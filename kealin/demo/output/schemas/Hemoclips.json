@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Hemoclips",
+  "description": "Comprehensive hemostasis solution matrix covering both endoscopic (Rotatable) and laparoscopic (Polymer) applications. - ViaSurg - Biopsy_Forceps",
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "ViaSurg"
+  },
+  "category": "Clips",
+  "url": "https://viasurg.com/output/pages/hemoclips.html"
+}

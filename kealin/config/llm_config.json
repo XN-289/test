@@ -1,0 +1,16 @@
+{
+  "deepseek": {
+    "api_key": "sk-b86aaab2d65c4279a74856bb8a6e5e37",
+    "base_url": "https://api.deepseek.com",
+    "model": "deepseek-chat"
+  },
+  "openai": {
+    "api_key": "",
+    "base_url": "https://api.openai.com/v1",
+    "model": "gpt-4o-mini"
+  },
+  "active_provider": "deepseek",
+  "fallback_to_js": true,
+  "max_tokens": 1500,
+  "temperature": 0
+}

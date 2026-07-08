@@ -1,0 +1,519 @@
+{
+  "signals": [
+    {
+      "id": "sig_1783476679427_123",
+      "type": "user_reported",
+      "title": "123",
+      "source": "Google Keywords Planner",
+      "description": "1235",
+      "timestamp": "2026-07-08T02:11:19.427Z",
+      "status": "active"
+    }
+  ],
+  "pipelineRuns": [
+    {
+      "timestamp": "2026-07-07T14:19:06.058Z",
+      "score": 100,
+      "pagesGenerated": 22,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T14:23:58.331Z",
+      "score": 100,
+      "pagesGenerated": 22,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T14:24:28.651Z",
+      "score": 100,
+      "pagesGenerated": 22,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T14:27:17.136Z",
+      "score": 100,
+      "pagesGenerated": 22,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T15:12:38.322Z",
+      "score": 100,
+      "pagesGenerated": 22,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T15:38:59.270Z",
+      "score": 100,
+      "pagesGenerated": 22,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T15:47:13.650Z",
+      "score": 100,
+      "pagesGenerated": 22,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T16:16:18.825Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T16:38:58.188Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T16:55:26.501Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T17:05:22.244Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T17:20:52.530Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T17:24:22.140Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T17:29:50.353Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T17:32:26.047Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T17:41:56.820Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T17:44:18.468Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T17:44:53.313Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T17:46:25.270Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T17:58:22.703Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T18:21:02.914Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T18:49:39.484Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T18:50:21.366Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T18:51:06.704Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T18:51:48.493Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-07T18:52:36.242Z",
+      "score": 100,
+      "pagesGenerated": 33,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-08T02:12:24.423Z",
+      "score": 100,
+      "pagesGenerated": 41,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-08T03:08:19.490Z",
+      "score": 100,
+      "pagesGenerated": 41,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-08T03:38:50.500Z",
+      "score": 100,
+      "pagesGenerated": 41,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-08T03:48:19.379Z",
+      "score": 100,
+      "pagesGenerated": 41,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-08T03:49:00.637Z",
+      "score": 100,
+      "pagesGenerated": 41,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-08T03:49:41.690Z",
+      "score": 100,
+      "pagesGenerated": 41,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-08T03:55:37.584Z",
+      "score": 100,
+      "pagesGenerated": 41,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-08T03:58:08.559Z",
+      "score": 100,
+      "pagesGenerated": 41,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-08T03:58:18.603Z",
+      "score": 100,
+      "pagesGenerated": 41,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-08T04:01:57.312Z",
+      "score": 100,
+      "pagesGenerated": 41,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-08T04:05:31.093Z",
+      "score": 100,
+      "pagesGenerated": 41,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-08T05:56:08.629Z",
+      "score": 100,
+      "pagesGenerated": 41,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-08T06:13:15.538Z",
+      "score": 100,
+      "pagesGenerated": 41,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-08T06:19:25.101Z",
+      "score": 100,
+      "pagesGenerated": 41,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    },
+    {
+      "timestamp": "2026-07-08T06:34:18.532Z",
+      "score": 100,
+      "pagesGenerated": 41,
+      "stages": {
+        "signal_ingestion": "completed",
+        "ooda_analysis": "completed",
+        "wiki_compilation": "completed",
+        "site_generation": "completed",
+        "quality_verification": "completed"
+      }
+    }
+  ],
+  "lastRun": {
+    "timestamp": "2026-07-08T06:34:18.532Z",
+    "score": 100,
+    "pagesGenerated": 41,
+    "stages": {
+      "signal_ingestion": "completed",
+      "ooda_analysis": "completed",
+      "wiki_compilation": "completed",
+      "site_generation": "completed",
+      "quality_verification": "completed"
+    }
+  }
+}

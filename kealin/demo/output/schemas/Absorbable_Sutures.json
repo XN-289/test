@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Absorbable Sutures",
+  "description": "Synthetic absorbable surgical sutures (e.g., PGA, PGLA). Designed to provide reliable wound support during critical healing and then absorb via hydrolysis. - Staplers - ViaSurg",
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "ViaSurg"
+  },
+  "category": "Sutures",
+  "url": "https://viasurg.com/output/pages/absorbable-sutures.html"
+}

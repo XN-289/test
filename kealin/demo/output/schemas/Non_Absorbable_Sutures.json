@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Non Absorbable Sutures",
+  "description": "Permanent surgical sutures (e.g., Polypropylene, Nylon). Essential for vascular, cardiac, and orthopedic procedures requiring permanent wound support. - Staplers - Hernia_Meshes",
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "ViaSurg"
+  },
+  "category": "Sutures",
+  "url": "https://viasurg.com/output/pages/non-absorbable-sutures.html"
+}

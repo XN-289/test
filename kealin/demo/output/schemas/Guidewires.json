@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Guidewires",
+  "description": "High-performance guidewires for GI, Urology, and Peripheral Vascular access. Featuring Zebra (striped) patterning for visual confirmation of movement and hydrophilic coating for ultra-low friction. - ",
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "ViaSurg"
+  },
+  "category": "Medical Device",
+  "url": "https://viasurg.com/output/pages/guidewires.html"
+}

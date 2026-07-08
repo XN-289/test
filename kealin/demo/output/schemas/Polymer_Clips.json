@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Polymer Clips",
+  "description": "Non-absorbable polymer ligation clips for high-security closure of vessels and tissue bundles. Designed for use in laparoscopic surgery. - Hemoclips - ViaSurg",
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "ViaSurg"
+  },
+  "category": "Clips",
+  "url": "https://viasurg.com/output/pages/polymer-clips.html"
+}
