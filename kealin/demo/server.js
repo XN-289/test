@@ -2412,18 +2412,21 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
     </header>
     <div class="container">
         <div class="breadcrumb">
-            <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a> &rsaquo; <a href="/output/#products" data-lang="en">Products</a><a href="/output/#products" data-lang="zh">产品中心</a> &rsaquo; ${name}
+            <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a> &rsaquo; <a href="/output/#products" data-lang="en">Products</a><a href="/output/#products" data-lang="zh">产品中心</a> &rsaquo; <span data-lang="en">${name}</span><span data-lang="zh">${matDescZh(name) ? name.replace(' Material', '材料') : name}</span>
         </div>
         <div class="page-header">
-            <h1>${name}</h1>
+            <h1><span data-lang="en">${name}</span><span data-lang="zh">${name.replace(' Material', '材料')}</span></h1>
         </div>
         <div class="content">
             <h2><span data-lang="en">Material Overview</span><span data-lang="zh">材料概述</span></h2>
-            <p>${desc}</p>
+            <p><span data-lang="en">${desc}</span><span data-lang="zh">${matDescZh(name) || desc}</span></p>
             ${props.length > 0 ? `
             <h2><span data-lang="en">Technical Properties</span><span data-lang="zh">技术特性</span></h2>
             <table class="prop-table">
-                ${props.map(p => `<tr><td>${p.key}</td><td>${p.value}</td></tr>`).join('')}
+                ${props.map(p => {
+                    const propsZh = MATERIAL_PROPS_ZH[name] || {};
+                    return `<tr><td><span data-lang="en">${p.key}</span><span data-lang="zh">${p.key}</span></td><td><span data-lang="en">${p.value}</span><span data-lang="zh">${propsZh[p.key] || p.value}</span></td></tr>`;
+                }).join('')}
             </table>` : ''}
 
             ${materialProducts.length > 0 ? `
@@ -2560,16 +2563,16 @@ function generateEntityPages(entities, i18n, templates, allKeywords) {
     </header>
     <div class="container">
         <div class="breadcrumb">
-            <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a> &rsaquo; <a href="/output/#products" data-lang="en">Products</a><a href="/output/#products" data-lang="zh">产品中心</a> &rsaquo; ${name}
+            <a href="/output/" data-lang="en">Home</a><a href="/output/" data-lang="zh">首页</a> &rsaquo; <a href="/output/#products" data-lang="en">Products</a><a href="/output/#products" data-lang="zh">产品中心</a> &rsaquo; <span data-lang="en">${name}</span><span data-lang="zh">${name.replace('Technology', '技术')}</span>
         </div>
         <div class="page-header">
-            <h1>${name}</h1>
+            <h1><span data-lang="en">${name}</span><span data-lang="zh">${name.replace('Technology', '技术')}</span></h1>
         </div>
         <div class="page-layout">
         <div class="main-content">
         <div class="content">
             <h2><span data-lang="en">Technology Overview</span><span data-lang="zh">技术概述</span></h2>
-            <p>${desc}</p>
+            <p><span data-lang="en">${desc}</span><span data-lang="zh">${techDescZh(name) || desc}</span></p>
             ${relatedCats.length ? `<h2><span data-lang="en">Related Categories</span><span data-lang="zh">相关分类</span></h2><ul>${relatedCats.map(c => `<li><a href="/output/pages/cat-${makeSlug(c.name)}.html">${c.name.replace(/_/g, ' ')}</a></li>`).join('')}</ul>` : ''}
             ${relatedProds.length ? `<h2><span data-lang="en">Products Using This Technology</span><span data-lang="zh">使用此技术的产品</span></h2><ul>${relatedProds.map(p => `<li><a href="/output/pages/product-${makeSlug(p.name)}.html">${p.name.replace(/_/g, ' ')}</a></li>`).join('')}</ul>` : ''}
             ${keywordFAQ}
@@ -3958,11 +3961,13 @@ function generateOutputPage(entities, i18n, templates, allKeywords) {
                     const slug = makeSlug(mat.name);
                     const content = mat.content || '';
                     const desc = extractDescription(content) || 'Advanced biomaterial for surgical applications.';
+                    const descZh = matDescZh(name) || desc;
                     const props = extractProperties(content, 3);
+                    const propsZh = MATERIAL_PROPS_ZH[name] || {};
                     return `<a href="/output/pages/material-${slug}.html" style="background:white;border:1px solid var(--rot-border-subtle);border-radius:4px;padding:24px;text-decoration:none;color:inherit;display:block;">
                         <div style="font-family:var(--rot-font-display);font-size:16px;font-weight:600;color:var(--rot-slate-heavy);margin-bottom:8px;">${name}</div>
-                        <p style="font-size:14px;color:var(--rot-slate-core);margin-bottom:12px;"><span data-lang="en">${desc}</span><span data-lang="zh">${desc}</span></p>
-                        ${props.map(p => `<div style="font-family:var(--rot-font-mono);font-size:12px;color:var(--rot-slate-light);padding:4px 0;border-top:1px solid var(--rot-border-light);">${p.key}: ${p.value}</div>`).join('')}
+                        <p style="font-size:14px;color:var(--rot-slate-core);margin-bottom:12px;"><span data-lang="en">${desc}</span><span data-lang="zh">${descZh}</span></p>
+                        ${props.map(p => `<div style="font-family:var(--rot-font-mono);font-size:12px;color:var(--rot-slate-light);padding:4px 0;border-top:1px solid var(--rot-border-light);"><span data-lang="en">${p.key}: ${p.value}</span><span data-lang="zh">${propsZh[p.key] ? p.key + '：' + propsZh[p.key] : p.key + ': ' + p.value}</span></div>`).join('')}
                         <div style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-slate-light);margin-top:12px;"><span data-lang="en">View Details →</span><span data-lang="zh">${zhContent.index.materials_view}</span></div>
                     </a>`;
                 }).join('')}
@@ -3971,9 +3976,10 @@ function generateOutputPage(entities, i18n, templates, allKeywords) {
                     const slug = makeSlug(tech.name);
                     const content = tech.content || '';
                     const desc = extractDescription(content) || 'Proprietary technology platform for medical device intelligence.';
+                    const descZh = techDescZh(name) || desc;
                     return `<a href="/output/pages/tech-${slug}.html" style="background:white;border:1px solid var(--rot-border-subtle);border-radius:4px;padding:24px;border-left:3px solid var(--rot-terminal-green);text-decoration:none;color:inherit;display:block;">
                         <div style="font-family:var(--rot-font-display);font-size:16px;font-weight:600;color:var(--rot-slate-heavy);margin-bottom:8px;">${name} <span style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-terminal-green);background:rgba(74,222,128,0.1);padding:2px 6px;border-radius:2px;">TECHNOLOGY</span></div>
-                        <p style="font-size:14px;color:var(--rot-slate-core);"><span data-lang="en">${desc}</span><span data-lang="zh">${desc}</span></p>
+                        <p style="font-size:14px;color:var(--rot-slate-core);"><span data-lang="en">${desc}</span><span data-lang="zh">${descZh}</span></p>
                         <div style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-slate-light);margin-top:12px;"><span data-lang="en">View Details →</span><span data-lang="zh">${zhContent.index.materials_view}</span></div>
                     </a>`;
                 }).join('')}
