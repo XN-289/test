@@ -27,3 +27,8 @@
 [MULTI-PAGE] Generated 41 individual pages
 [SSE] Client disconnected. Total: 0
 [SSE] Client connected. Total: 1
+[STAGE-1] Keyword expansion: 1271 seeds → 3797 total (3039 new)
+[SDK] Stage 2: Using Agent SDK strategy-operator result
+[SDK] Stage 3: Using Agent SDK wiki-compiler result
+[MULTI-PAGE] Generated 41 individual pages
+[SDK] Stage 5: Using Agent SDK autoresearch result
