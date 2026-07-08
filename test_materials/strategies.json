@@ -1,0 +1,290 @@
+{
+  "strategies": [
+    {
+      "id": "strat_001",
+      "name": "SKU 截流战略",
+      "status": "executing",
+      "priority": "high",
+      "created_at": "2026-07-06T10:00:00Z",
+      "description": "针对竞品具体 SKU 型号进行精准截流，抢占市场份额",
+      "objectives": [
+        "建立竞品 SKU 替代品页面",
+        "获取竞品关键词流量",
+        "转化竞品客户为 ViaSurg 客户"
+      ],
+      "target_competitors": [
+        {
+          "name": "Ethicon",
+          "products": ["cdh29p", "cdh25p", "b5lt"],
+          "market_share": "35%",
+          "weakness": "价格高，供应链长"
+        },
+        {
+          "name": "Teleflex",
+          "products": ["weck clip applier", "hemolock"],
+          "market_share": "15%",
+          "weakness": "产品线窄"
+        }
+      ],
+      "action_items": [
+        {
+          "action": "创建 'Alternatives to Ethicon CDH29P' 页面",
+          "deadline": "2026-07-15",
+          "status": "completed",
+          "owner": "site-generator"
+        },
+        {
+          "action": "优化 SKU 关键词广告投放",
+          "deadline": "2026-07-20",
+          "status": "in_progress",
+          "owner": "strategy-operator"
+        },
+        {
+          "action": "收集竞品 SKU 临床数据对比",
+          "deadline": "2026-07-25",
+          "status": "pending",
+          "owner": "wiki-compiler"
+        }
+      ],
+      "expected_outcomes": {
+        "traffic_increase": "30%",
+        "conversion_rate": "5%",
+        "cost_per_acquisition": "$50",
+        "timeline": "3 months"
+      }
+    },
+    {
+      "id": "strat_002",
+      "name": "高利润品类拓展",
+      "status": "executing",
+      "priority": "high",
+      "created_at": "2026-07-06T10:30:00Z",
+      "description": "聚焦高 CPC 关键词对应的高利润品类，快速获取高质量询盘",
+      "objectives": [
+        "识别高利润品类机会",
+        "建立品类专业知识库",
+        "获取高价值商业询盘"
+      ],
+      "target_categories": [
+        {
+          "category": "内镜止血夹",
+          "cpc": "$60.00",
+          "search_volume": "5,000",
+          "profit_margin": "60%"
+        },
+        {
+          "category": "活检钳",
+          "cpc": "$49.06",
+          "search_volume": "3,200",
+          "profit_margin": "55%"
+        },
+        {
+          "category": "PGA 缝线",
+          "cpc": "$21.07",
+          "search_volume": "5,000",
+          "profit_margin": "50%"
+        }
+      ],
+      "action_items": [
+        {
+          "action": "创建品类深度介绍页面",
+          "deadline": "2026-07-18",
+          "status": "in_progress",
+          "owner": "wiki-compiler"
+        },
+        {
+          "action": "投放高 CPC 关键词广告",
+          "deadline": "2026-07-22",
+          "status": "pending",
+          "owner": "strategy-operator"
+        },
+        {
+          "action": "制作产品对比白皮书",
+          "deadline": "2026-07-30",
+          "status": "pending",
+          "owner": "wiki-compiler"
+        }
+      ],
+      "expected_outcomes": {
+        "high_value_leads": "50/month",
+        "average_order_value": "$10,000",
+        "profit_margin": "55%",
+        "timeline": "6 months"
+      }
+    },
+    {
+      "id": "strat_003",
+      "name": "OBL 认证快速入场",
+      "status": "executing",
+      "priority": "medium",
+      "created_at": "2026-07-06T11:00:00Z",
+      "description": "利用已获得的 OBL 认证优势，快速切入美国市场",
+      "objectives": [
+        "建立 OBL 认证信任背书",
+        "获取 OBL 相关客户",
+        "建立 OBL 市场领导地位"
+      ],
+      "target_markets": [
+        {
+          "market": "美国 OBL 诊所",
+          "size": "5,000+",
+          "growth_rate": "15%",
+          "entry_barrier": "FDA 认证"
+        }
+      ],
+      "action_items": [
+        {
+          "action": "创建 OBL 认证专题页面",
+          "deadline": "2026-07-12",
+          "status": "completed",
+          "owner": "site-generator"
+        },
+        {
+          "action": "投放 OBL 相关关键词广告",
+          "deadline": "2026-07-20",
+          "status": "in_progress",
+          "owner": "strategy-operator"
+        },
+        {
+          "action": "参加 OBL 行业会议",
+          "deadline": "2026-08-15",
+          "status": "pending",
+          "owner": "strategy-operator"
+        }
+      ],
+      "expected_outcomes": {
+        "obl_clients": "20",
+        "market_share": "5%",
+        "revenue": "$500,000",
+        "timeline": "12 months"
+      }
+    },
+    {
+      "id": "strat_004",
+      "name": "内容营销体系建设",
+      "status": "proposed",
+      "priority": "medium",
+      "created_at": "2026-07-06T11:30:00Z",
+      "description": "建立专业的内容营销体系，提升品牌权威性和信任度",
+      "objectives": [
+        "建立行业知识库",
+        "提升品牌专业形象",
+        "获取自然搜索流量"
+      ],
+      "content_types": [
+        {
+          "type": "产品白皮书",
+          "frequency": "每月 2 篇",
+          "target_audience": "采购主任、科室主任"
+        },
+        {
+          "type": "临床案例研究",
+          "frequency": "每月 4 篇",
+          "target_audience": "科室主任、医生"
+        },
+        {
+          "type": "技术对比文章",
+          "frequency": "每月 6 篇",
+          "target_audience": "经销商、采购经理"
+        },
+        {
+          "type": "视频教程",
+          "frequency": "每月 2 个",
+          "target_audience": "所有用户"
+        }
+      ],
+      "action_items": [
+        {
+          "action": "建立内容日历",
+          "deadline": "2026-07-10",
+          "status": "completed",
+          "owner": "wiki-compiler"
+        },
+        {
+          "action": "创建内容模板",
+          "deadline": "2026-07-15",
+          "status": "in_progress",
+          "owner": "site-generator"
+        },
+        {
+          "action": "启动内容生产",
+          "deadline": "2026-07-20",
+          "status": "pending",
+          "owner": "wiki-compiler"
+        }
+      ],
+      "expected_outcomes": {
+        "organic_traffic": "10,000/month",
+        "lead_generation": "100/month",
+        "brand_awareness": "提升 50%",
+        "timeline": "6 months"
+      }
+    },
+    {
+      "id": "strat_005",
+      "name": "经销商渠道建设",
+      "status": "proposed",
+      "priority": "low",
+      "created_at": "2026-07-06T12:00:00Z",
+      "description": "建立全球经销商网络，扩大市场覆盖",
+      "objectives": [
+        "招募优质经销商",
+        "建立渠道管理体系",
+        "实现全球市场覆盖"
+      ],
+      "target_regions": [
+        {
+          "region": "北美",
+          "countries": ["美国", "加拿大"],
+          "target_dealers": 20,
+          "timeline": "6 months"
+        },
+        {
+          "region": "欧洲",
+          "countries": ["德国", "英国", "法国"],
+          "target_dealers": 15,
+          "timeline": "9 months"
+        },
+        {
+          "region": "东南亚",
+          "countries": ["新加坡", "马来西亚", "泰国"],
+          "target_dealers": 10,
+          "timeline": "12 months"
+        }
+      ],
+      "action_items": [
+        {
+          "action": "创建经销商招募页面",
+          "deadline": "2026-07-25",
+          "status": "pending",
+          "owner": "site-generator"
+        },
+        {
+          "action": "制定经销商政策",
+          "deadline": "2026-07-30",
+          "status": "pending",
+          "owner": "strategy-operator"
+        },
+        {
+          "action": "参加行业展会",
+          "deadline": "2026-09-01",
+          "status": "pending",
+          "owner": "strategy-operator"
+        }
+      ],
+      "expected_outcomes": {
+        "global_coverage": "50 countries",
+        "dealer_network": "50 dealers",
+        "revenue_growth": "200%",
+        "timeline": "18 months"
+      }
+    }
+  ],
+  "metadata": {
+    "total_strategies": 5,
+    "executing": 3,
+    "proposed": 2,
+    "last_updated": "2026-07-06T12:00:00Z",
+    "next_review": "2026-07-13T12:00:00Z"
+  }
+}

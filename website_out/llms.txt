@@ -1,0 +1,24 @@
+# ViaSurg | Global Medical Standards Verification
+
+> Clinical Minimalism Applied.
+
+## Description
+ViaSurg is a "Global Medical Standard Traffic Arbitrage Machine" that leverages established industry standards (Ethicon, Medtronic, etc.) to provide clinical-grade components with verified batch consistency and direct cross-reference to global standards.
+
+## Products
+- [[Trocars]]: Disposable laparoscopic access verified for absolute air-tightness and minimal insertion force.
+- [[Hemoclips]]: High-margin endoscopic and laparoscopic ligation solutions.
+- [[Biopsy Forceps]]: Standardized endoscopic consumables with verified batch consistency.
+- [[Staplers]]: Surgical stapling systems with SKU-specific 1:1 cross-reference.
+
+## Strategic Framework
+- **The Glass Factory Principle**: Extreme transparency in manufacturing and clinical evidence.
+- **NomoFlow™ Backend**: Algorithmic manufacturing control with batch-to-batch CV < 5.0%.
+- **OBL Execution**: Rapid market entry via partner factory 510(k) and CE certificates.
+
+## URLs
+- Index: /index.html
+- Trocars: /pages/trocars.html
+- Hemoclips: /pages/hemoclips.html
+- Biopsy Forceps: /pages/biopsy-forceps.html
+- Staplers: /pages/staplers.html

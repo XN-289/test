@@ -1,0 +1,164 @@
+{
+  "signals": [
+    {
+      "id": "sig_001",
+      "title": "高 CPC 关键词发现",
+      "source": "Google Keywords Planner",
+      "type": "keyword_data",
+      "timestamp": "2026-07-06T10:30:00Z",
+      "priority": "high",
+      "content": "发现 endoscopic clip 关键词 CPC 高达 $60.00，月搜索量 5000 次",
+      "keywords": [
+        {
+          "keyword": "endoscopic clip",
+          "search_volume": 5000,
+          "cpc_high": 60.00,
+          "competition": "high",
+          "intent": "commercial"
+        },
+        {
+          "keyword": "endoscopic biopsy forceps",
+          "search_volume": 3200,
+          "cpc_high": 49.06,
+          "competition": "high",
+          "intent": "commercial"
+        },
+        {
+          "keyword": "pga suture",
+          "search_volume": 5000,
+          "cpc_high": 21.07,
+          "competition": "medium",
+          "intent": "commercial"
+        }
+      ],
+      "analysis": "这些高 CPC 关键词表明市场存在高转化率的商业机会，B2B 采购商正在积极寻找供应商"
+    },
+    {
+      "id": "sig_002",
+      "title": "SKU 级截流机会",
+      "source": "Google Keywords Planner",
+      "type": "competitor_sku",
+      "timestamp": "2026-07-06T10:35:00Z",
+      "priority": "high",
+      "content": "发现竞品 SKU 代码被大量搜索，存在截流机会",
+      "keywords": [
+        {
+          "keyword": "cdh29p",
+          "search_volume": 500,
+          "cpc_high": 12.00,
+          "competitor": "Ethicon",
+          "product": "消化道管型吻合器"
+        },
+        {
+          "keyword": "cdh25p",
+          "search_volume": 450,
+          "cpc_high": 10.59,
+          "competitor": "Ethicon",
+          "product": "消化道管型吻合器"
+        },
+        {
+          "keyword": "ethicon b5lt",
+          "search_volume": 380,
+          "cpc_high": 9.57,
+          "competitor": "Ethicon",
+          "product": "穿刺器"
+        },
+        {
+          "keyword": "weck clip applier",
+          "search_volume": 420,
+          "cpc_high": 6.97,
+          "competitor": "Teleflex",
+          "product": "结扎夹枪"
+        }
+      ],
+      "analysis": "医生和采购经理正在使用大厂 SKU 代码直接搜索，表明存在明确的替代品需求"
+    },
+    {
+      "id": "sig_003",
+      "title": "品类两极分化",
+      "source": "Google Keywords Planner",
+      "type": "market_trend",
+      "timestamp": "2026-07-06T10:40:00Z",
+      "priority": "medium",
+      "content": "市场呈现明显的流量型和利润型两极分化",
+      "categories": [
+        {
+          "type": "traffic_drivers",
+          "keywords": ["surgical stapler", "vicryl", "prolene", "veress needle"],
+          "search_volume": "50,000+",
+          "cpc_range": "$0.50-$8.74",
+          "strategy": "SEO 优化，吸引流量"
+        },
+        {
+          "type": "cash_cows",
+          "keywords": ["custom procedure trays", "laparoscopic bowel grasper"],
+          "search_volume": "50-500",
+          "cpc_range": "$8.01-$21.21",
+          "strategy": "精准投放，高转化"
+        }
+      ],
+      "analysis": "需要区分引流品和利润品，制定差异化的营销策略"
+    },
+    {
+      "id": "sig_004",
+      "title": "竞品认证优势",
+      "source": "行业新闻",
+      "type": "competitor_dynamics",
+      "timestamp": "2026-07-06T11:00:00Z",
+      "priority": "medium",
+      "content": "主要竞品已获得 FDA/CE 认证，形成竞争壁垒",
+      "competitors": [
+        {
+          "name": "Ethicon",
+          "certifications": ["FDA 510(k)", "CE Mark", "ISO 13485"],
+          "market_share": "35%",
+          "advantage": "品牌认知度高"
+        },
+        {
+          "name": "Medtronic",
+          "certifications": ["FDA 510(k)", "CE Mark", "ISO 13485"],
+          "market_share": "25%",
+          "advantage": "渠道覆盖广"
+        }
+      ],
+      "analysis": "ViaSurg 需要快速获取相关认证，同时利用 OBL 认证优势切入市场"
+    },
+    {
+      "id": "sig_005",
+      "title": "价格敏感度分析",
+      "source": "市场调研",
+      "type": "pricing_intelligence",
+      "timestamp": "2026-07-06T11:15:00Z",
+      "priority": "high",
+      "content": "B2B 采购商对价格敏感，但更关注产品质量和供应稳定性",
+      "insights": [
+        {
+          "segment": "大型医院",
+          "priority": "质量 > 价格 > 服务",
+          "decision_makers": ["采购主任", "科室主任"],
+          "budget_cycle": "年度采购"
+        },
+        {
+          "segment": "中小型诊所",
+          "priority": "价格 > 服务 > 质量",
+          "decision_makers": ["诊所负责人"],
+          "budget_cycle": "按需采购"
+        },
+        {
+          "segment": "经销商",
+          "priority": "利润空间 > 供应稳定 > 品牌",
+          "decision_makers": ["采购经理"],
+          "budget_cycle": "持续补货"
+        }
+      ],
+      "analysis": "针对不同客户群体需要制定差异化的价值主张和定价策略"
+    }
+  ],
+  "metadata": {
+    "total_signals": 5,
+    "high_priority": 3,
+    "medium_priority": 2,
+    "sources": ["Google Keywords Planner", "行业新闻", "市场调研"],
+    "generated_at": "2026-07-06T12:00:00Z"
+  }
+}

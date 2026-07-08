@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViaSurg AI CMO Platform — 项目汇报</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --blue-900: #1e3a5f;
+            --blue-700: #00539F;
+            --blue-600: #2563eb;
+            --blue-500: #3b82f6;
+            --blue-100: #dbeafe;
+            --blue-50: #eff6ff;
+            --green-700: #15803d;
+            --green-600: #16a34a;
+            --green-100: #dcfce7;
+            --green-50: #f0fdf4;
+            --gray-900: #111827;
+            --gray-700: #374151;
+            --gray-500: #6b7280;
+            --gray-300: #d1d5db;
+            --gray-200: #e5e7eb;
+            --gray-100: #f3f4f6;
+            --gray-50: #f9fafb;
+            --amber-600: #d97706;
+            --amber-100: #fef3c7;
+            --red-600: #dc2626;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            color: var(--gray-900);
+            line-height: 1.7;
+            background: white;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* ===== COVER PAGE ===== */
+        .cover {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3a5f 0%, #00539F 50%, #2563eb 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px;
+            page-break-after: always;
+        }
+        .cover-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 20px;
+            padding: 6px 18px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+        .cover h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        .cover h1 span { color: #93c5fd; }
+        .cover .subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 48px;
+            max-width: 600px;
+        }
+        .cover-meta {
+            display: flex;
+            gap: 40px;
+            font-size: 13px;
+            opacity: 0.7;
+        }
+        .cover-meta strong { font-weight: 600; }
+
+        /* ===== CONTENT PAGES ===== */
+        .page {
+            padding: 60px 72px;
+            page-break-after: always;
+            min-height: 100vh;
+        }
+        .page:last-child { page-break-after: auto; }
+
+        .page-header {
+            border-bottom: 3px solid var(--blue-700);
+            padding-bottom: 12px;
+            margin-bottom: 36px;
+        }
+        .page-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--blue-900);
+            letter-spacing: -0.01em;
+        }
+        .page-header .page-num {
+            font-size: 12px;
+            color: var(--gray-500);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin: 28px 0 12px;
+        }
+        h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin: 20px 0 8px;
+        }
+        p { margin-bottom: 12px; font-size: 14px; color: var(--gray-700); }
+
+        /* ===== METRICS ROW ===== */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .metric {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .metric .num {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--blue-700);
+            line-height: 1;
+        }
+        .metric .label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 6px;
+        }
+        .metric.green .num { color: var(--green-700); }
+        .metric.green { background: var(--green-50); border-color: #bbf7d0; }
+
+        /* ===== TABLE ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 13px;
+        }
+        th {
+            background: var(--blue-900);
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--gray-200);
+            color: var(--gray-700);
+        }
+        tr:nth-child(even) { background: var(--gray-50); }
+
+        /* ===== BADGE ===== */
+        .badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .badge-green { background: var(--green-100); color: var(--green-700); }
+        .badge-blue { background: var(--blue-100); color: var(--blue-700); }
+        .badge-amber { background: var(--amber-100); color: var(--amber-600); }
+
+        /* ===== FLOW DIAGRAM ===== */
+        .flow {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin: 24px 0;
+            flex-wrap: wrap;
+        }
+        .flow-step {
+            background: var(--blue-700);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+            flex: 1;
+            min-width: 140px;
+        }
+        .flow-step small { display: block; font-weight: 400; font-size: 11px; opacity: 0.8; margin-top: 2px; }
+        .flow-arrow {
+            font-size: 20px;
+            color: var(--gray-300);
+            flex-shrink: 0;
+        }
+
+        /* ===== CARD GRID ===== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 16px 0;
+        }
+        .card {
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 20px;
+            background: white;
+        }
+        .card h4 {
+            margin: 0 0 8px;
+            font-size: 14px;
+            color: var(--blue-700);
+        }
+        .card p { font-size: 13px; margin: 0; }
+
+        /* ===== CHECK LIST ===== */
+        .checklist { list-style: none; padding: 0; }
+        .checklist li {
+            padding: 8px 0;
+            font-size: 13px;
+            color: var(--gray-700);
+            border-bottom: 1px solid var(--gray-100);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .checklist li::before {
+            content: '✓';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background: var(--green-100);
+            color: var(--green-700);
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* ===== CODE BLOCK ===== */
+        code {
+            background: var(--gray-100);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            color: var(--blue-700);
+        }
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 16px 20px;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 12px 0;
+            overflow-x: auto;
+        }
+        .code-block .comment { color: #64748b; }
+        .code-block .cmd { color: #7dd3fc; }
+
+        /* ===== FOOTER ===== */
+        .page-footer {
+            position: fixed;
+            bottom: 20px;
+            left: 72px;
+            right: 72px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: var(--gray-400);
+            border-top: 1px solid var(--gray-200);
+            padding-top: 8px;
+        }
+
+        /* ===== PRINT ===== */
+        @media print {
+            .page { min-height: auto; page-break-inside: avoid; }
+            .cover { min-height: auto; height: 100vh; }
+            body { -webkit-print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== COVER PAGE ==================== -->
+<div class="cover">
+    <div class="cover-badge">ViaSurg · Medical Device Intelligence</div>
+    <h1>AI CMO Platform<br><span>项目汇报</span></h1>
+    <p class="subtitle">
+        基于 5 阶段 Pipeline 的医疗器械智能营销系统。<br>
+        从市场信号采集到 SEO 页面自动生成，全链路自动化。
+    </p>
+    <div class="cover-meta">
+        <div><strong>版本</strong> v2.0</div>
+        <div><strong>日期</strong> 2026-07-08</div>
+        <div><strong>状态</strong> 运行中 ✓</div>
+    </div>
+</div>
+
+<!-- ==================== PAGE 1: EXECUTIVE SUMMARY ==================== -->
+<div class="page">
+    <div class="page-header">
+        <h2>1. 项目概览</h2>
+        <div class="page-num">ViaSurg AI CMO Platform — Executive Summary</div>
+    </div>
+
+    <h3>系统是什么</h3>
+    <p>
+        ViaSurg AI CMO Platform 是一个<strong>医疗器械智能营销系统</strong>，通过 5 阶段自动化 Pipeline，
+        将市场数据转化为可发布的 SEO 优化页面。系统集成了 DeepSeek LLM、Google Keywords Planner 数据、
+        Agent SDK 等技术，实现从信号采集到质量验证的全流程自动化。
+    </p>
+
+    <div class="metrics">
+        <div class="metric green">
+            <div class="num">53</div>
+            <div class="label">生成页面</div>
+        </div>
+        <div class="metric green">
+            <div class="num">86%</div>
+            <div class="label">关键词覆盖</div>
+        </div>
+        <div class="metric green">
+            <div class="num">100%</div>
+            <div class="label">质量评分</div>
+        </div>
+        <div class="metric">
+            <div class="num">3,797</div>
+            <div class="label">关键词库</div>
+        </div>
+    </div>
+
+    <h3>5 阶段 Pipeline</h3>
+    <div class="flow">
+        <div class="flow-step">信号采集<small>Stage 1 · OODA</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">策略分析<small>Stage 2 · Agent SDK</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Wiki 编译<small>Stage 3 · LLM</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">页面生成<small>Stage 4 · SEO</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">质量验证<small>Stage 5 · QA</small></div>
+    </div>
+
+    <h3>核心能力</h3>
+    <div class="card-grid">
+        <div class="card">
+            <h4>📊 智能市场分析</h4>
+            <p>自动采集竞争情报、关键词 CPC 数据、市场趋势，生成 OODA 分析报告。</p>
+        </div>
+        <div class="card">
+            <h4>📝 自动页面生成</h4>
+            <p>基于 Wiki 实体数据，自动生成 53 个 SEO 优化页面，覆盖产品、竞品、分类、材质、技术等维度。</p>
+        </div>
+        <div class="card">
+            <h4>🔍 关键词研究引擎</h4>
+            <p>1271 个种子关键词通过同义词/分类/材质扩展至 3797 个。支持 Google Ads API 接入获取真实搜索数据。</p>
+        </div>
+        <div class="card">
+            <h4>🌐 多语言支持</h4>
+            <p>EN/ZH 双语切换，i18n 数据驱动，所有生成页面均支持中英文。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== PAGE 2: SYSTEM ARCHITECTURE ==================== -->
+<div class="page">
+    <div class="page-header">
+        <h2>2. 系统架构</h2>
+        <div class="page-num">Architecture & Data Flow</div>
+    </div>
+
+    <h3>技术栈</h3>
+    <table>
+        <tr><th>组件</th><th>技术</th><th>说明</th></tr>
+        <tr><td>后端服务</td><td>Node.js HTTP Server</td><td>单文件 server.js，~4000 行，14 个 API 端点</td></tr>
+        <tr><td>前端控制台</td><td>SPA Dashboard</td><td>实时 SSE 更新，Pipeline 可视化，页面预览</td></tr>
+        <tr><td>AI Agent</td><td>Python Agent SDK</td><td>strategy-operator / wiki-compiler / autoresearch</td></tr>
+        <tr><td>LLM</td><td>DeepSeek (可选)</td><td>Wiki 内容增强，有 JS fallback</td></tr>
+        <tr><td>SEO</td><td>Schema.org JSON-LD</td><td>12 个 Product Schema + 页面级结构化数据</td></tr>
+        <tr><td>数据源</td><td>Google Keywords Planner</td><td>373 高价值关键词 + 225 高搜索量关键词</td></tr>
+    </table>
+
+    <h3>数据流</h3>
+    <div class="code-block">
+<span class="comment">// 数据文件 → Pipeline 阶段映射</span>
+<span class="cmd">google_keywords_parsed.json</span>  → Stage 1 (信号采集)
+<span class="cmd">high_value_keywords.json</span>      → Stage 1, 5 (关键词匹配 + 质量验证)
+<span class="cmd">high_volume_keywords.json</span>     → Stage 1 (搜索量数据)
+<span class="cmd">strategy_wiki_data.json</span>       → Stage 1, 2 (策略分析)
+<span class="cmd">llm_wiki_data.json</span>            → Stage 3, 4, 5 (Wiki实体 → 页面生成 → 验证)
+<span class="cmd">i18n_data.json</span>                → Stage 4 (多语言内容)
+<span class="cmd">templates_data.json</span>           → Stage 4 (页面模板)
+    </div>
+
+    <h3>生成页面分布</h3>
+    <table>
+        <tr><th>页面类型</th><th>数量</th><th>示例</th></tr>
+        <tr><td>产品页面</td><td>12</td><td>absorbable-sutures.html, trocars.html</td></tr>
+        <tr><td>竞品页面</td><td>10</td><td>competitor-ethicon.html, competitor-olympus.html</td></tr>
+        <tr><td>分类页面</td><td>8</td><td>category-wound-closure.html, category-access.html</td></tr>
+        <tr><td>材质页面</td><td>2</td><td>material-pga-material.html</td></tr>
+        <tr><td>技术页面</td><td>1</td><td>tech-nomoflow-technology.html</td></tr>
+        <tr><td>通用实体页</td><td>8</td><td>entity-compliance-framework.html</td></tr>
+        <tr><td>首页 + Schema + Sitemap</td><td>12</td><td>index.html + 12 JSON-LD + sitemap.xml</td></tr>
+    </table>
+</div>
+
+<!-- ==================== PAGE 3: COMPLETED WORK ==================== -->
+<div class="page">
+    <div class="page-header">
+        <h2>3. 已完成工作</h2>
+        <div class="page-num">Delivered Features & Bug Fixes</div>
+    </div>
+
+    <h3>核心功能交付</h3>
+    <ul class="checklist">
+        <li><strong>5 阶段 Pipeline 全链路打通</strong> — 信号采集 → 策略分析 → Wiki 编译 → 页面生成 → 质量验证，一键运行</li>
+        <li><strong>53 个 SEO 页面自动生成</strong> — 覆盖 12 产品 + 10 竞品 + 8 分类 + 2 材质 + 1 技术 + 8 通用实体 + 首页</li>
+        <li><strong>86% 高价值关键词覆盖</strong> — 373 个关键词中 319 个已匹配到对应页面，通过同义词/材质/分类多维度匹配</li>
+        <li><strong>关键词注入系统</strong> — 每个页面自动生成 <code>&lt;meta keywords&gt;</code>、FAQ 问答、关键词标签侧边栏</li>
+        <li><strong>Schema.org 结构化数据</strong> — 12 个 Product JSON-LD + 每个页面的 WebPage Schema，提升 Google 搜索展示</li>
+        <li><strong>Sitemap 生成</strong> — 42 个 URL，按页面类型差异化优先级（产品 0.9 > 分类 0.8 > 其他 0.7）</li>
+        <li><strong>i18n 双语支持</strong> — EN/ZH 一键切换，所有 53 个页面均支持中英文</li>
+        <li><strong>实时 SSE 推送</strong> — Pipeline 执行过程中实时推送进度和日志到前端控制台</li>
+        <li><strong>页面再生成功能</strong> — 删除页面后可通过 Dashboard 一键检测缺失并重新生成，无需访问后台</li>
+        <li><strong>OODA 分析修复</strong> — Observe 信号数从 0 修复为正确值 4，数据流结构对齐</li>
+    </ul>
+
+    <h3>已修复问题清单</h3>
+    <table>
+        <tr><th>问题</th><th>修复前</th><th>修复后</th></tr>
+        <tr><td>OODA Observe 信号数</td><td>始终为 0</td><td>正确显示 4 个信号</td></tr>
+        <tr><td>关键词覆盖率</td><td>1.9% (6/373)</td><td>86% (319/373)</td></tr>
+        <tr><td>FAQ 内容质量</td><td>全部同一模板句</td><td>5 种问答角度，使用真实规格数据</td></tr>
+        <tr><td>SSE new_signal 事件</td><td>静默丢弃</td><td>正确处理并显示</td></tr>
+        <tr><td>Dashboard OODA 按钮</td><td>调用错误 Stage 1</td><td>正确调用 Stage 2</td></tr>
+        <tr><td>页面计数元数据</td><td>仅报告 5 个产品</td><td>报告全部 12 个产品</td></tr>
+        <tr><td>i18n CSS</td><td>display:inline 破坏块元素</td><td>block + inline 分层处理</td></tr>
+        <tr><td>Footer 链接</td><td>全部为 # 占位符</td><td>指向实际分类/区段页面</td></tr>
+        <tr><td>Schema 计数</td><td>报告 5 个</td><td>正确报告 12 个</td></tr>
+        <tr><td>Sitemap</td><td>无日期，统一优先级</td><td>含 lastmod，差异化优先级</td></tr>
+    </table>
+</div>
+
+<!-- ==================== PAGE 4: HOW TO USE ==================== -->
+<div class="page">
+    <div class="page-header">
+        <h2>4. 使用指南</h2>
+        <div class="page-num">How to Start & Operate</div>
+    </div>
+
+    <h3>启动系统</h3>
+    <div class="code-block">
+<span class="comment"># 进入项目目录</span>
+<span class="cmd">cd d:/test/kealin/demo</span>
+
+<span class="comment"># 启动服务器</span>
+<span class="cmd">node server.js</span>
+
+<span class="comment"># 系统将在 http://localhost:3001 启动</span>
+    </div>
+
+    <h3>访问地址</h3>
+    <table>
+        <tr><th>页面</th><th>地址</th><th>用途</th></tr>
+        <tr><td>控制台</td><td><code>http://localhost:3001</code></td><td>Pipeline 管理、实时监控</td></tr>
+        <tr><td>生成站点</td><td><code>http://localhost:3001/output/index.html</code></td><td>查看生成的 SEO 页面</td></tr>
+        <tr><td>API</td><td><code>http://localhost:3001/api/pipeline/run</code></td><td>触发全流程</td></tr>
+    </table>
+
+    <h3>操作流程</h3>
+    <div class="card-grid">
+        <div class="card">
+            <h4>一键运行全流程</h4>
+            <p>在控制台点击 <strong>▶ Run Pipeline</strong> 按钮，系统将依次执行 5 个阶段，实时显示进度和日志。</p>
+        </div>
+        <div class="card">
+            <h4>单独运行某个阶段</h4>
+            <p>每个阶段（信号采集、策略分析、Wiki 编译、页面生成、质量验证）都有独立的运行按钮。</p>
+        </div>
+        <div class="card">
+            <h4>页面再生</h4>
+            <p>如果页面被误删，进入 Site Generator 标签，点击 <strong>🔍 Check Pages</strong> 检测缺失，然后点击 <strong>🔄 Regenerate</strong> 一键恢复。</p>
+        </div>
+        <div class="card">
+            <h4>查看质量报告</h4>
+            <p>运行 Verification 后查看质量评分、关键词覆盖率、Schema 覆盖等指标。</p>
+        </div>
+    </div>
+
+    <h3>API 端点一览</h3>
+    <table>
+        <tr><th>端点</th><th>方法</th><th>功能</th></tr>
+        <tr><td><code>/api/pipeline/run</code></td><td>POST</td><td>运行完整 Pipeline</td></tr>
+        <tr><td><code>/api/pipeline/stage1~5</code></td><td>POST</td><td>运行单个阶段</td></tr>
+        <tr><td><code>/api/pages/check</code></td><td>GET</td><td>检测缺失页面</td></tr>
+        <tr><td><code>/api/pages/regenerate</code></td><td>POST</td><td>重新生成所有页面</td></tr>
+        <tr><td><code>/api/pages</code></td><td>GET</td><td>列出已生成页面</td></tr>
+        <tr><td><code>/api/keywords/research</code></td><td>POST</td><td>运行关键词研究（扩展引擎 + Google Ads API）</td></tr>
+        <tr><td><code>/api/keywords/google-ads-config</code></td><td>GET/POST</td><td>查看/配置 Google Ads API 凭证</td></tr>
+        <tr><td><code>/api/events</code></td><td>GET</td><td>SSE 实时事件流</td></tr>
+        <tr><td><code>/api/signals</code></td><td>POST</td><td>添加市场信号</td></tr>
+        <tr><td><code>/api/data/*</code></td><td>GET</td><td>数据文件访问</td></tr>
+    </table>
+</div>
+
+<!-- ==================== PAGE 5: KEYWORD & SEO ==================== -->
+<div class="page">
+    <div class="page-header">
+        <h2>5. 关键词与 SEO 优化</h2>
+        <div class="page-num">Keyword Coverage & SEO Enhancement</div>
+    </div>
+
+    <h3>关键词研究与覆盖</h3>
+    <p>
+        系统内置<strong>关键词扩展引擎</strong>，将 1271 个种子关键词通过同义词、分类、材质、品牌、手术方式等维度扩展至 3797 个。
+        同时支持接入 <strong>Google Ads API</strong> 获取真实搜索量和 CPC 数据。
+        扩展后的关键词通过多维度匹配算法关联到对应页面，覆盖率达 86%。
+    </p>
+
+    <div class="metrics">
+        <div class="metric">
+            <div class="num">1,271</div>
+            <div class="label">种子关键词</div>
+        </div>
+        <div class="metric green">
+            <div class="num">3,797</div>
+            <div class="label">扩展后总量</div>
+        </div>
+        <div class="metric green">
+            <div class="num">86%</div>
+            <div class="label">页面覆盖率</div>
+        </div>
+        <div class="metric">
+            <div class="num">80+</div>
+            <div class="label">同义词映射</div>
+        </div>
+    </div>
+
+    <h3>同义词匹配示例</h3>
+    <table>
+        <tr><th>关键词</th><th>匹配方式</th><th>关联页面</th></tr>
+        <tr><td>polyglycolic suture</td><td>材质别名 PGA → Absorbable Sutures</td><td>absorbable-sutures.html</td></tr>
+        <tr><td>harmonic scalpel</td><td>产品别名 → Ultrasonic Shears</td><td>ultrasonic-shears.html</td></tr>
+        <tr><td>laparoscopic forceps</td><td>分类 + 产品别名</td><td>biopsy-forceps.html</td></tr>
+        <tr><td>chromic gut</td><td>材质别名 → Sutures</td><td>absorbable-sutures.html</td></tr>
+        <tr><td>liver retractor</td><td>器械类别 → Instrumentation</td><td>staplers.html</td></tr>
+        <tr><td>ethicon competitor</td><td>品牌别名 → 多个产品页</td><td>多页面关联</td></tr>
+    </table>
+
+    <h3>每个页面的 SEO 元素</h3>
+    <ul class="checklist">
+        <li><code>&lt;meta name="keywords"&gt;</code> — 自动注入相关高价值关键词</li>
+        <li><code>&lt;meta name="description"&gt;</code> — 从 Wiki 实体内容提取的描述</li>
+        <li><strong>Schema.org JSON-LD</strong> — Product / Organization / CollectionPage 等结构化数据</li>
+        <li><strong>FAQ Section</strong> — 5 种问答角度，使用真实规格、竞品、监管数据</li>
+        <li><strong>Keyword Tags 侧边栏</strong> — 展示相关关键词及 CPC 出价</li>
+        <li><strong>交叉链接</strong> — 产品 ↔ 分类 ↔ 材质 ↔ 竞品 互链</li>
+        <li><strong>Sitemap</strong> — 含 lastmod 日期，差异化优先级</li>
+    </ul>
+</div>
+
+<!-- ==================== PAGE 6: FUTURE ROADMAP ==================== -->
+<div class="page">
+    <div class="page-header">
+        <h2>6. 未来规划</h2>
+        <div class="page-num">Roadmap & Next Steps</div>
+    </div>
+
+    <h3>短期优化</h3>
+    <div class="card-grid">
+        <div class="card">
+            <h4>📈 关键词覆盖 86% → 95%+</h4>
+            <p>补充剩余 54 个未覆盖关键词的同义词映射，主要集中在细分产品型号和区域化搜索词。</p>
+        </div>
+        <div class="card">
+            <h4>📄 内容深度增强</h4>
+            <p>利用 LLM 为每个页面生成更丰富的产品描述、临床数据引用、使用场景说明。</p>
+        </div>
+        <div class="card">
+            <h4>🔗 图谱关系利用</h4>
+            <p>llm_wiki_data.json 中已有实体关系图谱（6 节点 7 边），可用于更精准的交叉推荐。</p>
+        </div>
+        <div class="card">
+            <h4>📊 Dashboard 数据看板</h4>
+            <p>在控制台增加关键词覆盖率趋势图、页面发布状态、竞品动态监控等可视化面板。</p>
+        </div>
+    </div>
+
+    <h3>中期扩展</h3>
+    <div class="card-grid">
+        <div class="card">
+            <h4>🤖 LLM 内容生成</h4>
+            <p>接入 DeepSeek 或其他 LLM，自动生成产品对比文章、临床案例、技术白皮书等内容。</p>
+        </div>
+        <div class="card">
+            <h4>📡 SERP 监控</h4>
+            <p>基于 Autoresearch 的 SERP 机会数据，自动调整关键词策略和页面内容。</p>
+        </div>
+    </div>
+
+    <h3>系统现状总结</h3>
+    <table>
+        <tr><th>指标</th><th>当前值</th><th>状态</th></tr>
+        <tr><td>Pipeline 全流程</td><td>5 阶段全自动</td><td><span class="badge badge-green">✓ 运行中</span></td></tr>
+        <tr><td>生成页面</td><td>53 页</td><td><span class="badge badge-green">✓ 完成</span></td></tr>
+        <tr><td>关键词覆盖</td><td>86% (319/373)</td><td><span class="badge badge-green">✓ 良好</span></td></tr>
+        <tr><td>质量评分</td><td>100%</td><td><span class="badge badge-green">✓ 通过</span></td></tr>
+        <tr><td>Schema.org</td><td>12 Product + 页面级</td><td><span class="badge badge-green">✓ 完成</span></td></tr>
+        <tr><td>i18n</td><td>EN/ZH 双语</td><td><span class="badge badge-green">✓ 完成</span></td></tr>
+        <tr><td>Sitemap</td><td>42 URLs</td><td><span class="badge badge-green">✓ 完成</span></td></tr>
+        <tr><td>页面再生</td><td>一键检测 + 恢复</td><td><span class="badge badge-green">✓ 完成</span></td></tr>
+        <tr><td>Agent SDK</td><td>3 个 Skill 集成</td><td><span class="badge badge-green">✓ 完成</span></td></tr>
+        <tr><td>LLM 深度集成</td><td>可选，有 fallback</td><td><span class="badge badge-blue">○ 可选</span></td></tr>
+    </table>
+</div>
+
+</body>
+</html>

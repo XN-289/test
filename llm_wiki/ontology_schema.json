@@ -1,0 +1,20 @@
+{
+  "entities": [
+    { "name": "Product", "description": "具体的产品型号或品类。" },
+    { "name": "Category", "description": "医疗器械的层级分类（如：缝合线 > 可吸收）。" },
+    { "name": "Reference", "description": "第三方证据、FDA/CE 认证、临床论文。" },
+    { "name": "Competitor", "description": "竞品公司或具体竞品型号。" },
+    { "name": "Material", "description": "产品所使用的生物或物理材质（如：PGA, 不锈钢）。" },
+    { "name": "Surgical_Procedure", "description": "该产品适用的临床术式（如：腹腔镜胆囊切除术）。" },
+    { "name": "Standard", "description": "合规性标准（如：ISO 13485, CE Class III）。" }
+  ],
+  "relations": [
+    { "source": "Product", "target": "Category", "type": "sub_category_of", "description": "定义产品的层级归属。" },
+    { "source": "Product", "target": "Reference", "type": "backed_by", "description": "由证据支撑效能声明。" },
+    { "source": "Product", "target": "Competitor", "type": "benchmarked_against", "description": "与竞品对标。" },
+    { "source": "Product", "target": "Material", "type": "made_of", "description": "定义材质属性。" },
+    { "source": "Product", "target": "Surgical_Procedure", "type": "used_in", "description": "定义临床应用场景。" },
+    { "source": "Product", "target": "Standard", "type": "complies_with", "description": "定义合规边界。" },
+    { "source": "Category", "target": "Category", "type": "parent_of", "description": "构建分类树结构。" }
+  ]
+}

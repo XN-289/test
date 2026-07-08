@@ -1,0 +1,35 @@
+{
+  "id": "fb_page_performance",
+  "type": "feedback",
+  "source": "Google Analytics",
+  "timestamp": "2025-04-08",
+  "metrics": {
+    "pageViews": 1250,
+    "bounceRate": 45.2,
+    "avgTimeOnPage": "2:35",
+    "conversionRate": 3.8
+  },
+  "topPages": [
+    {
+      "page": "hemoclips.html",
+      "views": 450,
+      "conversions": 18
+    },
+    {
+      "page": "biopsy-forceps.html",
+      "views": 320,
+      "conversions": 12
+    },
+    {
+      "page": "trocars.html",
+      "views": 280,
+      "conversions": 8
+    }
+  ],
+  "insights": [
+    "Hemoclips page has highest conversion rate (4%)",
+    "Biopsy forceps page needs CTA optimization",
+    "Trocars page has high bounce rate (55%)"
+  ],
+  "status": "analyzed"
+}

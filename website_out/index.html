@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ViaSurg | Global Medical Standards Verification</title>
+  <link rel="stylesheet" href="pages/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Lato:wght@400;700&family=Montserrat:wght@600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Language toggle button */
+    #lang-toggle {
+      background: transparent;
+      border: 1.5px solid var(--foundational-blue);
+      color: var(--foundational-blue);
+      padding: 6px 14px;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    #lang-toggle:hover {
+      background: var(--foundational-blue);
+      color: white;
+    }
+    /* Chinese font override */
+    body.lang-zh {
+      font-family: 'Noto Sans SC', 'Lato', 'Helvetica', 'Arial', sans-serif;
+    }
+    body.lang-zh h1, body.lang-zh h2, body.lang-zh h3, body.lang-zh h4,
+    body.lang-zh .blueprint-label, body.lang-zh .nav-links a,
+    body.lang-zh #lang-toggle {
+      font-family: 'Noto Sans SC', 'Montserrat', 'Helvetica Neue', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <div class="logo">
+        <a href="index.html" style="font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--foundational-blue); text-decoration: none;">VIASURG</a>
+      </div>
+      <ul class="nav-links" style="list-style: none; display: flex; gap: 32px; padding: 0; margin: 0; align-items: center;">
+        <li style="position: relative; padding: 24px 0;">
+          <a href="#" style="text-decoration: none; color: var(--slate-heavy); font-weight: 700;" data-i18n="nav_solutions">SOLUTIONS</a>
+          <div class="mega-menu">
+            <div class="mega-column">
+              <span class="blueprint-label" data-i18n="mega_gi">GI &amp; Access</span>
+              <a href="pages/hemoclips.html" data-i18n="menu_hemoclips">Hemoclips</a>
+              <a href="pages/biopsy-forceps.html" data-i18n="menu_biopsy">Biopsy Forceps</a>
+              <a href="pages/snares.html" data-i18n="menu_snares">Snares</a>
+              <a href="pages/guidewires.html" data-i18n="menu_guidewires">Guidewires</a>
+            </div>
+            <div class="mega-column">
+              <span class="blueprint-label" data-i18n="mega_mis">MIS / Lap</span>
+              <a href="pages/trocars.html" data-i18n="menu_trocars">Trocars</a>
+              <a href="pages/veress-needles.html" data-i18n="menu_veress">Veress Needles</a>
+              <a href="pages/ultrasonic-shears.html" data-i18n="menu_ultrasonic">Ultrasonic Shears</a>
+              <a href="pages/polymer-clips.html" data-i18n="menu_polymer_clips">Polymer Clips</a>
+            </div>
+            <div class="mega-column">
+              <span class="blueprint-label" data-i18n="mega_closure">Surg Closure</span>
+              <a href="pages/staplers.html" data-i18n="menu_staplers">Staplers</a>
+              <a href="pages/absorbable-sutures.html" data-i18n="menu_sutures">Absorbable Sutures</a>
+              <a href="#" data-i18n="menu_hernia">Hernia Meshes</a>
+            </div>
+            <div class="mega-column">
+              <span class="blueprint-label" data-i18n="mega_sku">SKU Cross-Ref</span>
+              <a href="pages/ethicon-b5lt.html" data-i18n="menu_b5lt">Ethicon B5LT</a>
+              <a href="pages/cdh29p.html" data-i18n="menu_cdh29p">J&amp;J CDH29P</a>
+              <a href="pages/hem-o-lok.html" data-i18n="menu_hemolok">Hem-o-lok</a>
+            </div>
+          </div>
+        </li>
+        <li style="padding: 24px 0;"><a href="pages/nomoflow.html" style="text-decoration: none; color: var(--slate-heavy); font-weight: 700;" data-i18n="nav_technology">TECHNOLOGY</a></li>
+        <li style="padding: 24px 0;"><a href="pages/compliance.html" style="text-decoration: none; color: var(--slate-heavy); font-weight: 700;" data-i18n="nav_compliance">COMPLIANCE</a></li>
+        <li style="padding: 24px 0;">
+          <button id="lang-toggle" onclick="i18n.toggleLang()">中文</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="container" style="text-align: center; padding: 120px 24px;">
+    <span class="blueprint-label" data-i18n="hero_label">The Glass Factory Principle</span>
+    <h1 style="font-size: 48px; margin-top: 10px;" data-i18n="hero_title">Global Medical Standard<br><span style="color: var(--foundational-blue);">Verified Transparency</span></h1>
+    <p style="font-size: 18px; max-width: 700px; margin: 24px auto;" data-i18n="hero_desc">ViaSurg eliminates the "Black Box Risk" of medical procurement through deterministic manufacturing and verifiable evidence chains.</p>
+    <div style="margin-top: 40px;">
+      <a href="#products" class="btn-primary" data-i18n="hero_cta">Explore Solution Matrix</a>
+      <a href="pages/compliance.html" class="evidence-protocol" style="margin-left: 20px;" data-i18n="hero_cta2">View Quality Protocols</a>
+    </div>
+  </header>
+
+  <footer style="background-color: var(--lab-gray); border-top: 1px solid var(--surface-divider); margin-top: 120px;">
+    <div class="container footer-grid">
+      <div class="footer-column">
+        <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--foundational-blue);">VIASURG</div>
+        <p style="font-size: 14px; margin-top: 16px; max-width: 300px;" data-i18n="footer_desc">A "Global Medical Standard Traffic Arbitrage Machine" focused on technical determinism and clinical evidence.</p>
+        <div style="margin-top: 24px;">
+          <span class="blueprint-label" data-i18n="footer_reg_label">Regulatory Authority</span>
+          <p class="data-mono" style="font-size: 12px; margin-top: 8px;" data-i18n="footer_reg_value">ISO 13485:2016 | FDA 21 CFR 807</p>
+        </div>
+      </div>
+      <div class="footer-column">
+        <span class="blueprint-label" data-i18n="footer_solutions">Solutions</span>
+        <ul style="list-style: none; padding: 0; margin-top: 16px; font-size: 14px; line-height: 2;">
+          <li><a href="pages/trocars.html" style="text-decoration: none; color: var(--slate-core);" data-i18n="footer_trocars">Trocars &amp; Veress</a></li>
+          <li><a href="pages/hemoclips.html" style="text-decoration: none; color: var(--slate-core);" data-i18n="footer_endo_clips">Endoscopic Clips</a></li>
+          <li><a href="pages/biopsy-forceps.html" style="text-decoration: none; color: var(--slate-core);" data-i18n="footer_biopsy">Biopsy Forceps</a></li>
+          <li><a href="pages/staplers.html" style="text-decoration: none; color: var(--slate-core);" data-i18n="footer_surg_staplers">Surgical Staplers</a></li>
+          <li><a href="pages/absorbable-sutures.html" style="text-decoration: none; color: var(--slate-core);" data-i18n="footer_abs_sutures">Absorbable Sutures</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <span class="blueprint-label" data-i18n="footer_tech_hub">Technical Hub</span>
+        <ul style="list-style: none; padding: 0; margin-top: 16px; font-size: 14px; line-height: 2;">
+          <li><a href="pages/nomoflow.html" style="text-decoration: none; color: var(--slate-core);" data-i18n="footer_nomoflow">NomoFlow™ Specs</a></li>
+          <li><a href="pages/compliance.html" style="text-decoration: none; color: var(--slate-core);" data-i18n="footer_obl">OBL Framework</a></li>
+          <li><a href="#" style="text-decoration: none; color: var(--slate-core);" data-i18n="footer_evidence">Evidence Portal</a></li>
+          <li><a href="#" style="text-decoration: none; color: var(--slate-core);" data-i18n="footer_calibration">Calibration Logs</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <span class="blueprint-label" data-i18n="footer_compliance">Compliance</span>
+        <ul style="list-style: none; padding: 0; margin-top: 16px; font-size: 14px; line-height: 2;">
+          <li><a href="#" style="text-decoration: none; color: var(--slate-core);" data-i18n="footer_fda">FDA 510(k) Status</a></li>
+          <li><a href="#" style="text-decoration: none; color: var(--slate-core);" data-i18n="footer_ce">CE MDR Certificates</a></li>
+          <li><a href="#" style="text-decoration: none; color: var(--slate-core);" data-i18n="footer_oem">Request OEM Quote</a></li>
+          <li><a href="#" style="text-decoration: none; color: var(--slate-core);" data-i18n="footer_audit">Quality Audit</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container" style="padding: 24px 0; border-top: 1px solid rgba(0,0,0,0.05); text-align: center;">
+      <p style="font-size: 12px; color: var(--slate-light);" data-i18n="footer_copy">© 2025 ViaSurg Global. Clinical Minimalism Applied. All manufacturing parameters are logged and verifiable.</p>
+    </div>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="i18n-index.js"></script>
+</body>
+</html>

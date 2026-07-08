@@ -1,0 +1,21 @@
+{
+  "nav": {
+    "home": "首页",
+    "products": "产品中心",
+    "solutions": "临床方案",
+    "academy": "ViaSurg 学院",
+    "contact": "联系我们"
+  },
+  "footer": {
+    "copy": "© 2026 ViaSurg. 由 NomoFlow™ 技术驱动。",
+    "privacy": "隐私政策",
+    "compliance": "合规声明"
+  },
+  "labels": {
+    "material": "产品材质",
+    "procedure": "适用术式",
+    "specifications": "规格参数",
+    "evidence": "临床证据",
+    "download_ifu": "下载说明书"
+  }
+}

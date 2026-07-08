@@ -1,0 +1,19 @@
+{
+  "nodes": [
+    { "id": "ViaSurg", "type": "Brand", "label": "ViaSurg" },
+    { "id": "Trocars", "type": "Product", "label": "Disposable Trocars" },
+    { "id": "Hemoclips", "type": "Product", "label": "Hemoclips & Ligating Clips" },
+    { "id": "Biopsy Forceps", "type": "Product", "label": "Biopsy Forceps" },
+    { "id": "Staplers", "type": "Product", "label": "Surgical Staplers" },
+    { "id": "Hangzhou_Sode", "type": "Supplier", "label": "Hangzhou Sode" }
+  ],
+  "edges": [
+    { "source": "ViaSurg", "target": "Trocars", "relation": "Includes" },
+    { "source": "ViaSurg", "target": "Hemoclips", "relation": "Includes" },
+    { "source": "ViaSurg", "target": "Biopsy Forceps", "relation": "Includes" },
+    { "source": "ViaSurg", "target": "Staplers", "relation": "Includes" },
+    { "source": "Hangzhou_Sode", "target": "ViaSurg", "relation": "Supplies" },
+    { "source": "Hangzhou_Sode", "target": "Trocars", "relation": "Manufactures" },
+    { "source": "Hangzhou_Sode", "target": "Hemoclips", "relation": "Manufactures" }
+  ]
+}

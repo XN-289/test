@@ -1,0 +1,11 @@
+{
+  "id": "strat_2025_04_07_sku_cross_reference",
+  "name": "SKU-Specific Landing Page Strategy",
+  "source_insight": "ins_2025_04_07_profit_mining",
+  "actions": [
+    "Create 1:1 cross-reference pages for major Ethicon and Medtronic SKUs (e.g., CDH29P, B5LT).",
+    "Target competitor SKU keywords with specific Ads campaigns.",
+    "Highlight 40% cost savings compared to OEM."
+  ],
+  "status": "executing"
+}

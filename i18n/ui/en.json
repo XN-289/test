@@ -1,0 +1,21 @@
+{
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "solutions": "Solutions",
+    "academy": "Academy",
+    "contact": "Contact"
+  },
+  "footer": {
+    "copy": "© 2026 ViaSurg. Powered by NomoFlow™ Technology.",
+    "privacy": "Privacy Policy",
+    "compliance": "Compliance Statement"
+  },
+  "labels": {
+    "material": "Material",
+    "procedure": "Surgical Procedure",
+    "specifications": "Specifications",
+    "evidence": "Clinical Evidence",
+    "download_ifu": "Download IFU"
+  }
+}

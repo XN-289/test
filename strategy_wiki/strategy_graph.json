@@ -1,0 +1,24 @@
+{
+  "nodes": [
+    { "id": "sig_high_cpc", "type": "Signal", "label": "High CPC Keywords Discovery", "status": "active", "timestamp": "2025-04-07" },
+    { "id": "sig_factory_certs", "type": "Signal", "label": "Partner Factory FDA/CE Certs", "status": "active", "timestamp": "2025-04-07" },
+    { "id": "sig_trust_deficit", "type": "Signal", "label": "B2B Trust Deficit in Market", "status": "active", "timestamp": "2025-04-08" },
+    { "id": "ins_profit_mining", "type": "Insight", "label": "High-Margin Intent Discovery", "status": "validated" },
+    { "id": "ins_rapid_entry", "type": "Insight", "label": "OBL Certification Advantage", "status": "validated" },
+    { "id": "ins_content_gap", "type": "Insight", "label": "Content Depth Gap Analysis", "status": "new" },
+    { "id": "strat_obl", "type": "Strategy", "label": "OBL Rapid Entry Implementation", "status": "executing" },
+    { "id": "strat_sku_cross", "type": "Strategy", "label": "SKU-Specific Landing Page Launch", "status": "executing" },
+    { "id": "strat_transparency", "type": "Strategy", "label": "Transparency Portal Development", "status": "proposed" },
+    { "id": "fb_page_perf", "type": "Feedback", "label": "Page Performance Analytics", "status": "analyzed" }
+  ],
+  "edges": [
+    { "source": "sig_high_cpc", "target": "ins_profit_mining", "relation": "Informs" },
+    { "source": "sig_factory_certs", "target": "ins_rapid_entry", "relation": "Informs" },
+    { "source": "sig_trust_deficit", "target": "ins_content_gap", "relation": "Informs" },
+    { "source": "ins_profit_mining", "target": "strat_sku_cross", "relation": "Drives" },
+    { "source": "ins_rapid_entry", "target": "strat_obl", "relation": "Drives" },
+    { "source": "ins_content_gap", "target": "strat_transparency", "relation": "Drives" },
+    { "source": "fb_page_perf", "target": "strat_sku_cross", "relation": "Validates" },
+    { "source": "fb_page_perf", "target": "ins_profit_mining", "relation": "Confirms" }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "@id": "https://viasurg.com/en/pages/absorbable-sutures#product",
+  "name": "Absorbable Sutures",
+  "description": "Synthetic absorbable surgical sutures (e.g., PGA, PGLA). Designed for reliable wound support during critical healing.",
+  "brand": {
+    "@type": "Brand",
+    "name": "ViaSurg"
+  },
+  "material": "PGA (Polyglycolic Acid)",
+  "category": "Wound Closure > Sutures",
+  "potentialAction": {
+    "@type": "UseAction",
+    "name": "Laparoscopic Surgery",
+    "target": {
+      "@type": "MedicalProcedure",
+      "name": "Laparoscopic Surgery",
+      "description": "Minimally invasive surgical technique."
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "description": "High CPC value indicated for B2B procurement."
+    }
+  }
+}

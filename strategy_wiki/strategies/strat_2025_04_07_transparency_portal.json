@@ -1,0 +1,11 @@
+{
+  "id": "strat_2025_04_07_transparency_portal",
+  "name": "Transparency & Evidence Portal Strategy",
+  "source_insight": "ins_2025_04_07_profit_mining",
+  "actions": [
+    "Launch 'Glass Factory' portal for real-time manufacturing parameters.",
+    "Digitize all IFUs and Clinical Certificates as verified Evidence Protocols.",
+    "Incorporate NomoFlow™ AI-monitoring visualization on technology pages."
+  ],
+  "status": "executing"
+}
