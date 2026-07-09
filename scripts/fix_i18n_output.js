@@ -202,11 +202,13 @@ function fixIndex() {
     '<span data-lang="en">$1</span><span data-lang="zh">反应性：极低的组织反应。</span>'
   ); count++;
 
-  // NomoFlow Technology
-  html = html.replace(
-    /(NomoFlow Technology <span style="font-family:var\(--rot-font-mono\);font-size:11px;color:var\(--rot-terminal-green\);background:rgba\(74,222,128,0\.1\);padding:2px 6px;border-radius:2px;">)TECHNOLOGY(<\/span>)/,
-    '<span data-lang="en">$1TECHNOLOGY$2</span><span data-lang="zh">NomoFlow 技术 <span style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-terminal-green);background:rgba(74,222,128,0.1);padding:2px 6px;border-radius:2px;">技术</span></span>'
-  ); count++;
+  // NomoFlow Technology — only if not already wrapped by fix_index_tables.js
+  if (!html.includes('data-lang="zh">NomoFlow 技术</span>')) {
+    html = html.replace(
+      /(NomoFlow Technology <span style="font-family:var\(--rot-font-mono\);font-size:11px;color:var\(--rot-terminal-green\);background:rgba\(74,222,128,0\.1\);padding:2px 6px;border-radius:2px;">)TECHNOLOGY(<\/span>)/,
+      '<span data-lang="en">$1TECHNOLOGY$2</span><span data-lang="zh">NomoFlow 技术 <span style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-terminal-green);background:rgba(74,222,128,0.1);padding:2px 6px;border-radius:2px;">技术</span></span>'
+    ); count++;
+  }
 
   html = html.replace(
     /(<p style="font-size:14px;color:var\(--rot-slate-core\);">)NomoFlow™ is a closed-loop control platform designed to reduce batch variability through high-frequency parameter compensation\. 1\. Sensing: 150 nodes sample variables \(Thermal, Pressure, Flow\) at 1000(<\/p>)/,

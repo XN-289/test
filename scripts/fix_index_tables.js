@@ -134,7 +134,7 @@ html = html.replace(
 ); count++;
 
 html = html.replace(
-  /(font-size:11px;color:var\(--rot-terminal-green\);background:rgba\(74,222,128,0\.1\);padding:2px 6px;border-radius:2px;">)TECHNOLOGY(<\/span>)/,
+  /(font-family:var\(--rot-font-mono\);font-size:11px;color:var\(--rot-terminal-green\);background:rgba\(74,222,128,0\.1\);padding:2px 6px;border-radius:2px;">)TECHNOLOGY(<\/span>)/,
   '<span data-lang="en">$1TECHNOLOGY$2</span><span data-lang="zh"><span style="font-family:var(--rot-font-mono);font-size:11px;color:var(--rot-terminal-green);background:rgba(74,222,128,0.1);padding:2px 6px;border-radius:2px;">技术</span></span>'
 ); count++;
 
